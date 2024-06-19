@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('restaurants', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->string('phone')->nullable();
+            $table->foreignId('address_id')->constrained('addresses');
+            $table->decimal('rating', 2, 1)->nullable();
             $table->timestamps();
         });
     }

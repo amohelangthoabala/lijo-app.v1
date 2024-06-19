@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('deliveries', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('order_id')->constrained('orders');
+            $table->foreignId('address_id')->constrained('addresses');
+            $table->string('delivery_status', 50);
+            $table->dateTime('delivery_time')->nullable();
             $table->timestamps();
         });
     }
