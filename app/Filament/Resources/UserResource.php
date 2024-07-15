@@ -35,7 +35,11 @@ class UserResource extends Resource
                 TextInput::make('phone')
                     ->label('Phone')
                     ->numeric(),
-                Select::make('address_id')
+                TextInput::make('password')
+                    ->label('Password')
+                    ->password()
+                    ->required(),
+                Select::make('address')
                     ->relationship(name: 'address', titleAttribute: 'city')
                     ->label('Address')
                     ->searchable()
