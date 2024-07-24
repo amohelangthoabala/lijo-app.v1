@@ -6,6 +6,7 @@ use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use Filament\Forms;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -26,35 +27,35 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('name')
-                    ->label('Name')
-                    ->required(),
-                TextInput::make('email')
-                    ->label('Email')
-                    ->required(),
-                TextInput::make('phone')
-                    ->label('Phone')
-                    ->numeric(),
-                TextInput::make('password')
-                    ->label('Password')
-                    ->password()
-                    ->required(),
-                Select::make('address')
-                    ->relationship(name: 'address', titleAttribute: 'city')
-                    ->label('Address')
-                    ->searchable()
-                    ->preload()
-                    ->createOptionForm([
-                        TextInput::make('street')
-                            ->label('Street')
+                Section::make('User infomation')
+                    ->schema([
+                        TextInput::make('name')
+                            ->label('Name')
                             ->required(),
-                        TextInput::make('city')
-                            ->label('City')
+                        TextInput::make('email')
+                            ->label('Email')
                             ->required(),
-                        TextInput::make('district')
-                            ->label('District')
+                        TextInput::make('phone')
+                            ->label('Phone')
+                            ->numeric(),
+                        TextInput::make('password')
+                            ->label('Password')
+                            ->password()
                             ->required(),
-                    ]),
+                    ])->columns(2),
+
+                // Section::make('Address')
+                //     ->schema([
+                //         TextInput::make('street')
+                //             ->label('Street')
+                //             ->required(),
+                //         TextInput::make('city')
+                //             ->label('City')
+                //             ->required(),
+                //         TextInput::make('district')
+                //             ->label('District')
+                //             ->required(),
+                //     ])
 
             ]);
     }
