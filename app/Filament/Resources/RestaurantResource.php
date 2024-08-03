@@ -77,7 +77,11 @@ class RestaurantResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('name')->label('Name')->searchable()->sortable(),
+                ImageColumn::make('logo')->label('Logo'),
+                TextColumn::make('rating')->label('Rating')->sortable(),
+                BooleanColumn::make('status')->label('Open')->getStateUsing(fn($record) => $record->status === 'open'),
+                TextColumn::make('created_at')->label('Created')->dateTime()->sortable(),
             ])
             ->filters([
                 //
