@@ -15,9 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->string('phone')->nullable();
-            $table->foreignId('address_id')->constrained('addresses');
-            $table->decimal('rating', 2, 1)->nullable();
+            $table->string('logo')->nullable();
+            $table->json('contact_information')->nullable();
+            $table->decimal('rating', 3, 2)->default(0);
+            $table->json('opening_hours')->nullable();
+            $table->enum('status', ['open', 'closed'])->default('open');
             $table->timestamps();
         });
     }
