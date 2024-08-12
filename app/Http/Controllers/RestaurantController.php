@@ -4,16 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
+use App\Services\RestaurantService;
 
 class RestaurantController extends Controller
 {
+    protected $restaurantService;
+
+    public function __construct(RestaurantService $restaurantService)
+    {
+        $this->restaurantService = $restaurantService;
+    }
     /**
      * Display a listing of the restaurants.
      */
     public function index()
     {
-        $restaurants = Restaurant::all();
-        return response()->json($restaurants);
+        return response()->json($this->restaurantService->getAllRestaurants());
     }
 
     /**
@@ -21,8 +27,7 @@ class RestaurantController extends Controller
      */
     public function show(string $id)
     {
-        $restaurant = Restaurant::find($id);
-        return response()->json($restaurant);
+        return response()->json($this->restaurantService->getRestaurantById($id));
     }
 
     /**
@@ -31,8 +36,7 @@ class RestaurantController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $restaurant = Restaurant::find($id);
-        $restaurant->update($request->all());
+        $restaurant = $this->restaurantService->updateRestaurant($id, $request->all());
         return response()->json($restaurant);
     }
 
