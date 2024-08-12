@@ -8,7 +8,7 @@ use App\Models\Restaurant;
 class RestaurantController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the restaurants.
      */
     public function index()
     {
@@ -17,34 +17,23 @@ class RestaurantController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
+     * Display the specified restaurant.
      */
     public function show(string $id)
     {
-        //
+        $restaurant = Restaurant::find($id);
+        return response()->json($restaurant);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified restaurent in storage.
+     * possibly this will be used to rate restaurants...
      */
     public function update(Request $request, string $id)
     {
-        //
+        $restaurant = Restaurant::find($id);
+        $restaurant->update($request->all());
+        return response()->json($restaurant);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 }
