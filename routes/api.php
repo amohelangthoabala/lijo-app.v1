@@ -10,3 +10,9 @@ Route::delete('/restaurants/{id}', [RestaurantController::class, 'destroy']);
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
+
+Route::group(['prefix' => 'restaurants'], function () {
+    Route::get('/', [RestaurantController::class, 'index']);
+    Route::get('/{id}', [RestaurantController::class, 'show']);
+    Route::put('/{id}', [RestaurantController::class, 'update']);
+});
