@@ -4,6 +4,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\UserController;
+
+Route::post('/register', [UserController::class, 'register']);
+Route::post('/login', [UserController::class, 'login']);
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth:sanctum');
 
 Route::get('/restaurants', [RestaurantController::class, 'index']); // Get all restaurants
 Route::get('/restaurants/{id}', [RestaurantController::class, 'show']); // Get a specific restaurant
