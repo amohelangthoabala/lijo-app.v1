@@ -25,7 +25,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
         //create menu
         Route::group(['prefix' => '{restaurantId}/menu'], function () {
-            Route::get('/{restuarantId}', [MenuController::class, 'index']);
+            Route::get('/', [MenuController::class, 'index']);
             //Get all menu items
             Route::get('/item', [MenuController::class, 'items']);
             Route::get('/item/{id}', [MenuController::class, 'item']);
