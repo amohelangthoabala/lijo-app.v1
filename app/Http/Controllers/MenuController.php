@@ -3,16 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Menu;
+use App\Services\MenuService;
 
 class MenuController extends Controller
 {
+    protected $menuService;
+
+    // Inject the MenuService into the controller
+    public function __construct(MenuService $menuService)
+    {
+        $this->menuService = $menuService;
+    }
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($restaurantId)
     {
-        $menus = Menu::all();
+        $menus = $this->menuService->getMenusByRestaurantId($restaurantId);
         return response()->json($menus);
     }
 
@@ -21,7 +29,7 @@ class MenuController extends Controller
      */
     public function show(string $id)
     {
-        $menu = Menu::find($id);
+        $menu = $this->menuService->getMenuById($id);
         return response()->json($menu);
     }
 
@@ -30,9 +38,7 @@ class MenuController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $menu = Menu::find($id);
-        $menu->update($request->all());
+        $menu = $this->menuService->updateMenu($id, $request->all());
         return response()->json($menu);
     }
-
 }
