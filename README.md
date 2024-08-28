@@ -9,13 +9,15 @@ Before you begin, ensure you have the following installed on your system:
 - [Docker](https://www.docker.com/get-started) (Make sure Docker is running)
 - [Docker Compose](https://docs.docker.com/compose/install/)
 - [Make](https://www.gnu.org/software/make/) (Usually pre-installed on macOS and Linux. On Windows, you might need to install it separately or use WSL)
+- **SSH Key** (Optional but recommended for secure Git operations)
 
-## Setup Instructions
+## Setting Up SSH Key for Git
 
-1. **Clone the Repository**
+To securely interact with your Git repository, it’s recommended to use SSH keys. Below are the steps to generate an SSH key and add it to your GitHub account and local machine:
 
-   Start by cloning the repository to your local machine:
+1. **Generate an SSH Key**
+
+   If you don't already have an SSH key, generate one using the following command:
 
    ```bash
-   git clone https://github.com/yourusername/lijo.git
-   cd lijo
+   ssh-keygen -t ed25519 -C "your_email@example.com"
