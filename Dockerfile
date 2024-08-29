@@ -1,40 +1,40 @@
-# Use an official PHP 8.2.4 runtime as a parent image
-FROM php:8.2.4-fpm
+FROM php:8.3.10-apache
+WORKDIR /var/www/html
 
-# Set working directory
-WORKDIR /var/www
+# Mod Rewrite
+RUN a2enmod rewrite
 
-# Install dependencies
-RUN apt-get update && apt-get install -y \
-    build-essential \
+# Linux Library
+RUN apt-get update -y && apt-get install -y \
+    libicu-dev \
+    libmariadb-dev \
+    unzip zip \
+    zlib1g-dev \
     libpng-dev \
-    libjpeg62-turbo-dev \
+    libjpeg-dev \
     libfreetype6-dev \
-    locales \
-    zip \
-    jpegoptim optipng pngquant gifsicle \
-    vim \
-    unzip \
-    git \
-    curl \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd pdo pdo_mysql mbstring zip exif pcntl bcmath opcache
+    libjpeg62-turbo-dev \
+    libpng-dev
 
-# Install Composer
+# Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Copy existing application directory contents
-COPY . /var/www
+# PHP Extensions
+RUN docker-php-ext-install gettext intl pdo_mysql gd fileinfo
 
-# Set permissions for Laravel
-RUN chown -R www-data:www-data /var/www
+RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) gd
 
-# Run Composer install
-RUN composer install --no-interaction --optimize-autoloader --no-dev
+# Optional: Increase PHP memory limit
+RUN echo "memory_limit=512M" > /usr/local/etc/php/conf.d/memory-limit.ini
 
-# Create .env.testing from .env.example
-RUN cp .env.example .env.testing
+# Copy Laravel project files into the container
+COPY . /var/www/html
 
-# Expose port 9000 and start php-fpm server
-EXPOSE 9000
-CMD ["php-fpm"]
+# Ensure permissions are set correctly for Laravel
+RUN chown -R www-data:www-data /var/www/html \
+    && chmod -R 755 /var/www/html/storage \
+    && chmod -R 755 /var/www/html/bootstrap/cache
+
+# Expose port 80
+EXPOSE 80

@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+
+  # Laravel application service
+  lijo:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: lijo
+    container_name: lijo
+    volumes:
+      - .:/var/www/html
+    ports:
+      - 8080:80
+    networks:
+      - app-network
+    depends_on:
+      - mysql
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/html/public
+
+  # MySQL service
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: lijo
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    volumes:
+      - mysql-data:/var/lib/mysql/
+    networks:
+      - app-network
+
+# Networks
+networks:
+  app-network:
+    driver: bridge
+
+# Volumes
+volumes:
+  mysql-data:
+    driver: local
