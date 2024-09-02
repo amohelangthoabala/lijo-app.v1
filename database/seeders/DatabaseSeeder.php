@@ -12,12 +12,12 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            AddressSeeder::class,
             UserSeeder::class,
             RestaurantSeeder::class,
-            OrderSeeder::class,
-            PaymentSeeder::class,
-            DeliverySeeder::class,
+            AddressSeeder::class,
+           // OrderSeeder::class,
+           // PaymentSeeder::class,
+            //DeliverySeeder::class,
         ]);
     }
 }

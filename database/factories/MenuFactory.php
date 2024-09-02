@@ -23,7 +23,7 @@ class MenuFactory extends Factory
     public function definition()
     {
         return [
-            'restaurant_id' => \App\Models\Restaurant::factory(), // Assuming you have a Restaurant factory
+            'restaurant_id' => \App\Models\Restaurant::inRandomOrder()->first()->id,
             'name' => $this->faker->words(3, true),
             'description' => $this->faker->paragraph,
             'price' => $this->faker->randomFloat(2, 1, 100),

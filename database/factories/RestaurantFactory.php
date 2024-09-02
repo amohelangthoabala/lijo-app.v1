@@ -24,9 +24,17 @@ class RestaurantFactory extends Factory
         return [
             'name' => $this->faker->company,
             'description' => $this->faker->paragraph,
-            'phone' => $this->faker->phoneNumber,
-            'address_id' => \App\Models\Address::factory(), // Assuming you have an Address factory
-            'rating' => $this->faker->optional()->randomFloat(1, 1, 5),
+            'logo' => $this->faker->imageUrl(), // Example: URL to a logo image
+            'image' => $this->faker->imageUrl(640, 480, 'food'), // or 'restaurant'
+            'contact_information' => $this->faker->phoneNumber,
+            'rating' => $this->faker->randomFloat(1, 0, 5), // Rating can be 0 to 5
+            'opening_hours' => $this->faker->text(), // JSON format, adjust as needed
+            'status' => $this->faker->randomElement(['open', 'closed']),
+            'review_count' => $this->faker->numberBetween(0, 100),
+            'order_count' => $this->faker->numberBetween(0, 100),
+            'visit_count' => $this->faker->numberBetween(0, 100),
+            'last_activity_at' => $this->faker->dateTimeThisYear(),
+            'is_top_pick' => $this->faker->boolean(),
             'created_at' => now(),
             'updated_at' => now(),
         ];

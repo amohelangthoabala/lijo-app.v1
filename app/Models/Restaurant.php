@@ -10,7 +10,8 @@ class Restaurant extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'description', 'logo', 'contact_information', 'rating', 'opening_hours', 'status',
+        'name', 'description', 'logo', 'contact_information', 'rating', 'opening_hours',
+        'status', 'review_count', 'order_count', 'visit_count', 'last_activity_at', 'is_top_pick'
     ];
 
     protected $casts = [
@@ -26,6 +27,11 @@ class Restaurant extends Model
     public function menus()
     {
         return $this->hasMany(Menu::class);
+    }
+    // Restaurant.php
+    public function address()
+    {
+        return $this->hasOne(Address::class);
     }
 
 }
