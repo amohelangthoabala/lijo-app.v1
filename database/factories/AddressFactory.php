@@ -23,6 +23,8 @@ class AddressFactory extends Factory
     {
         return [
             'street' => $this->faker->streetAddress,
+            'user_id' => \App\Models\User::inRandomOrder()->first()->id,
+            'is_user' => $this->faker->boolean(50),
             'city' => $this->faker->city,
             'district' => $this->faker->state,
             'created_at' => now(),

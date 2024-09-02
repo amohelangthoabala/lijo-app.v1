@@ -22,8 +22,8 @@ class DeliveryFactory extends Factory
     public function definition()
     {
         return [
-            'order_id' => \App\Models\Order::factory(), // Assuming you have an Order factory
-            'address_id' => \App\Models\Address::factory(), // Assuming you have an Address factory
+            'order_id' => \App\Models\Order::inRandomOrder()->first()->id, // Assuming you have an Order factory
+            'address_id' => \App\Models\Address::inRandomOrder()->first()->id, // Assuming you have an Address factory
             'delivery_status' => $this->faker->randomElement(['pending', 'shipped', 'delivered', 'cancelled']),
             'delivery_time' => $this->faker->dateTimeBetween('-1 month', '+1 month'),
             'created_at' => now(),

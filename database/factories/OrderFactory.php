@@ -23,7 +23,7 @@ class OrderFactory extends Factory
     {
         return [
             'user_id' => \App\Models\User::factory(), // Assuming you have a User factory
-            'restaurant_id' => \App\Models\Restaurant::factory(), // Assuming you have a Restaurant factory
+            'restaurant_id' => \App\Models\Restaurant::inRandomOrder()->first()->id,
             'address_id' => \App\Models\Address::factory(), // Assuming you have an Address factory
             'total_amount' => $this->faker->randomFloat(2, 20, 200),
             'status' => $this->faker->randomElement(['pending', 'processing', 'completed', 'cancelled']),

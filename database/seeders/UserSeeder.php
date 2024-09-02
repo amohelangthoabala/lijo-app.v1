@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UserSeeder extends Seeder
 {
@@ -12,6 +14,18 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+         // Create the default admin user
+         User::updateOrCreate(
+            ['email' => 'admin@lijo.co.ls'],
+            [
+                'name' => 'Admin User',
+                'email_verified_at' => now(),
+                'password' => Hash::make('admin'),
+                'remember_token' => Str::random(10),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]
+        );
         User::factory()->count(10)->create();
     }
 }

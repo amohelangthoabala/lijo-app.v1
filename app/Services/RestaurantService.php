@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Address;
 use App\Models\Restaurant;
 
 class RestaurantService
@@ -18,7 +19,18 @@ class RestaurantService
 
     public function getRestaurantById($id)
     {
-        return Restaurant::findOrFail($id);
+   // Fetch the restaurant by ID or throw an exception if not found
+   $restaurant = Restaurant::findOrFail($id);
+
+        // Fetch the address for the restaurant where it is not associated with a user
+        $restaurantAddress = Address::where('user_id', $id)
+                                    ->where('is_user', false)
+                                    ->firstOrFail();
+
+        return [
+            'restaurant' => $restaurant,
+            'address' => $restaurantAddress
+        ];
     }
 
     public function updateRestaurant($id, array $data)

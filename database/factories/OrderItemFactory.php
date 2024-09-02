@@ -22,8 +22,8 @@ class OrderItemFactory extends Factory
     public function definition()
     {
         return [
-            'order_id' => \App\Models\Order::factory(), // Assuming you have an Order factory
-            'menu_id' => \App\Models\Menu::factory(), // Assuming you have a Menu factory
+            'order_id' => \App\Models\Order::inRandomOrder()->first()->id, // Assuming you have an Order factory
+            'menu_id' => \App\Models\Menu::inRandomOrder()->first()->id, // Assuming you have a Menu factory
             'quantity' => $this->faker->numberBetween(1, 10),
             'price' => $this->faker->randomFloat(2, 5, 100),
             'created_at' => now(),
