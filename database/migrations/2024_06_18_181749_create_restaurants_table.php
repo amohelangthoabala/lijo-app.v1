@@ -20,12 +20,13 @@ return new class extends Migration
             $table->json('contact_information')->nullable();
             $table->decimal('rating', 3, 2)->default(0);
             $table->json('opening_hours')->nullable();
-            $table->enum('status', ['open', 'closed'])->default('open');
+            $table->enum('status', ['open', 'closed', 'temporarily_closed', 'under_renovation'])->default('open');
             $table->integer('review_count')->default(0);
             $table->integer('order_count')->default(0);
             $table->integer('visit_count')->default(0);
             $table->dateTime('last_activity_at')->nullable();
-            $table->boolean('is_top_pick')->default(false);
+            $table->boolean('is_featured')->default(false);
+            $table->integer('sales_volume')->default(0);
             $table->timestamps();
         });
     }

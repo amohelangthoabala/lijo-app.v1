@@ -33,6 +33,29 @@ class RestaurantService
         ];
     }
 
+    public function updateFeaturedRestaurants()
+    {
+        // Get top-rated restaurants
+        $topRated = Restaurant::where('rating', '>=', 4)->get();
+
+        // Calculate sales volume for each restaurant and sort
+        $topPerforming = $topRated->sortByDesc(function($restaurant) {
+            return $restaurant->calculateSalesVolume();
+        })->take(10); // Take the top 10 restaurants based on sales volume
+
+        $newRestaurants = Restaurant::where('created_at', '>=', now()->subMonth())->get();
+
+        // Merge collections and remove duplicates
+        $featuredRestaurants = $topRated->merge($topPerforming)->merge($newRestaurants)->unique('id');
+
+        // Update the is_featured field
+        Restaurant::query()->update(['is_featured' => false]); // Reset all first
+        foreach ($featuredRestaurants as $restaurant) {
+            $restaurant->is_featured = true;
+            $restaurant->save();
+        }
+    }
+
     public function updateRestaurant($id, array $data)
     {
         $restaurant = Restaurant::findOrFail($id);
