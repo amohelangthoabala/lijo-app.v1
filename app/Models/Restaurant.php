@@ -34,4 +34,9 @@ class Restaurant extends Model
         return $this->hasOne(Address::class);
     }
 
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
+
 }
