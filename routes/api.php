@@ -5,9 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SearchController;
 
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
+Route::get('/search', [SearchController::class, 'search']);
 
 // Protected routes (require authentication)
 Route::middleware('auth:sanctum')->group(function () {
@@ -20,7 +22,8 @@ Route::middleware('auth:sanctum')->group(function () {
     //create restaurants routes
     Route::group(['prefix' => 'restaurants'], function () {
         Route::get('/', [RestaurantController::class, 'index']);
-        Route::get('/{id}', [RestaurantController::class, 'show']);
+        Route::get('/{tag}', [RestaurantController::class, 'tag'])->where('tag', '[A-Za-z]+');
+        Route::get('/{id}', [RestaurantController::class, 'show'])->where('id', '[0-9]+');;
         Route::put('/{id}', [RestaurantController::class, 'update']);
 
         //create menu

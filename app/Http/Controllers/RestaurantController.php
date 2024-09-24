@@ -22,6 +22,11 @@ class RestaurantController extends Controller
         return response()->json($this->restaurantService->getAllRestaurants());
     }
 
+    public function tag(string $tag)
+    {
+        return response()->json($this->restaurantService->getRestaurantsByTag($tag));
+    }
+
     /**
      * Display the specified restaurant.
      */

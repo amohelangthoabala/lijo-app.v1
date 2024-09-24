@@ -27,9 +27,9 @@ class MenuController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id, $restaurantId)
     {
-        $menu = $this->menuService->getMenuById($id);
+        $menu = $this->menuService->getMenuById($id, $restaurantId);
         return response()->json($menu);
     }
 
