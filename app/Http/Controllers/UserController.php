@@ -35,13 +35,13 @@ class UserController extends Controller
             'password' => 'required',
         ]);
 
-        $token = $this->userService->login($data);
+        $response = $this->userService->login($data);
 
-        if (!$token) {
+        if (!$response) {
             return response()->json(['message' => 'Invalid credentials'], 401);
         }
 
-        return response()->json(['access_token' => $token, 'token_type' => 'Bearer']);
+        return response()->json($response); // Directly return the response from the service
     }
 
     public function logout(Request $request)

@@ -20,11 +20,24 @@ class UserService
     public function login(array $credentials)
     {
         if (!Auth::attempt($credentials)) {
-            return null;
+            return null; // or throw an exception for better error handling
         }
 
         $user = Auth::user();
-        return $user->createToken('auth_token')->plainTextToken;
+        $token = $user->createToken('auth_token')->plainTextToken;
+
+        // Return both the user data and the token
+        return [
+            'access_token' => $token,
+            'token_type' => 'Bearer',
+            'user' => [
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'phone' => $user->phone,
+                // Add any other user fields you need here
+            ],
+        ];
     }
 
     public function logout(User $user)
