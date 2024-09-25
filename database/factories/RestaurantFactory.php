@@ -34,7 +34,7 @@ class RestaurantFactory extends Factory
             'order_count' => $this->faker->numberBetween(0, 100),
             'visit_count' => $this->faker->numberBetween(0, 100),
             'last_activity_at' => $this->faker->dateTimeThisYear(),
-            'is_top_pick' => $this->faker->boolean(),
+            'is_featured' => $this->faker->boolean(),
             'created_at' => now(),
             'updated_at' => now(),
         ];

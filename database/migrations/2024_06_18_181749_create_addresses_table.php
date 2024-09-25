@@ -11,17 +11,24 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::create('entities', function (Blueprint $table) {
+            $table->id();
+            $table->string('type'); // 'user', 'restaurant', etc.
+            $table->unsignedBigInteger('entity_id'); // Corresponding ID in the respective table (e.g., user_id, restaurant_id)
+            $table->timestamps();
+        });
+
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('entity_id')->nullable()->constrained(); // Ensure it refers to the correct table
-            $table->enum('type', ['user', 'restaurant']); // Use enum for type
-            $table->string('street')->nullable(); // Make nullable if necessary
-            $table->string('city')->nullable(); // Make nullable if necessary
-            $table->string('district')->nullable(); // Make nullable if necessary
-            $table->string('postal_code')->nullable(); // Optional postal code
-            $table->string('country')->nullable(); // Optional country
-            $table->decimal('latitude', 10, 8)->nullable(); // Optional latitude
-            $table->decimal('longitude', 11, 8)->nullable(); // Optional longitude
+            $table->unsignedBigInteger('addressable_id'); // Polymorphic ID
+            $table->string('addressable_type'); // Polymorphic type (e.g., App\Models\User, App\Models\Restaurant)
+            $table->string('street')->nullable();
+            $table->string('city')->nullable();
+            $table->string('district')->nullable();
+            $table->string('postal_code')->nullable();
+            $table->string('country')->nullable();
+            $table->decimal('latitude', 10, 8)->nullable();
+            $table->decimal('longitude', 11, 8)->nullable();
             $table->timestamps();
         });
     }

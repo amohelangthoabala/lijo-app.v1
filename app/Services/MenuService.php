@@ -17,9 +17,9 @@ class MenuService
     /**
      * Get a specific menu by its ID.
      */
-    public function getMenuById($id, $restaurantId)
+    public function getMenuById($id)
     {
-        return Menu::where('restaurant_id', $restaurantId)->find($id);
+        return Menu::find($id);
     }
 
     /**

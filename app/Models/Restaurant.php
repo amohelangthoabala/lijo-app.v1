@@ -11,7 +11,7 @@ class Restaurant extends Model
 
     protected $fillable = [
         'name', 'description', 'logo', 'contact_information', 'rating', 'opening_hours',
-        'status', 'review_count', 'order_count', 'visit_count', 'last_activity_at', 'is_top_pick'
+        'status', 'review_count', 'order_count', 'visit_count', 'last_activity_at', 'is_featured', 'sales_volume'
     ];
 
     protected $casts = [
