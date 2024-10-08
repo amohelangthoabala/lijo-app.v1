@@ -13,16 +13,9 @@ return new class extends Migration
     {
         Schema::create('menu_items', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('category_id');
-            $table->string('name');
-            $table->text('description')->nullable();
-            $table->decimal('price', 8, 2);
-            $table->string('image')->nullable();
-            $table->enum('availability', ['in_stock', 'out_of_stock'])->default('in_stock');
-            $table->integer('preparation_time')->nullable();
+            $table->foreignId('menu_id')->constrained()->onDelete('cascade');
+            $table->foreignId('meal_id')->constrained()->onDelete('cascade');
             $table->timestamps();
-
-            $table->foreign('category_id')->references('id')->on('menu_categories');
         });
     }
 

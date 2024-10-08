@@ -25,6 +25,7 @@ use Filament\Forms\Components\SpatieTagsInput;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\BooleanColumn;
+use Filament\Tables\Columns\ViewColumn;
 use Filament\Tables\Filters\SelectFilter;
 
 class RestaurantResource extends Resource
@@ -79,7 +80,7 @@ class RestaurantResource extends Resource
             ->columns([
                 TextColumn::make('name')->label('Name')->searchable()->sortable(),
                 ImageColumn::make('logo')->label('Logo'),
-                TextColumn::make('rating')->label('Rating')->sortable(),
+                ViewColumn::make('rating')->view('filament.tables.columns.rating')->label('Rating'),
                 BooleanColumn::make('status')->label('Open')->getStateUsing(fn($record) => $record->status === 'open'),
                 TextColumn::make('created_at')->label('Created')->dateTime()->sortable(),
             ])
