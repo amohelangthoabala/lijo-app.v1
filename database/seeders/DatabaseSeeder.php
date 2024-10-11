@@ -15,11 +15,11 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             RestaurantSeeder::class,
             AddressSeeder::class,
-            MenuSeeder::class,
+            // MenuSeeder::class,
            // OrderSeeder::class,
            // PaymentSeeder::class,
             //DeliverySeeder::class,
-            TagSeeder::class,
+            // TagSeeder::class,
         ]);
     }
 }
