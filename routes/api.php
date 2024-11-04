@@ -45,6 +45,15 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/{id}', [MenuController::class, 'show']);
         Route::put('/{id}', [MenuController::class, 'update']);
     });
+                //create menu
+    Route::group(['prefix' => 'meal'], function () {
+        Route::get('/', [MenuController::class, 'meals']);
+        //Get all menu items
+        Route::get('/item', [MenuController::class, 'items']);
+        Route::get('/item/{id}', [MenuController::class, 'item']);
+        Route::get('/{id}', [MenuController::class, 'show']);
+        Route::put('/{id}', [MenuController::class, 'update']);
+    });
 
 });
 
