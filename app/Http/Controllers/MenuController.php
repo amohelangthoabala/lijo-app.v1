@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Meal;
 use App\Models\Menu;
 use Illuminate\Http\Request;
 use App\Services\MenuService;
@@ -27,6 +28,14 @@ class MenuController extends Controller
         return response()->json($menus);
     }
 
+    public function meals(Request $request)
+    {
+  // Fetch paginated menu items with 6 items per page
+        $perPage = $request->input('per_page', 6); // Set default to 6 per page if not provided
+        $menus = Meal::paginate($perPage);
+        return response()->json($menus);
+    }
+
     public function getMenusByRestaurant($restaurantId)
     {
         $menus = $this->menuService->getMenusByRestaurantId($restaurantId);
@@ -38,10 +47,18 @@ class MenuController extends Controller
      */
     public function show(string $id)
     {
-        $menu = $this->menuService->getMenuById($id);
+        $menu = $this->menuService->getMealById($id);
         return response()->json($menu);
     }
 
+        /**
+     * Display the specified resource.
+     */
+    public function mealItem(string $id)
+    {
+        $menu = $this->menuService->getMenuById($id);
+        return response()->json($menu);
+    }
     /**
      * Update the specified resource in storage.
      */

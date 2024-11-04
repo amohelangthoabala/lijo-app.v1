@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Meal;
 use App\Models\Menu;
 
 class MenuService
@@ -20,6 +21,14 @@ class MenuService
     public function getMenuById($id)
     {
         return Menu::find($id);
+    }
+
+        /**
+     * Get a specific menu by its ID.
+     */
+    public function getMealById($id)
+    {
+        return Meal::find($id);
     }
 
     /**
