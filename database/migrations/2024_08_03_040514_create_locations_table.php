@@ -13,17 +13,17 @@ return new class extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('restaurant_id');
+            // $table->unsignedBigInteger('restaurant_id');
             $table->string('name');
             $table->string('address');
-            $table->string('city');
-            $table->string('district');
-            $table->string('postal_code');
+            $table->string('city')->nullable();
+            $table->string('district')->nullable();
+            $table->string('postal_code')->nullable();
             $table->decimal('latitude', 10, 8)->nullable();
             $table->decimal('longitude', 11, 8)->nullable();
             $table->timestamps();
 
-            $table->foreign('restaurant_id')->references('id')->on('restaurants');
+            // $table->foreign('restaurant_id')->references('id')->on('restaurants');
         });
     }
 

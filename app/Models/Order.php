@@ -9,5 +9,21 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $fillable = [''];
+    protected $fillable = [
+        'user',
+        'client_location_id',
+        'type',
+        'date',
+        'status'
+    ];
+
+    public function items()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
+
+    public function clientLocation()
+    {
+        return $this->belongsTo(Location::class, 'client_location_id');
+    }
 }

@@ -20,8 +20,8 @@ class MenuCategory extends Model
         return $this->belongsTo(Menu::class);
     }
 
-    public function items()
+    public function meals()
     {
-        return $this->hasMany(MenuItem::class);
+        return $this->hasMany(MenuCategory::class);
     }
 }

@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('order_items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id')->constrained('orders');
-            $table->foreignId('menu_id')->constrained('menus');
+            $table->foreignId('order_id')->constrained()->onDelete('cascade');
+            $table->foreignId('restaurant_location_id')->constrained('locations');
+            $table->foreignId('meal_id')->constrained('meals');
             $table->integer('quantity');
-            $table->decimal('price', 10, 2);
+            $table->decimal('price', 8, 2); // To save the price at the time of order
             $table->timestamps();
         });
     }

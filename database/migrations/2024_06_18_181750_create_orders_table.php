@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('restaurant_id')->constrained('restaurants');
-            $table->foreignId('address_id')->constrained('addresses');
-            $table->decimal('total_amount', 10, 2);
+            $table->foreignId('client_location_id')->constrained('locations');
+            $table->enum('type', ['pick', 'delivery']);
+            $table->dateTime('date');
             $table->string('status', 50);
             $table->timestamps();
         });

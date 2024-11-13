@@ -31,18 +31,51 @@ class RestaurantService
     public function getRestaurantById($id)
     {
         // Fetch the restaurant by ID or throw an exception if not found
-        $restaurant = Restaurant::findOrFail($id);
+        // $restaurant = Restaurant::findOrFail($id);
 
         // Fetch the address for the restaurant where it is not associated with a user
-        $restaurantAddress =
-        Address::where('user_id', $id)
-                ->where('is_user', false)
-                ->firstOrFail();
+        // $restaurantAddress =
+        // Address::where('user_id', $id)
+        //         ->where('is_user', false)
+        //         ->firstOrFail();
 
-        return [
-            'restaurant' => $restaurant,
-            'address' => $restaurantAddress
-        ];
+        // return [
+        //     'restaurant' => $restaurant,
+        //     'address' => $restaurantAddress
+        // ];
+
+        // return $restaurant;
+
+        // Fetch the restaurant with related menus, categories, and meals
+        $restaurant = Restaurant::with([
+            'menus.categories'
+        ])->findOrFail($id);
+
+        // Format the data to make it easier to work with
+        // $data = [
+        //     'restaurant' => $restaurant->name,
+        //     'menus' => $restaurant->menus->map(function ($menu) {
+        //         return [
+        //             'menu_name' => $menu->name,
+        //             'categories' => $menu->menuCategories->map(function ($category) {
+        //                 return [
+        //                     'category_name' => $category->name,
+        //                     'meals' => $category->meals->map(function ($meal) {
+        //                         return [
+        //                             'meal_name' => $meal->name,
+        //                             'description' => $meal->description,
+        //                             'price' => $meal->price,
+        //                             'image' => $meal->image,
+        //                             'is_available' => $meal->is_available,
+        //                         ];
+        //                     })->toArray(),
+        //                 ];
+        //             })->toArray(),
+        //         ];
+        //     })->toArray(),
+        // ];
+
+        return $restaurant;
     }
 
     public function updateFeaturedRestaurants()
