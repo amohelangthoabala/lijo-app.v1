@@ -10,14 +10,22 @@ class Address extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
-        'is_user',
+        'name',
+        'address',
         'street',
         'city',
         'district',
+        'postal_code',
+        'country',
+        'latitude',
+        'longitude',
+        'addressable_id',
+        'addressable_type',
+
     ];
-    public function user()
+
+    public function addresses()
     {
-        return $this->belongsTo(User::class);
+        return $this->morphMany(Address::class, 'addressable');
     }
 }

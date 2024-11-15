@@ -28,6 +28,8 @@ class AddressFactory extends Factory
         $addressableType = $this->faker->randomElement([User::class, Restaurant::class]);
 
         return [
+            'name' => $this->faker->address,
+            'address' => $this->faker->address,
             'street' => $this->faker->streetAddress,
             'city' => $this->faker->city,
             'district' => $this->faker->state,

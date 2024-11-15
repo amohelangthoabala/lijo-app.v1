@@ -5,10 +5,20 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\OrderResource\Pages;
 use App\Filament\Resources\OrderResource\RelationManagers;
 use App\Models\Order;
+use App\Models\User;
 use Filament\Forms;
+use Filament\Forms\Components\Actions\Action;
+use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\BadgeColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -16,14 +26,140 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class OrderResource extends Resource
 {
     protected static ?string $model = Order::class;
-
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-clipboard';
+    protected static ?string $navigationGroup = 'Orders Management';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+
+                Section::make()
+                    ->schema([
+                        TextInput::make('number')
+                            ->default('OR-' . random_int(100000, 999999))
+                            ->disabled()
+                            ->dehydrated()
+                            ->required()
+                            ->maxLength(32)
+                            ->unique(Order::class, 'number', ignoreRecord: true),
+                        Select::make('user_id')
+                            ->relationship('customer', 'name')
+                            ->required(),
+                        // Select::make('client_location_id')
+                        //     ->relationship('clientLocation', 'name')
+                        //     ->required()
+                        //     ->createOptionForm([
+                        //         TextInput::make('name')
+                        //             ->required(),
+                        //         Textarea::make('address'),
+                        //         TextInput::make('city')
+                        //             ->required(),
+                        //         TextInput::make('district')
+                        //             ->required(),
+                        //         TextInput::make('latitude')
+                        //             ->required(),
+                        //         TextInput::make('longitude')
+                        //             ->required(),
+
+                        //     ]),
+                        Select::make('type')
+                            ->options(['pickup' => 'Pickup', 'delivery' => 'Delivery'])
+                            ->required()
+                            ->default('delivery')
+                            ->live(),
+                        DateTimePicker::make('date')->required(),
+                        Select::make('status')
+                            ->options(['pending' => 'Pending', 'completed' => 'Completed', 'cancelled' => 'Cancelled'])
+                            ->required(),
+
+                    ])->columns(2),
+
+                Section::make('Delivery Info')
+                    ->relationship('delivery')
+                    ->schema([
+                        // This section will be conditionally visible if 'type' is 'delivery'
+                        Forms\Components\Select::make('driver_id')
+                            ->label('Driver')
+                            // ->relationship('delivery.driver', 'name')
+                            ->options(User::where('email', 'admin@lijo.co.ls')->pluck('name', 'id'))
+                            ->required(),
+
+                        Forms\Components\Select::make('address_id')
+                            ->label('Delivery Address')
+                            ->relationship('address', 'name') // Assuming 'address' relationship exists on Delivery model
+                            ->required()
+                            ->createOptionForm([
+                                TextInput::make('name')
+                                    ->label('Name')
+                                    ->required(),
+                                TextInput::make('address')
+                                    ->label('Address')
+                                    ->required(),
+                                TextInput::make('street')
+                                    ->label('Street'),
+                                TextInput::make('city')
+                                    ->label('City'),
+                                TextInput::make('district')
+                                    ->label('District'),
+                                TextInput::make('postal_code')
+                                    ->label('Postal Code'),
+                                TextInput::make('country')
+                                    ->label('Country'),
+                                TextInput::make('latitude')
+                                    ->label('Latitude')
+                                    ->numeric(),
+                                TextInput::make('longitude')
+                                    ->label('Longitude')
+                                    ->numeric(),
+                            ]),
+
+                        Forms\Components\Select::make('status')
+                            ->options([
+                                'pending' => 'Pending',
+                                'in_transit' => 'In Transit',
+                                'delivered' => 'Delivered',
+                                'failed' => 'Failed',
+                            ])
+                            ->default('pending') // Default to Pending
+                            ->required(),
+
+                        DateTimePicker::make('time')
+                            ->label('Scheduled Delivery Time')
+                            ->nullable(),
+                    ])
+                    ->columns(2)
+                    ->hidden(fn(callable $get) => $get('type') === 'pickup'),
+
+                Section::make('Order items')
+                    ->headerActions([
+                        Action::make('reset')
+                            ->modalHeading('Are you sure?')
+                            ->modalDescription('All existing items will be removed from the order.')
+                            ->requiresConfirmation()
+                            ->color('danger')
+                            ->action(fn(Forms\Set $set) => $set('items', [])),
+                    ])
+                    ->schema([
+                        Repeater::make('items')
+                            ->relationship('items')
+                            ->schema([
+                                Select::make('restaurant_id')
+                                    ->relationship('restaurant', 'name')
+                                    ->required(),
+                                Select::make('meal_id')
+                                    ->relationship('meal', 'name')
+                                    ->required(),
+                                TextInput::make('quantity')
+                                    ->numeric()
+                                    ->required(),
+                                TextInput::make('price')
+                                    ->numeric()
+                                    ->required(),
+                            ])->columns(4),
+                    ]),
+
+
             ]);
     }
 
@@ -31,7 +167,22 @@ class OrderResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('clientLocation.name')->label('Client Location'),
+                TextColumn::make('type'),
+                // ->enum(['pick' => 'Pick', 'delivery' => 'Delivery']),
+                TextColumn::make('date')->dateTime(),
+                TextColumn::make('status')
+                    ->badge()
+                    // ->enum([
+                    //     'pending' => 'Pending',
+                    //     'completed' => 'Completed',
+                    //     'cancelled' => 'Cancelled',
+                    // ])
+                    ->colors([
+                        'secondary',
+                        'success' => 'completed',
+                        'danger' => 'cancelled',
+                    ]),
             ])
             ->filters([
                 //

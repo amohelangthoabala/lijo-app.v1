@@ -20,8 +20,10 @@ return new class extends Migration
 
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('addressable_id'); // Polymorphic ID
-            $table->string('addressable_type'); // Polymorphic type (e.g., App\Models\User, App\Models\Restaurant)
+            $table->unsignedBigInteger('addressable_id')->nullable(); // Polymorphic ID
+            $table->string('addressable_type')->nullable(); // Polymorphic type (e.g., App\Models\User, App\Models\Restaurant)
+            $table->string('name');
+            $table->string('address');
             $table->string('street')->nullable();
             $table->string('city')->nullable();
             $table->string('district')->nullable();
