@@ -9,11 +9,16 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "darkaonline/l5-swagger": "^8.6",
+        "darkaonline/swagger-lume": "^11.0",
         "filament/filament": "^3.2",
         "illuminate/console": "*",
         "laravel/framework": "^11.9",
         "laravel/sanctum": "^4.0",
-        "laravel/tinker": "^2.9"
+        "laravel/tinker": "^2.9",
+        "symfony/yaml": "^6.0",
+        "tymon/jwt-auth": "^2.1",
+        "wotz/laravel-swagger-ui": "^1.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
