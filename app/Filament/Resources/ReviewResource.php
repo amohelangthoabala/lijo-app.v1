@@ -60,10 +60,40 @@ class ReviewResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('id')->label('ID')->sortable(),
+                Tables\Columns\TextColumn::make('user.name')
+                    ->label('User')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('reviewable_type')
+                    ->label('Type')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('reviewable_id')
+                    ->label('Reviewable ID')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('rating')
+                    ->label('Rating')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('review')
+                    ->label('Review')
+                    ->limit(50)
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->label('Created At')
+                    ->dateTime(),
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('rating')
+                    ->label('Filter by Rating')
+                    ->options([
+                        1 => '1 Star',
+                        2 => '2 Stars',
+                        3 => '3 Stars',
+                        4 => '4 Stars',
+                        5 => '5 Stars',
+                    ]),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
