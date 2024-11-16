@@ -167,7 +167,6 @@ class OrderResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('clientLocation.name')->label('Client Location'),
                 TextColumn::make('type'),
                 // ->enum(['pick' => 'Pick', 'delivery' => 'Delivery']),
                 TextColumn::make('date')->dateTime(),
