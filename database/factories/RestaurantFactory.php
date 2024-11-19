@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Restaurant;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class RestaurantFactory extends Factory
@@ -35,8 +36,7 @@ class RestaurantFactory extends Factory
             'visit_count' => $this->faker->numberBetween(0, 100),
             'last_activity_at' => $this->faker->dateTimeThisYear(),
             'is_featured' => $this->faker->boolean(),
-            'created_at' => now(),
-            'updated_at' => now(),
+            'user_id' => User::inRandomOrder()->first()->id,
         ];
     }
 

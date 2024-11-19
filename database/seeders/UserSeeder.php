@@ -16,25 +16,23 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         $roles = [
-            'admin' => Role::firstOrCreate(['name' => 'admin']),
-            'customer' => Role::firstOrCreate(['name' => 'customer']),
-            'driver' => Role::firstOrCreate(['name' => 'driver']),
-            'restaurant' => Role::firstOrCreate(['name' => 'restaurant']),
+            'Admin' => Role::firstOrCreate(['name' => 'Admin']),
+            'Customer' => Role::firstOrCreate(['name' => 'Customer']),
+            'Driver' => Role::firstOrCreate(['name' => 'Driver']),
+            'Restaurant' => Role::firstOrCreate(['name' => 'Restaurant']),
         ];
 
-         // Create the default admin user
-         $admin = User::updateOrCreate(
+        // Create the default admin user
+        $admin = User::updateOrCreate(
             ['email' => 'admin@lijo.co.ls'],
             [
                 'name' => 'Admin User',
                 'email_verified_at' => now(),
                 'password' => Hash::make('admin'),
                 'remember_token' => Str::random(10),
-                'created_at' => now(),
-                'updated_at' => now(),
             ]
         );
-        $admin->assignRole($roles['admin']);
+        $admin->assignRole($roles['Admin']);
 
         // Create a specific customer user
         $customer = User::updateOrCreate(
@@ -42,11 +40,10 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Customer User',
                 'email_verified_at' => now(),
-                'password' => bcrypt('password'),
+                'password' => Hash::make('password'),
             ]
         );
-        $customer->assignRole($roles['customer']);
-
+        $customer->assignRole($roles['Customer']);
 
         // Create a specific driver user
         $driver = User::updateOrCreate(
@@ -54,24 +51,22 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Driver User',
                 'email_verified_at' => now(),
-                'password' => bcrypt('password'),
+                'password' => Hash::make('password'),
             ]
         );
-        $driver->assignRole($roles['driver']);
+        $driver->assignRole($roles['Driver']);
 
-        // Create 7 specific restaurant users
+        // Create specific restaurant users
         for ($i = 1; $i <= 7; $i++) {
             $restaurant = User::updateOrCreate(
                 ['email' => "restaurant{$i}@lijo.co.ls"],
                 [
                     'name' => "Restaurant {$i}",
                     'email_verified_at' => now(),
-                    'password' => bcrypt('password'),
+                    'password' => Hash::make('password'),
                 ]
             );
-            $restaurant->assignRole($roles['restaurant']);
+            $restaurant->assignRole($roles['Restaurant']);
         }
-
-        // User::factory()->count(10)->create();
     }
 }

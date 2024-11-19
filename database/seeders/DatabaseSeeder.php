@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,8 +15,9 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             RestaurantSeeder::class,
             AddressSeeder::class,
-            // MenuSeeder::class,
-           // OrderSeeder::class,
+            PermissionSeeder::class,
+            RoleSeeder::class,
+
            // PaymentSeeder::class,
             //DeliverySeeder::class,
             // TagSeeder::class,

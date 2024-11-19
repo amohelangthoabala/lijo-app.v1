@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\RoleResource\Pages;
 use App\Filament\Resources\RoleResource\RelationManagers;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -19,7 +20,7 @@ class RoleResource extends Resource
 {
     protected static ?string $model = Role::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-finger-print';
 
     protected static ?string $navigationGroup = 'Settings';
 
@@ -28,8 +29,13 @@ class RoleResource extends Resource
         return $form
             ->schema([
                 TextInput::make('name')
-                            ->label('Name')
-                            ->required(),
+                    ->label('Name')
+                    ->required()
+                    ->unique(ignoreRecord: true),
+                Select::make('permissions')
+                    ->multiple()
+                    ->relationship('permissions', 'name')
+                    ->preload(),
             ]);
     }
 
@@ -45,7 +51,8 @@ class RoleResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->visible(fn () => collect(['edit users', 'Manage Users'])->some(fn ($permission) => auth()->user()->can($permission))),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

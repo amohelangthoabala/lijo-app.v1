@@ -19,7 +19,7 @@ class PermissionResource extends Resource
 {
     protected static ?string $model = Permission::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-adjustments-vertical';
+    protected static ?string $navigationIcon = 'heroicon-o-key';
 
     protected static ?string $navigationGroup = 'Settings';
 
@@ -30,7 +30,7 @@ class PermissionResource extends Resource
                 TextInput::make('name')
                     ->label('Name')
                     ->required()
-                    ->unique(),
+                    ->unique(ignoreRecord: true),
             ]);
     }
 
