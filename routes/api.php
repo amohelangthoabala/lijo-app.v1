@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\OrderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestaurantController;
@@ -55,6 +56,19 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::put('/{id}', [MenuController::class, 'update']);
     });
 
+    // Route::group(['prefix' => 'orders'], function () {
+    //     Route::get('/', [OrderController::class, 'index']);
+    //     Route::post('/', [OrderController::class, 'store']);
+    //     Route::put('/{id}', [OrderController::class, 'update']);
+    //     Route::delete('/{id}', [OrderController::class, 'destroy']);
+    // });
+});
+
+Route::group(['prefix' => 'orders'], function () {
+    Route::get('/', [OrderController::class, 'index']);
+    Route::post('/', [OrderController::class, 'store']);
+    Route::put('/{id}', [OrderController::class, 'update']);
+    Route::delete('/{id}', [OrderController::class, 'destroy']);
 });
 
 
