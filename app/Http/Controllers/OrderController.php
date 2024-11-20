@@ -37,9 +37,11 @@ class OrderController extends Controller
             'items.*.meal_id' => 'required|exists:meals,id',
             'items.*.quantity' => 'required|integer|min:1',
             'items.*.price' => 'required|numeric|min:0',
-            'driver_id' => 'nullable|exists:drivers,id',
+            'driver_id' => 'nullable|exists:users,id',
             'address_id' => 'nullable|exists:addresses,id',
         ]);
+
+        echo 'store';
 
         try {
             $order = $this->orderService->createOrder($validated);
@@ -107,13 +109,13 @@ class OrderController extends Controller
     {
         $filters = $request->only(['status', 'type', 'date']);
 
-        echo 'reached here';
+        // echo 'reached here';
 
         try {
             $orders = $this->orderService->fetchOrders($filters);
             return response()->json(['orders' => $orders], 200);
         } catch (\Exception $e) {
-            return response()->json(['error' => 'Failed to fetch orders.'], 500);
+            return response()->json(['error' => $e], 500);
         }
     }
 }

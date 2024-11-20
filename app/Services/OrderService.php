@@ -159,17 +159,17 @@ class OrderService
     {
         $query = Order::query();
 
-        if (isset($filters['status'])) {
-            $query->where('status', $filters['status']);
-        }
+        // if (isset($filters['status'])) {
+        //     $query->where('status', $filters['status']);
+        // }
 
-        if (isset($filters['type'])) {
-            $query->where('type', $filters['type']);
-        }
+        // if (isset($filters['type'])) {
+        //     $query->where('type', $filters['type']);
+        // }
 
-        if (isset($filters['date'])) {
-            $query->whereDate('date', $filters['date']);
-        }
+        // if (isset($filters['date'])) {
+        //     $query->whereDate('date', $filters['date']);
+        // }
 
         return $query->with(['customer', 'items', 'delivery'])->get();
     }
