@@ -10,7 +10,7 @@ use App\Http\Controllers\SearchController;
 
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
-// Route::get('/search', [SearchController::class, 'search']);
+Route::get('/search', [SearchController::class, 'search']);
 
 // Protected routes (require authentication)
 Route::middleware('auth:sanctum')->group(function () {

@@ -1,63 +1,24 @@
 <?php
+
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class RouteServiceProvider extends ServiceProvider
+class AppServiceProvider extends ServiceProvider
 {
     /**
-     * The controller namespace for the application.
-     *
-     * @var string
+     * Register any application services.
      */
-    protected $namespace = 'App\\Http\\Controllers';
-
-    /**
-     * Define your route model bindings, pattern filters, etc.
-     *
-     * @return void
-     */
-    public function boot()
+    public function register(): void
     {
-        parent::boot();
-
-        // Registering custom middleware
-        $this->app['router']->aliasMiddleware('api.auth', \App\Http\Middleware\ApiAuthenticate::class);
+        //
     }
 
     /**
-     * Define the routes for the application.
-     *
-     * @return void
+     * Bootstrap any application services.
      */
-    public function map()
+    public function boot(): void
     {
-        $this->mapApiRoutes();
-        $this->mapWebRoutes();
-    }
-
-    /**
-     * Define the "api" routes for the application.
-     *
-     * @return void
-     */
-    protected function mapApiRoutes()
-    {
-        Route::prefix('api')
-             ->middleware('api')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/api.php'));
-    }
-
-    /**
-     * Define the "web" routes for the application.
-     *
-     * @return void
-     */
-    protected function mapWebRoutes()
-    {
-        Route::middleware('web')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/web.php'));
+        //
     }
 }
