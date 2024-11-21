@@ -171,6 +171,20 @@ class OrderService
         //     $query->whereDate('date', $filters['date']);
         // }
 
-        return $query->with(['customer', 'items', 'delivery'])->get();
+        return $query->with(['customer.address', 'items', 'delivery'])->get();
     }
+
+    /**
+     * Fetch a single order by ID with related data.
+     *
+     * @param int $orderId
+     * @return Order
+     * @throws ModelNotFoundException
+     */
+    public function fetchOrder(int $orderId): Order
+    {
+        // Fetch the order with related data or throw an exception if not found
+        return Order::with(['customer', 'items', 'items.restaurant', 'items.restaurant.address', 'items.meal', 'delivery.address', 'delivery.driver'])->findOrFail($orderId);
+    }
+
 }
