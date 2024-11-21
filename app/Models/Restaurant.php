@@ -11,18 +11,13 @@ class Restaurant extends Model
 
     protected $fillable = [
         'name', 'description', 'logo', 'contact_information', 'rating', 'opening_hours',
-        'status', 'review_count', 'order_count', 'visit_count', 'last_activity_at', 'is_featured', 'sales_volume'
+        'status', 'review_count', 'order_count', 'visit_count', 'last_activity_at', 'is_featured', 'sales_volume', 'user_id',
     ];
 
     protected $casts = [
         'contact_information' => 'array',
         'opening_hours' => 'array',
     ];
-
-    public function locations()
-    {
-        return $this->hasMany(Location::class);
-    }
 
     public function menus()
     {
@@ -34,9 +29,9 @@ class Restaurant extends Model
         return $this->hasOne(Address::class);
     }
 
-    public function tags()
-    {
-        return $this->belongsToMany(Tag::class);
-    }
+    // public function tags()
+    // {
+    //     return $this->belongsToMany(Tag::class);
+    // }
 
 }

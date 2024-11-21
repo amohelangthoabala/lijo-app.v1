@@ -27,7 +27,10 @@ return new class extends Migration
             $table->dateTime('last_activity_at')->nullable();
             $table->boolean('is_featured')->default(false);
             $table->integer('sales_volume')->default(0);
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
