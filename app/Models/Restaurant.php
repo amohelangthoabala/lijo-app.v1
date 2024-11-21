@@ -23,10 +23,10 @@ class Restaurant extends Model
     {
         return $this->hasMany(Menu::class);
     }
-    // Restaurant.php
+
     public function address()
     {
-        return $this->hasOne(Address::class);
+        return $this->morphOne(Address::class, 'addressable');
     }
 
     // public function tags()

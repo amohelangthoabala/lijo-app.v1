@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Services\OrderService;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
@@ -116,6 +117,31 @@ class OrderController extends Controller
             return response()->json(['orders' => $orders], 200);
         } catch (\Exception $e) {
             return response()->json(['error' => $e], 500);
+        }
+    }
+
+    /**
+     * Fetch a single order by ID.
+     *
+     * @param int $id
+     * @param OrderService $orderService
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function show($id)
+    {
+        try {
+            $order = $this->orderService->fetchOrder($id);
+
+            return response()->json([
+                'success' => true,
+                'data' => $order,
+                'message' => 'Order fetched successfully.',
+            ]);
+        } catch (ModelNotFoundException $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Order not found.',
+            ], 404);
         }
     }
 }
