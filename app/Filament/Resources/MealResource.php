@@ -18,6 +18,9 @@ use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Storage;
+use Spatie\ImageOptimizer\OptimizerChainFactory;
+
+
 
 class MealResource extends Resource
 {
@@ -67,11 +70,36 @@ class MealResource extends Resource
                         ->label('Description')
                         ->nullable(),
 
-                    // Image
+
                     FileUpload::make('image')
                         ->label('Meal Image')
                         ->directory('images')
-                        ->nullable(),
+                        ->nullable()
+                        ->image() // Ensure only images are accepted
+                        ->maxSize(2048) // Limit file size (e.g., 2MB)
+                        ->acceptedFileTypes(['image/jpeg', 'image/png']) // Restrict to specific formats
+                        ->afterStateUpdated(function ($state, callable $set) {
+                            if (!$state) {
+                                return; // No file uploaded
+                            }
+
+                            // Get the full path of the uploaded image
+                            $path = storage_path('app/public/images/' . $state);
+
+                            try {
+                                // Optimize the image after upload using Spatie Image Optimizer
+                                $optimizerChain = OptimizerChainFactory::create();
+                                $optimizerChain->optimize($path); // Optimize the image
+
+                                // Optionally, update the database field with the image path
+                                $set('image', $state);
+
+                            } catch (\Exception $e) {
+                                // Handle any exceptions that occur during image optimization
+                                // You could log the error or provide feedback to the user
+                                \Log::error('Image optimization failed: ' . $e->getMessage());
+                            }
+                    }),
 
                     // Price
                     TextInput::make('price')
