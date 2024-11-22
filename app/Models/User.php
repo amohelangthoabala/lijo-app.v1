@@ -50,7 +50,7 @@ class User extends Authenticatable
 
     public function address()
     {
-        return $this->hasOne(Address::class);
+        return $this->morphOne(Address::class, 'addressable');
     }
 
     public function orders()
