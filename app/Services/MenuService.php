@@ -29,7 +29,7 @@ class MenuService
     public function getMealById($id)
     {
         // Eager load the category relationship
-        $meal = Meal::with('category')->find($id);
+        $meal = Meal::with('category.menu')->find($id);
 
         if (!$meal) {
             return null; // Or handle this case as needed (e.g., return an error message)
@@ -40,6 +40,7 @@ class MenuService
             'id' => $meal->id,
             'category_id' => $meal->category_id,
             'category_name' => $meal->category ? $meal->category->name : null, // Get the category name
+            'restaurant_id' => $meal->category->menu ? $meal->category->menu->restaurant_id : null, // Get the category name
             'name' => $meal->name,
             'description' => $meal->description,
             'price' => $meal->price,
@@ -49,6 +50,8 @@ class MenuService
             'created_at' => $meal->created_at,
             'updated_at' => $meal->updated_at
         ];
+
+        // return $meal;
     }
     /**
      * Update a menu by its ID.
