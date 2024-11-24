@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->string('number', 32)->unique();
-            $table->enum('type', ['pick', 'delivery']);
+            $table->enum('type', ['pickup', 'delivery']);
             $table->dateTime('date');
             $table->string('status', 50);
             $table->timestamps();
