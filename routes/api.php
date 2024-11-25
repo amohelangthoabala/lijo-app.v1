@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SearchController;
 
@@ -62,6 +63,13 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/{id}', [OrderController::class, 'show'])->name('orders.show');
         Route::put('/{id}', [OrderController::class, 'update']);
         Route::delete('/{id}', [OrderController::class, 'destroy']);
+    });
+
+    Route::group(['prefix' => 'reviews'], function () {
+        Route::post('/', [ReviewController::class, 'store']); // Create a new review
+        Route::put('/{review}', [ReviewController::class, 'update']); // Update an existing review
+        Route::delete('/{review}', [ReviewController::class, 'destroy']); // Delete a review
+        Route::get('/', [ReviewController::class, 'index']); // Get reviews for a specific reviewable
     });
 });
 
