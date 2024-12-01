@@ -17,6 +17,7 @@ class MealFactory extends Factory
             'price' => $this->faker->randomFloat(2, 5, 50),
             'image' => $this->faker->imageUrl(640, 480, 'food', true, 'meal'),
             'category_id' => null, // Will be set during seeding
+            'restaurant_id' => null,
             'is_available' => $this->faker->boolean(),
             'preparation_time' => $this->faker->numberBetween(10, 60), // Minutes
         ];

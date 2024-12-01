@@ -31,7 +31,7 @@
                         <!-- Product Menu -->
                         {{-- <li class="menu-item">
                             <div class="hs-dropdown relative inline-flex [--trigger:hover] [--placement:bottom]">
-                                <a class="hs-dropdown-toggle after:absolute hover:after:-bottom-10 after:inset-0 inline-flex items-center text-sm lg:text-base font-medium text-default-700 py-2 px-4 rounded-full hover:text-primary" href="javascript:void(0)">Product <i class="w-4 h-4 ms-2" data-lucide="chevron-down"></i></a>
+                                <a class="hs-dropdown-toggle after:absolute hover:after:-bottom-10 after:inset-0 inline-flex items-center text-sm lg:text-base font-medium text-default-700 py-2 px-4 rounded-full hover:text-primary" href="">Product <i class="w-4 h-4 ms-2" data-lucide="chevron-down"></i></a>
 
                                 <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 min-w-[200px] transition-[opacity,margin] mt-4 opacity-0 hidden z-10 bg-white shadow-lg rounded-lg border border-default-100 p-1.5 dark:bg-default-50">
                                     <ul class="flex flex-col gap-1">
@@ -52,7 +52,7 @@
                         <!-- Mega Menu -->
                         {{-- <li class="menu-item">
                             <div class="hs-dropdown relative inline-flex [--trigger:hover] [--auto-close:inside]">
-                                <a class="hs-dropdown-toggle after:absolute hover:after:-bottom-10 after:inset-0 inline-flex items-center text-sm whitespace-nowrap lg:text-base font-medium text-default-700 py-2 px-4 rounded-full hover:text-primary" href="javascript:void(0)">
+                                <a class="hs-dropdown-toggle after:absolute hover:after:-bottom-10 after:inset-0 inline-flex items-center text-sm whitespace-nowrap lg:text-base font-medium text-default-700 py-2 px-4 rounded-full hover:text-primary" href="">
                                     Mega Menu <i class="w-4 h-4 ms-2" data-lucide="chevron-down"></i>
                                 </a>
 
@@ -97,16 +97,16 @@
                                                                         Bean-Based Wraps</h6>
                                                                     <ul class="grid space-y-3 mt-4">
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Black Bean Wrap</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Black Bean Wrap</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Refried Bean and Cheese Wrap</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Refried Bean and Cheese Wrap</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Falafel Wrap</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Falafel Wrap</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Chickpea and Hummus Wrap</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Chickpea and Hummus Wrap</a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -116,16 +116,16 @@
                                                                         Grilled Vegetable Wraps</h6>
                                                                     <ul class="grid space-y-3 mt-4">
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Grilled Veggie Wrap</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Grilled Veggie Wrap</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Roasted Red Pepper Wrap</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Roasted Red Pepper Wrap</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Portobello Mushroom Wrap</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Portobello Mushroom Wrap</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Eggplant Parmesan Wrap</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Eggplant Parmesan Wrap</a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -135,13 +135,13 @@
                                                                         Cheese and Spinach Wraps</h6>
                                                                     <ul class="grid space-y-3 mt-4">
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Spinach and Feta Wrap</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Spinach and Feta Wrap</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Paneer Tikka Wrap</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Paneer Tikka Wrap</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Caprese Wrap</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Caprese Wrap</a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -151,16 +151,16 @@
                                                                         Chicken Wraps</h6>
                                                                     <ul class="grid space-y-3 mt-4">
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Grilled Chicken Wrap</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Grilled Chicken Wrap</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Buffalo Chicken Wrap</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Buffalo Chicken Wrap</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Chicken Caesar Wrap</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Chicken Caesar Wrap</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Chicken Shawarma Wrap</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Chicken Shawarma Wrap</a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -175,19 +175,19 @@
                                                                         Italian Pasta Dishes</h6>
                                                                     <ul class="grid space-y-3 mt-4">
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Spaghetti Bolognese</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Spaghetti Bolognese</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Fettuccine Alfredo</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Fettuccine Alfredo</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Lasagna</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Lasagna</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Carbonara</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Carbonara</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Penne alla Vodka</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Penne alla Vodka</a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -197,25 +197,25 @@
                                                                         Asian Noodle Dishes</h6>
                                                                     <ul class="grid space-y-3 mt-4">
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Ramen</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Ramen</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Pad Thai</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Pad Thai</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Pho</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Pho</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Chow Mein</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Chow Mein</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Udon Stir-Fry</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Udon Stir-Fry</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Soba Noodles</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Soba Noodles</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Lo Mein</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Lo Mein</a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -225,19 +225,19 @@
                                                                         Chinese Noodle Dishes</h6>
                                                                     <ul class="grid space-y-3 mt-4">
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Beef Chow Fun</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Beef Chow Fun</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Dan Dan Noodles</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Dan Dan Noodles</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Sesame Noodles</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Sesame Noodles</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Wonton Noodle Soup</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Wonton Noodle Soup</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Zha Jiang Mian</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Zha Jiang Mian</a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -247,16 +247,16 @@
                                                                         Japanese Noodle Dishes</h6>
                                                                     <ul class="grid space-y-3 mt-4">
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Yakisoba</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Yakisoba</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Tempura Udon</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Tempura Udon</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Hiyashi Chukakies</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Hiyashi Chukakies</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Sushi Rolls</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Sushi Rolls</a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -270,16 +270,16 @@
                                                                         Thai Noodle Dishes</h6>
                                                                     <ul class="grid space-y-3 mt-4">
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Drunken Noodles</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Drunken Noodles</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Tom Yum Noodle Soup</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Tom Yum Noodle Soup</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Green Curry Noodles</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Green Curry Noodles</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Glass Noodle Salad</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Glass Noodle Salad</a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -288,13 +288,13 @@
                                                                     <h6 class="text-base font-medium text-default-800">Indian Noodle Dishes</h6>
                                                                     <ul class="grid space-y-3 mt-4">
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Veg Hakka Noodles</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Veg Hakka Noodles</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Maggi Noodles</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Maggi Noodles</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Masala Instant Noodles</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Masala Instant Noodles</a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -303,16 +303,16 @@
                                                                     <h6 class="text-base font-medium text-default-800">Korean Noodle Dishes</h6>
                                                                     <ul class="grid space-y-3 mt-4">
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Japchae</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Japchae</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Jajangmyeon</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Jajangmyeon</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Ramyeon</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Ramyeon</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Naengmyeon</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Naengmyeon</a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -322,16 +322,16 @@
                                                                         Western Noodle Dishes</h6>
                                                                     <ul class="grid space-y-3 mt-4">
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Chicken Noodle Soup</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Chicken Noodle Soup</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Beef Stroganoff</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Beef Stroganoff</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Tuna Noodle Casserole</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Tuna Noodle Casserole</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Macaroni and Cheese</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Macaroni and Cheese</a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -345,19 +345,19 @@
                                                                         Tacos</h6>
                                                                     <ul class="grid space-y-3 mt-4">
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Street Tacos</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Street Tacos</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Carnitas Tacos</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Carnitas Tacos</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Barbacoa Tacos</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Barbacoa Tacos</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Fish Tacos</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Fish Tacos</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Vegetarian Tacos</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Vegetarian Tacos</a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -367,16 +367,16 @@
                                                                         Enchiladas</h6>
                                                                     <ul class="grid space-y-3 mt-4">
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Chicken Enchiladas</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Chicken Enchiladas</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Cheese Enchiladas</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Cheese Enchiladas</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Beef Enchiladas</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Beef Enchiladas</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Suizas Enchiladas</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Suizas Enchiladas</a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -386,13 +386,13 @@
                                                                         Tamales</h6>
                                                                     <ul class="grid space-y-3 mt-4">
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Pork Tamales</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Pork Tamales</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Chicken Tamales</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Chicken Tamales</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Sweet Tamales</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Sweet Tamales</a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -402,13 +402,13 @@
                                                                         Quesadillas</h6>
                                                                     <ul class="grid space-y-3 mt-4">
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Cheese Quesadillas</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Cheese Quesadillas</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Chicken Quesadillas</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Chicken Quesadillas</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Vegetarian Quesadillas</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Vegetarian Quesadillas</a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -422,10 +422,10 @@
                                                                         Balanced Meals</h6>
                                                                     <ul class="grid space-y-3 mt-4">
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Grilled chicken breast with steamed broccoli and quinoa</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Grilled chicken breast with steamed broccoli and quinoa</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Baked salmon with asparagus and brown rice</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Baked salmon with asparagus and brown rice</a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -435,10 +435,10 @@
                                                                         Low-Carb Meals</h6>
                                                                     <ul class="grid space-y-3 mt-4">
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Cauliflower rice stir-fry with tofu and mixed vegetables</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Cauliflower rice stir-fry with tofu and mixed vegetables</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Zucchini noodles with pesto and grilled shrimp</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Zucchini noodles with pesto and grilled shrimp</a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -448,10 +448,10 @@
                                                                         High-Protein Meals</h6>
                                                                     <ul class="grid space-y-3 mt-4">
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Lean beef or turkey burger with a side salad</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Lean beef or turkey burger with a side salad</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Greek yogurt parfait with berries and nuts</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Greek yogurt parfait with berries and nuts</a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -464,19 +464,19 @@
                                                                     <h6 class="text-base font-medium text-default-800">Classic Burgers</h6>
                                                                     <ul class="grid space-y-3 mt-4">
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Cheeseburger</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Cheeseburger</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Bacon Cheeseburger</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Bacon Cheeseburger</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Double Cheeseburger</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Double Cheeseburger</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Triple Cheeseburger</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Triple Cheeseburger</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Classic Veggie Burger</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Classic Veggie Burger</a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -486,22 +486,22 @@
                                                                         Patty Variations</h6>
                                                                     <ul class="grid space-y-3 mt-4">
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Turkey Burger</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Turkey Burger</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Chicken Burger</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Chicken Burger</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Bison Burger</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Bison Burger</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Salmon Burger</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Salmon Burger</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Black Bean Burger</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Black Bean Burger</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Portobello Mushroom Burger</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Portobello Mushroom Burger</a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -511,22 +511,22 @@
                                                                         Flavorful Toppings</h6>
                                                                     <ul class="grid space-y-3 mt-4">
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">BBQ Burgerges</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">BBQ Burgerges</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Mushroom Swiss Burger</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Mushroom Swiss Burger</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Western/Cowboy Burger</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Western/Cowboy Burger</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Blue Cheese Burger</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Blue Cheese Burger</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Jalapeño Burger</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Jalapeño Burger</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Guacamole Burger</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Guacamole Burger</a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -536,19 +536,19 @@
                                                                         Breakfast Burger</h6>
                                                                     <ul class="grid space-y-3 mt-4">
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Avocado Burger</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Avocado Burger</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Caprese Burger</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Caprese Burger</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Mediterranean Burger</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Mediterranean Burger</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Tex-Mex Burger</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Tex-Mex Burger</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Reuben Burger</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Reuben Burger</a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -562,22 +562,22 @@
                                                                     <h6 class="text-base font-medium text-default-800">Coffee Based</h6>
                                                                     <ul class="grid space-y-3 mt-4">
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Espresso</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Espresso</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Cappuccino</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Cappuccino</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Latte</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Latte</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Americano</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Americano</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Mocha</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Mocha</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Macchiato</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Macchiato</a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -587,19 +587,19 @@
                                                                         Tea</h6>
                                                                     <ul class="grid space-y-3 mt-4">
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Black Tea</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Black Tea</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Green Tea</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Green Tea</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Herbal Tea</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Herbal Tea</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Chai Tea</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Chai Tea</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Earl Grey</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Earl Grey</a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -609,16 +609,16 @@
                                                                         Cakes</h6>
                                                                     <ul class="grid space-y-3 mt-4">
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Chocolate Cake</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Chocolate Cake</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Carrot Cake</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Carrot Cake</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Red Velvet Cake</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Red Velvet Cake</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Cheesecake</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Cheesecake</a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -628,22 +628,22 @@
                                                                         Cookies & Pastries</h6>
                                                                     <ul class="grid space-y-3 mt-4">
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Chocolate Chip Cookies</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Chocolate Chip Cookies</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Oatmeal Raisin Cookies</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Oatmeal Raisin Cookies</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Peanut Butter Cookies</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Peanut Butter Cookies</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Sugar Cookies</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Sugar Cookies</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Croissant</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Croissant</a>
                                                                         </li>
                                                                         <li>
-                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="javascript:void(0)">Danish Pastry</a>
+                                                                            <a class="text-sm font-medium text-default-600 hover:text-primary transition-all" href="">Danish Pastry</a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -662,7 +662,7 @@
                         <!-- Pages Menu -->
                         {{-- <li class="menu-item">
                             <div class="hs-dropdown relative inline-flex [--trigger:hover] [--placement:bottom]">
-                                <a class="hs-dropdown-toggle after:absolute hover:after:-bottom-10 after:inset-0 inline-flex items-center text-sm lg:text-base font-medium text-default-700 py-2 px-4 rounded-full hover:text-primary" href="javascript:void(0)">
+                                <a class="hs-dropdown-toggle after:absolute hover:after:-bottom-10 after:inset-0 inline-flex items-center text-sm lg:text-base font-medium text-default-700 py-2 px-4 rounded-full hover:text-primary" href="">
                                     Pages <i class="w-4 h-4 ms-2" data-lucide="chevron-down"></i>
                                 </a>
 
@@ -736,7 +736,7 @@
                         <!-- User Dropdown -->
                         <li class="flex menu-item">
                             <div class="hs-dropdown relative inline-flex [--trigger:hover] [--placement:bottom]">
-                                <a class="hs-dropdown-toggle after:absolute hover:after:-bottom-10 after:inset-0 relative flex items-center text-base transition-all text-default-600 hover:text-primary" href="javascript:void(0)">
+                                <a class="hs-dropdown-toggle after:absolute hover:after:-bottom-10 after:inset-0 relative flex items-center text-base transition-all text-default-600 hover:text-primary" href="">
                                     <i class="w-5 h-5" data-lucide="user"></i>
                                 </a>
 

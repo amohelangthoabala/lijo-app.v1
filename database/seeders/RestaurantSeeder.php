@@ -21,10 +21,8 @@ class RestaurantSeeder extends Seeder
 
         // Loop through each user
         $usersWithRestaurantRole->each(function ($user) {
-
-            echo $user->id;
-           // Create a restaurant for the user
-           $restaurant = Restaurant::factory()->create([
+            // Create a restaurant for the user
+            $restaurant = Restaurant::factory()->create([
                 'user_id' => $user->id, // Assign the user to the restaurant
             ]);
 
@@ -34,42 +32,44 @@ class RestaurantSeeder extends Seeder
             ]);
 
             // For each menu, create categories and meals
-            $menus->each(function ($menu) {
+            $menus->each(function ($menu) use ($restaurant) { // Pass $restaurant to this scope
                 // Create 3 categories per menu
                 $categories = MenuCategory::factory(3)->create([
                     'menu_id' => $menu->id,
                 ]);
 
                 // For each category, create 5 meals
-                $categories->each(function ($category) {
+                $categories->each(function ($category) use ($restaurant) { // Pass $restaurant to this scope
                     Meal::factory(5)->create([
                         'category_id' => $category->id,
+                        'restaurant_id' => $restaurant->id,
                     ]);
                 });
             });
         });
 
-        // Create 10 Restaurants
-        Restaurant::factory(10)->create()->each(function ($restaurant) {
-            // Create two menus (Default Menu and Beverages Menu)
-            $menus = Menu::factory(2)->create([
-                'restaurant_id' => $restaurant->id,
-            ]);
 
-            // For each menu, create categories and meals
-            $menus->each(function ($menu) {
-                // Create 3 categories per menu
-                $categories = MenuCategory::factory(3)->create([
-                    'menu_id' => $menu->id,
-                ]);
+        // // Create 10 Restaurants
+        // Restaurant::factory(10)->create()->each(function ($restaurant) {
+        //     // Create two menus (Default Menu and Beverages Menu)
+        //     $menus = Menu::factory(2)->create([
+        //         'restaurant_id' => $restaurant->id,
+        //     ]);
 
-                // For each category, create 5 meals
-                $categories->each(function ($category) {
-                    Meal::factory(5)->create([
-                        'category_id' => $category->id,
-                    ]);
-                });
-            });
-        });
+        //     // For each menu, create categories and meals
+        //     $menus->each(function ($menu) {
+        //         // Create 3 categories per menu
+        //         $categories = MenuCategory::factory(3)->create([
+        //             'menu_id' => $menu->id,
+        //         ]);
+
+        //         // For each category, create 5 meals
+        //         $categories->each(function ($category) {
+        //             Meal::factory(5)->create([
+        //                 'category_id' => $category->id,
+        //             ]);
+        //         });
+        //     });
+        // });
     }
 }

@@ -1,17 +1,43 @@
 <?php
 
+use App\Http\Controllers\Inertia\MealController;
+use App\Http\Controllers\Inertia\OrderController;
+use App\Http\Controllers\Inertia\RestaurantController;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
+
+// Route::get('/', function () {
+//     return Inertia::render('Welcome', [
+//         'canLogin' => Route::has('login'),
+//         'canRegister' => Route::has('register'),
+//         'laravelVersion' => Application::VERSION,
+//         'phpVersion' => PHP_VERSION,
+//     ]);
+// });
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('dashboard');
 });
 
-Route::view('/explore', 'explore')->name('explore');
+// Protected routes (require authentication)
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', fn () => Inertia::render('Dashboard'))
+        ->name('dashboard');
 
-Route::view('/cart', 'cart')->name('cart');
+    Route::get('/cart', fn () => Inertia::render('Cart/Index'))
+        ->name('cart');
 
-Route::view('/details', 'meal')->name('details');
-
-Route::get('/docs', function () {
-    return view('venodr.index');
+    Route::resource('meal', MealController::class);
+    Route::resource('order', OrderController::class);
+    Route::resource('restaurant', RestaurantController::class);
 });
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';

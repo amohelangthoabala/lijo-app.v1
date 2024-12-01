@@ -9,7 +9,7 @@
             <div class="flex items-center">
                 <ol aria-label="Breadcrumb" class="flex items-center whitespace-nowrap min-w-0 gap-2">
                     <li class="text-sm">
-                        <a class="flex items-center gap-2 align-middle text-default-800 transition-all leading-none hover:text-primary-500" href="javascript:void(0)">
+                        <a class="flex items-center gap-2 align-middle text-default-800 transition-all leading-none hover:text-primary-500" href="">
                             <i class="w-4 h-4" data-lucide="home"></i>
                             Home
                             <i class="w-4 h-4" data-lucide="chevron-right"></i>

@@ -5,34 +5,34 @@
                 <div class="grid md:grid-cols-4 grid-cols-2 gap-6 mb-6">
                     <div class="flex flex-col gap-3">
                         <h5 class="mb-3 font-semibold text-default-950">About</h5>
-                        <div class="text-default-600"><a href="javascript:void(0);">About Us</a></div>
-                        <div class="text-default-600"><a href="javascript:void(0);">Features</a></div>
-                        <div class="text-default-600"><a href="javascript:void(0);">News</a></div>
-                        <div class="text-default-600"><a href="javascript:void(0);">Careers</a></div>
-                        <div class="text-default-600"><a href="javascript:void(0);">Services</a></div>
+                        <div class="text-default-600"><a href=";">About Us</a></div>
+                        <div class="text-default-600"><a href=";">Features</a></div>
+                        <div class="text-default-600"><a href=";">News</a></div>
+                        <div class="text-default-600"><a href=";">Careers</a></div>
+                        <div class="text-default-600"><a href=";">Services</a></div>
                     </div>
 
                     <div class="flex flex-col gap-3">
                         <h5 class="mb-3 font-semibold text-default-950">Company</h5>
-                        <div class="text-default-600"><a href="javascript:void(0);">Our Team</a></div>
-                        <div class="text-default-600"><a href="javascript:void(0);">Partner with Us</a></div>
-                        <div class="text-default-600"><a href="javascript:void(0);">FAQs</a></div>
-                        <div class="text-default-600"><a href="javascript:void(0);">Blog</a></div>
+                        <div class="text-default-600"><a href=";">Our Team</a></div>
+                        <div class="text-default-600"><a href=";">Partner with Us</a></div>
+                        <div class="text-default-600"><a href=";">FAQs</a></div>
+                        <div class="text-default-600"><a href=";">Blog</a></div>
                     </div>
 
                     <div class="flex flex-col gap-3">
                         <h5 class="mb-3 font-semibold text-default-950">Support</h5>
-                        <div class="text-default-600"><a href="javascript:void(0);">About</a></div>
-                        <div class="text-default-600"><a href="javascript:void(0);">Support Center</a></div>
-                        <div class="text-default-600"><a href="javascript:void(0);">Feedback</a></div>
-                        <div class="text-default-600"><a href="javascript:void(0);">Contact Us</a></div>
-                        <div class="text-default-600"><a href="javascript:void(0);">Accessibility</a></div>
+                        <div class="text-default-600"><a href=";">About</a></div>
+                        <div class="text-default-600"><a href=";">Support Center</a></div>
+                        <div class="text-default-600"><a href=";">Feedback</a></div>
+                        <div class="text-default-600"><a href=";">Contact Us</a></div>
+                        <div class="text-default-600"><a href=";">Accessibility</a></div>
                     </div>
 
                     <div class="flex flex-col gap-3">
                         <h5 class="mb-3 font-semibold text-default-950">Get in touch</h5>
-                        <div class="text-default-600"><a href="javascript:void(0);">(+123) 456 789 123</a></div>
-                        <div class="text-default-600"><a href="javascript:void(0);">example@mail.com</a></div>
+                        <div class="text-default-600"><a href=";">(+123) 456 789 123</a></div>
+                        <div class="text-default-600"><a href=";">example@mail.com</a></div>
                         <div class="flex items-center gap-4">
                             <a href="#!" class="cursor-pointer">
                                 <i data-lucide="phone" class="h-6 w-6 transition-all text-default-600 hover:text-primary"></i>
@@ -80,13 +80,13 @@
                     </div>
 
                     <div class="flex justify-end gap-6">
-                        <a href="javascript:void(0)" class="text-default-500 font-medium">
+                        <a href="" class="text-default-500 font-medium">
                             Terms
                         </a>
-                        <a href="javascript:void(0)" class="text-default-500 font-medium">
+                        <a href="" class="text-default-500 font-medium">
                             Privacy
                         </a>
-                        <a href="javascript:void(0)" class="text-default-500 font-medium">
+                        <a href="" class="text-default-500 font-medium">
                             Cookies
                         </a>
                     </div>

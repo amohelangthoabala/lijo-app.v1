@@ -15,6 +15,7 @@ class Meal extends Model
     // Allow mass-assignment for these fields
     protected $fillable = [
         'category_id',
+        'restaurant_id',
         'name',
         'description',
         'price',
@@ -29,10 +30,20 @@ class Meal extends Model
         return $this->belongsTo(MenuCategory::class);
     }
 
+    public function restaurant()
+    {
+        return $this->belongsTo(Restaurant::class);
+    }
+
     // Define the many-to-many relationship between meals and menus
     public function menus()
     {
         return $this->belongsToMany(Menu::class, 'menu_meal', 'meal_id', 'menu_id');
+    }
+
+    public function reviews()
+    {
+        return $this->morphMany(Review::class, 'reviewable');
     }
 
     // Relationship: Meal has many dishes

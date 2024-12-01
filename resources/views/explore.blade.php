@@ -9,7 +9,7 @@
         <div class="flex items-center">
             <ol aria-label="Breadcrumb" class="flex items-center whitespace-nowrap min-w-0 gap-2">
                 <li class="text-sm">
-                    <a class="flex items-center gap-2 align-middle text-default-800 transition-all leading-none hover:text-primary-500" href="javascript:void(0)">
+                    <a class="flex items-center gap-2 align-middle text-default-800 transition-all leading-none hover:text-primary-500" href="">
                         <i class="w-4 h-4" data-lucide="home"></i>
                         Home
                         <i class="w-4 h-4" data-lucide="chevron-right"></i>
@@ -17,7 +17,7 @@
                 </li>
 
                 <li class="text-sm">
-                    <a class="flex items-center gap-2 align-middle text-default-800 transition-all leading-none hover:text-primary-500" href="javascript:void(0)">
+                    <a class="flex items-center gap-2 align-middle text-default-800 transition-all leading-none hover:text-primary-500" href="">
                         Product
                         <i class="w-4 h-4" data-lucide="chevron-right"></i>
                     </a>
@@ -324,7 +324,7 @@
                 </div>
 
                 <div class="block lg:hidden py-4 px-4 border-t border-default-200">
-                    <a class="w-full inline-flex items-center justify-center rounded border border-primary bg-primary px-6 py-2.5 text-center text-sm font-medium text-white shadow-sm transition-all hover:border-primary-700 hover:bg-primary focus:ring focus:ring-primary/50" href="javascript:void(0)">Reset</a>
+                    <a class="w-full inline-flex items-center justify-center rounded border border-primary bg-primary px-6 py-2.5 text-center text-sm font-medium text-white shadow-sm transition-all hover:border-primary-700 hover:bg-primary focus:ring focus:ring-primary/50" href="">Reset</a>
                 </div>
             </div>
 
@@ -346,10 +346,10 @@
 
                             <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 min-w-[200px] transition-[opacity,margin] mt-4 opacity-0 hidden z-20 bg-white shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] rounded-lg border border-default-100 p-1.5 dark:bg-default-50">
                                 <ul class="flex flex-col gap-1">
-                                    <li><a class="flex items-center gap-3 font-normal py-2 px-3 transition-all text-default-700 bg-default-400/20 rounded" href="javascript:void(0)">Latest</a></li>
-                                    <li><a class="flex items-center gap-3 font-normal text-default-600 py-2 px-3 transition-all hover:text-default-700 hover:bg-default-400/20 rounded" href="javascript:void(0)">Featured</a></li>
-                                    <li><a class="flex items-center gap-3 font-normal text-default-600 py-2 px-3 transition-all hover:text-default-700 hover:bg-default-400/20 rounded" href="javascript:void(0)">Release Date</a></li>
-                                    <li><a class="flex items-center gap-3 font-normal text-default-600 py-2 px-3 transition-all hover:text-default-700 hover:bg-default-400/20 rounded" href="javascript:void(0)">Avg. Rating</a></li>
+                                    <li><a class="flex items-center gap-3 font-normal py-2 px-3 transition-all text-default-700 bg-default-400/20 rounded" href="">Latest</a></li>
+                                    <li><a class="flex items-center gap-3 font-normal text-default-600 py-2 px-3 transition-all hover:text-default-700 hover:bg-default-400/20 rounded" href="">Featured</a></li>
+                                    <li><a class="flex items-center gap-3 font-normal text-default-600 py-2 px-3 transition-all hover:text-default-700 hover:bg-default-400/20 rounded" href="">Release Date</a></li>
+                                    <li><a class="flex items-center gap-3 font-normal text-default-600 py-2 px-3 transition-all hover:text-default-700 hover:bg-default-400/20 rounded" href="">Avg. Rating</a></li>
                                 </ul><!-- end dropdown items -->
                             </div><!-- end dropdown menu -->
                         </div>
@@ -657,19 +657,19 @@
                     <nav>
                         <ul class="inline-flex items-center space-x-2 rounded-md text-sm">
                             <li>
-                                <a href="javascript:void(0)" aria-current="page" class="inline-flex items-center justify-center h-9 w-9 border border-primary rounded-full text-white bg-primary">1 </a>
+                                <a href="" aria-current="page" class="inline-flex items-center justify-center h-9 w-9 border border-primary rounded-full text-white bg-primary">1 </a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)" class="inline-flex items-center justify-center h-9 w-9 bg-default-100 rounded-full transition-all duration-500 text-default-800 hover:bg-primary hover:border-primary hover:text-white">2 </a>
+                                <a href="" class="inline-flex items-center justify-center h-9 w-9 bg-default-100 rounded-full transition-all duration-500 text-default-800 hover:bg-primary hover:border-primary hover:text-white">2 </a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)" class="inline-flex items-center justify-center h-9 w-9 bg-default-100 rounded-full transition-all duration-500 text-default-800 hover:bg-primary hover:border-primary hover:text-white">...</a>
+                                <a href="" class="inline-flex items-center justify-center h-9 w-9 bg-default-100 rounded-full transition-all duration-500 text-default-800 hover:bg-primary hover:border-primary hover:text-white">...</a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)" class="inline-flex items-center justify-center h-9 w-9 bg-default-100 rounded-full transition-all duration-500 text-default-800 hover:bg-primary hover:border-primary hover:text-white">9 </a>
+                                <a href="" class="inline-flex items-center justify-center h-9 w-9 bg-default-100 rounded-full transition-all duration-500 text-default-800 hover:bg-primary hover:border-primary hover:text-white">9 </a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)" class="inline-flex items-center justify-center h-9 w-9 bg-default-100 rounded-full transition-all duration-500 text-default-800 hover:bg-primary hover:border-primary hover:text-white">10 </a>
+                                <a href="" class="inline-flex items-center justify-center h-9 w-9 bg-default-100 rounded-full transition-all duration-500 text-default-800 hover:bg-primary hover:border-primary hover:text-white">10 </a>
                             </li>
                         </ul><!-- end ul -->
                     </nav><!-- end nav -->
@@ -677,12 +677,12 @@
                     <nav>
                         <ul class="inline-flex items-center space-x-2 rounded-md text-sm">
                             <li>
-                                <a href="javascript:void(0)" class="inline-flex items-center justify-center h-9 w-9 bg-default-100 rounded-full transition-all duration-500 text-default-800 hover:bg-primary hover:border-primary hover:text-white">
+                                <a href="" class="inline-flex items-center justify-center h-9 w-9 bg-default-100 rounded-full transition-all duration-500 text-default-800 hover:bg-primary hover:border-primary hover:text-white">
                                     <i data-lucide="chevron-left" class="h-5 w-5"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)" class="inline-flex items-center justify-center h-9 w-9 bg-default-100 rounded-full transition-all duration-500 text-default-800 hover:bg-primary hover:border-primary hover:text-white">
+                                <a href="" class="inline-flex items-center justify-center h-9 w-9 bg-default-100 rounded-full transition-all duration-500 text-default-800 hover:bg-primary hover:border-primary hover:text-white">
                                     <i data-lucide="chevron-right" class="h-5 w-5"></i>
                                 </a>
                             </li>

@@ -13,11 +13,13 @@
         "darkaonline/swagger-lume": "^11.0",
         "filament/filament": "^3.2",
         "illuminate/console": "*",
+        "inertiajs/inertia-laravel": "^1.0",
         "laravel/framework": "^11.9",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "spatie/laravel-permission": "^6.10",
         "symfony/yaml": "^6.0",
+        "tightenco/ziggy": "^2.0",
         "tymon/jwt-auth": "^2.1",
         "wotz/laravel-swagger-ui": "^1.0",
         "zircote/swagger-php": "^4.11"
@@ -25,6 +27,7 @@
     "require-dev": {
         "doctrine/dbal": "^4.2",
         "fakerphp/faker": "^1.23",
+        "laravel/breeze": "^2.2",
         "laravel/pint": "^1.13",
         "laravel/sail": "^1.26",
         "mockery/mockery": "^1.6",

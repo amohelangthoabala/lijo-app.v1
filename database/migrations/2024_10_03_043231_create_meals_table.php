@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('meals', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('restaurant_id');
             $table->string('name');
             $table->text('description')->nullable();
             $table->decimal('price', 8, 2);
@@ -23,6 +24,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('menu_categories');
+            $table->foreign('restaurant_id')->references('id')->on('restaurants');
         });
     }
 

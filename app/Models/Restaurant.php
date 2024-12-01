@@ -24,9 +24,24 @@ class Restaurant extends Model
         return $this->hasMany(Menu::class);
     }
 
+    public function meals()
+    {
+        return $this->hasMany(Meal::class);
+    }
+
     public function address()
     {
         return $this->morphOne(Address::class, 'addressable');
+    }
+
+    public function reviews()
+    {
+        return $this->morphMany(Review::class, 'reviewable');
+    }
+
+    public function owner()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     // public function tags()
