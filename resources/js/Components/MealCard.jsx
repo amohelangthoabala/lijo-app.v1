@@ -3,134 +3,134 @@ import { motion } from "framer-motion";
 import { FaShoppingCart, FaHeart, FaStar } from "react-icons/fa";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import useCartStore from "@/Store/useCart";
+import RatingsSummary from "./RatingSummary";
+import { toast } from "react-toastify";
 
 const MealCard = ({ meal }) => {
-    const { addToCart, updateQuantity } = useCartStore();
+    const { cart, addToCart, updateQuantity } = useCartStore();
     const [isAnimating, setIsAnimating] = useState(false);
     const [isAdded, setIsAdded] = useState(false);
     const buttonRef = useRef(null); // To track button width
 
+    // Check if meal exists in the cart
+    const cartItem = cart.find((item) => item.id === meal.id);
+
+    console.log("cart in items", cart)
+
     const handleQuantityChange = (id, action) => {
         updateQuantity(id, action);
+
+        toast.info(
+            `${meal.name} quantity ${action === "increment" ? "increased" : "decreased"}.`,
+            {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            }
+        );
     };
 
 
     const handleAddToCart = () => {
-        setIsAnimating(true);
-        setIsAdded(false); // Reset "Added!" text
         addToCart(meal);
-    };
-
-    const handleAnimationComplete = () => {
-        setIsAnimating(false); // End animation state
-        setIsAdded(true); // Show "Added!" text
-
-        // Automatically hide "Added!" text after 5 seconds
-        setTimeout(() => {
-            setIsAdded(false);
-        }, 1000);
+        // Show toast notification
+        toast.success(`${meal.name} added to cart!`, {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
     };
 
     return (
-        <div className={`p-4 overflow-hidden transition-all duration-300 border rounded-lg hover:border-orange-500 shadow-xl`}>
-            <div className="relative overflow-hidden divide-y rounded-lg divide-default-200 group">
-                {/* Image */}
-                <div className="mx-auto mb-4">
-                    <img
-                        className="w-full h-full transition-all group-hover:scale-105"
-                        src={meal.image || "/yum/assets/placeholder.png"}
-                        alt={meal.name || "Product"}
-                    />
-                </div>
+        <>
+            <div
+                key={meal.id}
+                className={`p-4 rounded-lg shadow-lg  transition ${
+                    meal.is_available ? "border hover:border-green-500" : "border hover:border-red-500"
+                }`}
+            >
+                {/* Meal Image */}
+                <img
+                    src={meal.image}
+                    alt={meal.name}
+                    className="object-cover w-full h-32 mb-3 rounded-md"
+                />
 
+                {/* Meal Name */}
+                <h4 className="font-medium text-gray-800 text-md">{meal.name}</h4>
 
-                 {/* Content */}
-                 <div className="pt-2">
-                    {/* Title and Favorite Icon */}
-                    <div className="flex items-center justify-between mb-4">
-                        <a
-                            className="relative text-xl font-semibold text-default-800 line-clamp-1 after:absolute after:inset-0"
-                            href={meal.show || `/meal/${meal.id}`} // Use meal.show or fallback
-                        >
-                            {meal.name}
-                        </a>
-                        <FaHeart
-                            className="w-6 h-6 text-red-500 cursor-pointer"
-                            title="Favorite"
-                        />
-                    </div>
+                <RatingsSummary reviews={meal.reviews} />
 
-                    {/* Rating */}
-                    <span className="inline-flex items-center gap-2 mb-4">
-                        <span className="p-1 bg-orange-500 rounded-full">
-                            <FaStar className="w-3 h-3 text-white" />
-                        </span>
-                        <span className="text-sm text-default-950">
-                            {meal.rating || "N/A"}
-                        </span>
-                    </span>
+                {/* Meal Description */}
+                <p className="text-sm text-gray-600">
+                    {meal.description.length > 100
+                        ? `${meal.description.substring(0, 100)}...`
+                        : meal.description}
+                </p>
 
-                    {/* Price and Quantity */}
-                    <div className="flex items-end justify-between mb-4">
-                        <h4 className="text-xl font-semibold text-default-900">
-                            ${meal.price}
-                        </h4>
-                        <div className="relative z-10 inline-flex justify-between p-1 border rounded-full border-default-200">
-                            <button
-                                className="inline-flex items-center justify-center flex-shrink-0 w-6 h-6 text-sm text-gray-800 bg-gray-200 rounded-full minus"
-                                onClick={() => handleQuantityChange(item.id, 'decrement')}
-                            >
-                                <AiOutlineMinus />
-                            </button>
-                            <input
-                                className="w-8 p-0 text-sm text-center bg-transparent border-0 text-default-800 focus:ring-0"
-                                max="100"
-                                min="0"
-                                readOnly
-                                type="text"
-                                value={meal.quantity || 1}
-                            />
-                            <button
-                                className="inline-flex items-center justify-center flex-shrink-0 w-6 h-6 text-sm text-gray-800 bg-gray-200 rounded-full plus"
-                                onClick={() => handleQuantityChange(item.id, 'increment')}
-                            >
-                                <AiOutlinePlus />
-                            </button>
-                        </div>
-                    </div>
+                {/* Availability */}
+                <p
+                    className={`mt-2 text-sm font-medium ${
+                        meal.is_available ? "text-green-600" : "text-red-600"
+                    }`}
+                >
+                    {meal.is_available ? "Available" : "Unavailable"}
+                </p>
 
-                    {/* Add to Cart Button */}
-                    <motion.button
-                        ref={buttonRef}
-                        onClick={handleAddToCart}
-                        className={`relative flex items-center w-full px-6 py-3 text-sm font-medium text-white bg-orange-500 border border-orange-500 rounded-full shadow-sm hover:bg-orange-600 ${
-                            !isAnimating ? "justify-center" : ""
-                        }`}
-                        whileTap={{ scale: 0.95 }}
-                        disabled={isAnimating} // Prevent repeated clicks during animation
-                    >
-                        {isAnimating ? (
-                            <motion.div
-                                className="absolute"
-                                initial={{ x: 0 }} // Start at the left edge
-                                animate={{
-                                    x: buttonRef.current ? buttonRef.current.offsetWidth - 32 : 0, // Move to the right edge
-                                }}
-                                transition={{ duration: 0.9, ease: "easeInOut" }}
-                                onAnimationComplete={handleAnimationComplete}
-                            >
-                                <FaShoppingCart className="w-5 h-5 text-white" />
-                            </motion.div>
-                        ) : isAdded ? (
-                            "Added!"
+                <div className="flex items-center justify-between">
+                    {/* Meal Price */}
+                    <p className="mt-2 font-bold text-gray-800">${meal.price}</p>
+
+                    {/* Add to Cart or Quantity Selector - Only visible if the meal is available */}
+                    {meal.is_available && (
+                        cartItem ? (
+                            <div className="flex items-center p-1 border rounded-full border-default-200">
+                                <button
+                                    className="inline-flex items-center justify-center flex-shrink-0 w-6 h-6 text-sm text-gray-800 bg-gray-200 rounded-full minus"
+                                    onClick={() => handleQuantityChange(cartItem.id, "decrement")}
+                                >
+                                    <AiOutlineMinus />
+                                </button>
+                                <input
+                                    className="w-8 p-0 text-sm text-center bg-transparent border-0 text-default-800 focus:ring-0"
+                                    max="100"
+                                    min="0"
+                                    readOnly
+                                    type="text"
+                                    value={cartItem.quantity}
+                                />
+                                <button
+                                    className="inline-flex items-center justify-center flex-shrink-0 w-6 h-6 text-sm text-gray-800 bg-gray-200 rounded-full plus"
+                                    onClick={() => handleQuantityChange(cartItem.id, "increment")}
+                                >
+                                    <AiOutlinePlus />
+                                </button>
+                            </div>
                         ) : (
-                            "Add to Cart"
-                        )}
-                    </motion.button>
+                            <button
+                                onClick={handleAddToCart}
+                                className="px-4 py-2 text-white bg-orange-500 rounded-lg hover:bg-orange-600 text-sm"
+                            >
+                                Add to Cart
+                            </button>
+                        )
+                    )}
                 </div>
+
 
             </div>
-        </div>
+        </>
+
     );
 };
 

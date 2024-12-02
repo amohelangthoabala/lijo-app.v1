@@ -62,14 +62,14 @@ export default function AuthenticatedLayout({ header, children }) {
                                 href={route('cart')}
                                 // active={route().current('cart')}
                             >
-                                <LuShoppingBag className="w-4 h-4 text-gray-700 hover:text-primary-500" />
+                                <LuShoppingBag className="w-4 h-4 text-gray-700 hover:text-primary-500 mx-4" />
                             </NavLink>
 
                             <NavLink
                                 href={route('cart')}
                                 // active={route().current('cart')}
                             >
-                                <IoMdNotificationsOutline className="w-4 h-4 text-gray-700 hover:text-primary-500" />
+                                <IoMdNotificationsOutline className="w-5 h-5 text-gray-700 hover:text-primary-500" />
                             </NavLink>
 
                             <div className="relative ms-3">
@@ -117,6 +117,19 @@ export default function AuthenticatedLayout({ header, children }) {
                         </div>
 
                         <div className="flex items-center -me-2 sm:hidden">
+                            <NavLink
+                                href={route('cart')}
+                                // active={route().current('cart')}
+                            >
+                                <LuShoppingBag className="w-4 h-4 text-gray-700 hover:text-primary-500 mx-4" />
+                            </NavLink>
+
+                            <NavLink
+                                href={route('cart')}
+                                // active={route().current('cart')}
+                            >
+                                <IoMdNotificationsOutline className="w-5 h-5 text-gray-700 hover:text-primary-500 mr-4" />
+                            </NavLink>
                             <button
                                 onClick={() =>
                                     setShowingNavigationDropdown(
@@ -170,7 +183,21 @@ export default function AuthenticatedLayout({ header, children }) {
                             href={route('dashboard')}
                             active={route().current('dashboard')}
                         >
-                            Dashboard
+                            Home
+                        </ResponsiveNavLink>
+
+                        <ResponsiveNavLink
+                            href={route('meal.index')}
+                            active={route().current('meal.index')}
+                        >
+                            Meals
+                        </ResponsiveNavLink>
+
+                        <ResponsiveNavLink
+                            href={route('restaurant.index')}
+                            active={route().current('restaurant.index')}
+                        >
+                            Restaurants
                         </ResponsiveNavLink>
                     </div>
 

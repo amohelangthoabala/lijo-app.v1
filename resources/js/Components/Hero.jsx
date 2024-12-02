@@ -45,21 +45,21 @@ const HeroSection = () => {
                       <div className="w-12 h-12">
                         <img
                           className="object-cover object-center w-full h-full rounded-full ring ring-default-50"
-                          src="https://coderthemes.com/yum/assets/avatar1-25906796.png"
+                          src="https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YmxhY2slMjBwZW9wbGV8ZW58MHx8MHx8fDA%3D"
                           alt="Customer 1"
                         />
                       </div>
                       <div className="w-12 h-12">
                         <img
                           className="object-cover object-center w-full h-full rounded-full ring ring-default-50"
-                          src="https://coderthemes.com/yum/assets/avatar2-189b0d01.png"
+                          src="https://images.unsplash.com/photo-1544995228-a7a3abc39d89?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGJsYWNrJTIwcGVvcGxlfGVufDB8fDB8fHww"
                           alt="Customer 2"
                         />
                       </div>
                       <div className="w-12 h-12">
                         <img
                           className="object-cover object-center w-full h-full rounded-full ring ring-default-50"
-                          src="https://coderthemes.com/yum/assets/avatar3-2bbdc0fd.png"
+                          src="https://plus.unsplash.com/premium_photo-1723683613486-a15861aa678a?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjR8fGJsYWNrJTIwcGVvcGxlfGVufDB8fDB8fHww"
                           alt="Customer 3"
                         />
                       </div>
@@ -100,13 +100,13 @@ const HeroSection = () => {
                 />
                 <div className="flex items-center gap-2 p-2 pr-6 rounded-full shadow-lg bg-default-50">
                 <img
-                    src="https://coderthemes.com/yum/assets/avatar1-25906796.png"
+                    src="https://malukelereko.github.io/img/my_photo.jpeg"
                     alt="Customer"
                     className="w-16 h-16 rounded-full"
                 />
                 <div>
                     <h6 className="text-sm font-medium text-default-900">
-                    Jakob Culhane
+                    Lereko Maluke
                     </h6>
                     <p className="text-[10px] font-medium text-default-900">
                     Healthy and Delicious Food

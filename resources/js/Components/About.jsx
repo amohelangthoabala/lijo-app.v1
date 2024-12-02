@@ -4,7 +4,7 @@ import React from 'react';
 
 const AboutUs = () => {
     return (
-        <section className="py-6 lg:py-16">
+        <section className="py-6 lg:py-16 px-4">
             <div className="container">
                 <div className="grid items-start gap-10 lg:grid-cols-2">
                     <div className="flex items-center justify-center w-full h-full rounded-lg bg-blue-500/5">
@@ -79,12 +79,12 @@ const AboutUs = () => {
                             </Link>
                             <div className="flex items-center gap-2">
                                 <img
-                                    src="https://coderthemes.com/yum/assets/avatar3-2bbdc0fd.png"
+                                    src="https://avatars.githubusercontent.com/u/38657357?v=4"
                                     className="w-12 h-12 rounded-full"
                                     alt="Founder"
                                 />
                                 <div>
-                                    <h6 className="text-base font-medium text-default-900">Marley Culhane</h6>
+                                    <h6 className="text-base font-medium text-default-900">Amohelang Thoabala</h6>
                                     <p className="text-sm font-medium text-default-500">Founder CEO</p>
                                 </div>
                             </div>

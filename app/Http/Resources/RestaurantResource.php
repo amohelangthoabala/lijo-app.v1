@@ -23,7 +23,7 @@ class RestaurantResource extends JsonResource
             'rating' => $this->rating,
             'opening_hours' => $this->opening_hours,
             'menus' => $this->menus,
-            'meals' => $this->meals,
+            'meals' => MealResource::collection($this->whenLoaded('meals')), // $this->meals,
             'address' => $this->address,
             'reviews' => $this->reviews,
             'owner' => $this->owner,

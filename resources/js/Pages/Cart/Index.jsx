@@ -3,6 +3,7 @@ import useCartStore from '@/Store/useCart';
 import { Head } from '@inertiajs/react'
 import React, { useState } from 'react'
 import { MdOutlineCancel } from "react-icons/md";
+import { toast } from 'react-toastify';
 
 function Cart({ auth }) {
     // Access cart store state and actions
@@ -13,10 +14,36 @@ function Cart({ auth }) {
 
     const handleQuantityChange = (id, action) => {
         updateQuantity(id, action);
+
+        toast.info(
+            `meal quantity ${action === "increment" ? "increased" : "decreased"}.`,
+            {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            }
+        );
     };
 
     const removeItem = (id) => {
         removeFromCart(id);
+
+        // Show toast notification
+        toast.success(`meal removed from cart!`, {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
     };
 
     const handleCouponApply = () => {

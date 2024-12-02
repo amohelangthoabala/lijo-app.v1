@@ -1,10 +1,11 @@
 import CustomerRating from '@/Components/CustomerRating';
 import CustomerReviews from '@/Components/CustomerReviews';
+import MealCard from '@/Components/MealCard';
 import RatingsSummary from '@/Components/RatingSummary';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
 import { Head } from '@inertiajs/react'
 import React, { useState } from 'react'
-import { AiOutlineCheckCircle, AiOutlineCloseCircle, AiOutlineMail, AiOutlinePhone } from 'react-icons/ai';
+import { AiOutlineCheckCircle, AiOutlineCloseCircle, AiOutlineMail, AiOutlineMinus, AiOutlinePhone, AiOutlinePlus } from 'react-icons/ai';
 import { IoMdLocate } from "react-icons/io";
 
 function Show({ auth, restaurant}) {
@@ -168,42 +169,7 @@ function Show({ auth, restaurant}) {
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
                 {filteredMeals.length > 0 ? (
                     filteredMeals.map((meal) => (
-                        <div
-                            key={meal.id}
-                            className={`p-4 border rounded-lg shadow-sm hover:shadow-md transition ${
-                                meal.is_available ? "border-green-500" : "border-red-500"
-                            }`}
-                        >
-                            {/* Meal Image */}
-                            <img
-                                src={meal.image}
-                                alt={meal.name}
-                                className="object-cover w-full h-32 mb-3 rounded-md"
-                            />
-
-                            {/* Meal Name */}
-                            <h4 className="font-medium text-gray-800 text-md">{meal.name}</h4>
-
-                            {/* <RatingsSummary reviews={meal.reviews} /> */}
-                            {/* Meal Description */}
-                            <p className="text-sm text-gray-600">
-                                {meal.description.length > 100
-                                    ? `${meal.description.substring(0, 100)}...`
-                                    : meal.description}
-                            </p>
-
-                            {/* Availability */}
-                            <p
-                                className={`mt-2 text-sm font-medium ${
-                                    meal.is_available ? "text-green-600" : "text-red-600"
-                                }`}
-                            >
-                                {meal.is_available ? "Available" : "Unavailable"}
-                            </p>
-
-                            {/* Meal Price */}
-                            <p className="mt-2 font-bold text-gray-800">${meal.price}</p>
-                        </div>
+                        <MealCard meal={meal} />
                     ))
                 ) : (
                     <p className="text-center text-gray-600 col-span-full">No meals available in this category.</p>
