@@ -1,4 +1,5 @@
 import { Link } from "@inertiajs/react";
+import { Star } from "lucide-react";
 import React from "react";
 import { FaClock, FaPlay, FaStar } from "react-icons/fa";
 
@@ -12,17 +13,17 @@ const HeroSection = () => {
           <div className="px-10 py-20">
             <div className="z-10 flex items-center justify-center order-last lg:justify-start lg:order-first">
               <div className="text-center lg:text-start">
-                <span className="inline-flex px-4 py-2 mb-8 text-sm rounded-full text-primary bg-primary/20 lg:mb-2">
+                <span className="inline-flex px-4 py-2 mb-8 text-sm text-orange-500 rounded-full bg-primary/20 lg:mb-2">
                   #Special Food 🍇
                 </span>
-                <h1 className="mb-5 text-3xl font-bold capitalize lg:text-6xl/normal md:text-5xl/snug text-default-950">
+                <h1 className="mb-5 text-3xl font-bold capitalize lg:text-6xl/normal md:text-5xl/snug text-gray-950 dark:text-white">
                   Your {" "}
                   <span className="relative inline-flex">
                     <span> Favourite</span>
                   </span>
-                  <span className="text-primary"> Food</span> Freshly Delivered
+                  <span className="text-orange-500"> Food</span> Freshly Delivered
                 </h1>
-                <p className="mx-auto mb-8 text-lg font-medium text-default-700 md:max-w-md lg:mx-0">
+                <p className="mx-auto mb-8 text-lg font-medium text-gray-700 dark:text-gray-200 md:max-w-md lg:mx-0">
                   Explore your favorite dishes from top-rated restaurants, delivered fresh to your doorstep with Lijo
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-5 mt-10 lg:justify-normal">
@@ -65,12 +66,12 @@ const HeroSection = () => {
                       </div>
                     </div>
                     <div>
-                      <h1 className="text-base font-medium text-default-800">
+                      <h1 className="text-base font-medium text-gray-800 dark:text-gray-200">
                         Our Happy Customer
                       </h1>
-                      <p className="text-base text-default-900">
-                        <i data-lucide="star" className="inline w-4 h-4 text-yellow-400 fill-yellow-400"></i> 4.7{" "}
-                        <span className="text-sm text-default-500">(13.7k Reviews)</span>
+                      <p className="flex items-center text-base text-gray-900 dark:text-white">
+                        <Star className="inline w-4 h-4 mr-2 text-yellow-400 fill-yellow-400" /> 4.7{" "}
+                        <span className="text-sm text-gray-500 dark:text-gray-300">(13.7k Reviews)</span>
                       </p>
                     </div>
                   </div>
@@ -90,7 +91,7 @@ const HeroSection = () => {
             </span>
 
             {/* Small Circle */}
-            <span className="absolute right-0 inline-flex items-center justify-center w-4 h-4 text-white rounded top-1/4 -rotate-12 bg-primary"></span>
+            <span className="absolute right-0 inline-flex items-center justify-center w-4 h-4 text-white bg-orange-500 rounded top-1/4 -rotate-12"></span>
 
             {/* Customer Avatar */}
             <div className="absolute hidden bottom-1/4 -right-0 2xl:-right-24 md:block lg:hidden xl:block">
@@ -105,24 +106,24 @@ const HeroSection = () => {
                     className="w-16 h-16 rounded-full"
                 />
                 <div>
-                    <h6 className="text-sm font-medium text-default-900">
+                    <h6 className="text-sm font-medium text-gray-900 dark:text-gray-200">
                     Lereko Maluke
                     </h6>
-                    <p className="text-[10px] font-medium text-default-900">
+                    <p className="text-[10px] font-medium text-gray-900 dark:text-gray-200">
                     Healthy and Delicious Food
                     </p>
                     <span className="inline-flex gap-0.5">
                     {[...Array(4)].map((_, i) => (
                         <FaStar key={i} className="w-3 h-3 text-yellow-400" />
                     ))}
-                    <FaStar className="w-3 h-3 text-default-200" />
+                    <FaStar className="w-3 h-3 text-gray-200" />
                     </span>
                 </div>
                 </div>
             </div>
 
             {/* Other Decorative Elements */}
-            <span className="absolute bottom-0 right-0 inline-flex items-center justify-center w-4 h-4 text-white rounded-full -rotate-12 bg-primary"></span>
+            <span className="absolute bottom-0 right-0 inline-flex items-center justify-center w-4 h-4 text-white bg-orange-500 rounded-full -rotate-12"></span>
             <span className="absolute text-3xl -bottom-16 right-1/3">🔥</span>
 
             {/* Product Card */}
@@ -136,17 +137,17 @@ const HeroSection = () => {
                     />
                 </span>
                 <div>
-                    <h6 className="text-sm font-medium text-default-900">
+                    <h6 className="text-sm font-medium text-gray-900 dark:text-gray-200">
                     MCD Veg Burger
                     </h6>
                     <span className="inline-flex gap-0.5">
                     {[...Array(4)].map((_, i) => (
                         <FaStar key={i} className="w-3 h-3 text-yellow-400" />
                     ))}
-                    <FaStar className="w-3 h-3 text-default-200" />
+                    <FaStar className="w-3 h-3 text-gray-200" />
                     </span>
-                    <h6 className="text-sm font-medium text-default-900">
-                    <span className="text-sm text-primary">$</span> 8.14
+                    <h6 className="text-sm font-medium text-gray-900 dark:text-gray-200">
+                    <span className="text-sm text-orange-500">$</span> 8.14
                     </h6>
                 </div>
                 </div>

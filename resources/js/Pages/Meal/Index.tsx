@@ -1,12 +1,14 @@
 import FilterSidebar from '@/Components/FilterSidebar';
 import MealCard from '@/Components/MealCard';
+import PaginationComponent from '@/Components/Pagination';
 import Pagination from '@/Components/Pagination'
 import SelectInput from '@/Components/SelectInput';
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/Components/ui/select';
+import AppLayout from '@/Layouts/AppLayout';
 import { Head, router } from '@inertiajs/react'
 import React from 'react'
 
-function Index({auth, meals, queryParams = null}) {
+function Index({ meals, queryParams = null}) {
 
     queryParams = queryParams || {};
     const searchFieldChanged = (name, value) => {
@@ -57,14 +59,7 @@ function Index({auth, meals, queryParams = null}) {
       };
 
   return (
-    <AuthenticatedLayout
-        user={auth.user}
-        header={
-            <h2 className="text-xl font-semibold leading-tight text-gray-800">
-                Meals
-            </h2>
-        }
-    >
+    <AppLayout>
         <Head title="Meal" />
 
         <div className="px-10 py-12 mx-auto mt-1 bg-white max-w-7xl">
@@ -84,7 +79,7 @@ function Index({auth, meals, queryParams = null}) {
 
                         <FilterSidebar filters={filters} onChange={handleFilterChange} />
 
-                        <div className="block px-4 py-4 border-t lg:hidden border-default-200">
+                        <div className="block px-4 py-4 border-t border-gray-200 lg:hidden">
                             <a className="w-full inline-flex items-center justify-center rounded border border-primary bg-primary px-6 py-2.5 text-center text-sm font-medium text-white shadow-sm transition-all hover:border-primary-700 hover:bg-primary focus:ring focus:ring-primary/50" href="">Reset</a>
                         </div>
 
@@ -115,7 +110,24 @@ function Index({auth, meals, queryParams = null}) {
                                         </ul>
                                     </div> */}
 
-                                    <SelectInput
+                                    <Select onValueChange={(e) =>sortChanged(e)} defaultValue={queryParams?.sort_field}>
+
+                                        <SelectTrigger className="w-[180px]">
+                                            <SelectValue placeholder="Sort by" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            <SelectGroup>
+                                                <SelectLabel>Sort By</SelectLabel>
+                                                <SelectItem value="created_at">Latest</SelectItem>
+                                                <SelectItem value="price">Price</SelectItem>
+                                                <SelectItem value="name">Name</SelectItem>
+                                                <SelectItem value="preparation_time">Preparation Time</SelectItem>
+                                            </SelectGroup>
+                                        </SelectContent>
+                                    </Select>
+
+
+                                    {/* <SelectInput
                                         className="w-full"
                                         defaultValue={queryParams.sort_field}
                                         onChange={(e) =>
@@ -127,7 +139,7 @@ function Index({auth, meals, queryParams = null}) {
                                         <option value="price">Price</option>
                                         <option value="name">Name</option>
                                         <option value="preparation_time">Preparation Time</option>
-                                    </SelectInput>
+                                    </SelectInput> */}
                                 </div>
                             </div>
                         </div>
@@ -172,20 +184,20 @@ function Index({auth, meals, queryParams = null}) {
 
                         </div>
 
-                        <Pagination links={meals.meta.links} />
+                        <PaginationComponent links={meals.meta.links} />
                     </div>
                 </div>
             </div>
-            {/* <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                     <div className="p-6 text-gray-900">
                         <pre>{JSON.stringify(meals, undefined, 2)}</pre>
                     </div>
                 </div>
-            </div> */}
+            </div>
         </div>
 
-    </AuthenticatedLayout>
+    </AppLayout>
   )
 }
 

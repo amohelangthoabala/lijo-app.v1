@@ -1,12 +1,37 @@
 import React from "react";
+import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "./ui/pagination";
 
-const Pagination = ({ links }) => {
+const PaginationComponent = ({ links }) => {
   if (!links || links.length === 0) return null;
 
   return (
-    <div className="flex flex-wrap justify-center pt-6 md:flex-nowrap md:justify-end gap-y-6 gap-x-10">
+    <>
+        <Pagination>
+            <PaginationContent>
+                <PaginationItem>
+                    <PaginationPrevious href={links[0].url} />
+                </PaginationItem>
+
+                {links.slice(1, -1).map((link, index) => (
+                <PaginationItem>
+                    <PaginationLink href={link.url} isActive={link.active}>
+                        {link.label}
+                    </PaginationLink>
+                </PaginationItem>
+                ))}
+
+                {/* <PaginationItem>
+                    <PaginationEllipsis />
+                </PaginationItem> */}
+                <PaginationItem>
+                    <PaginationNext href={links[links.length - 1].url} />
+                </PaginationItem>
+            </PaginationContent>
+        </Pagination>
+
+        {/* <div className="flex flex-wrap justify-center pt-6 md:flex-nowrap md:justify-end gap-y-6 gap-x-10"> */}
       {/* Page Numbers */}
-      <nav>
+      {/* <nav>
         <ul className="inline-flex items-center space-x-2 text-sm rounded-md">
           {links.map((link, index) => (
             <li key={index}>
@@ -22,13 +47,13 @@ const Pagination = ({ links }) => {
             </li>
           ))}
         </ul>
-      </nav>
+      </nav> */}
 
       {/* Next and Previous Navigation */}
-      <nav>
-        <ul className="inline-flex items-center space-x-2 text-sm rounded-md">
+      {/* <nav>
+        <ul className="inline-flex items-center space-x-2 text-sm rounded-md"> */}
           {/* Previous */}
-          <li>
+          {/* <li>
             <a
               href={
                 links.find((link) => link.label === "&laquo;")?.url ||
@@ -42,9 +67,9 @@ const Pagination = ({ links }) => {
             >
               <i className="w-5 h-5" data-lucide="chevron-left"></i>
             </a>
-          </li>
+          </li> */}
           {/* Next */}
-          <li>
+          {/* <li>
             <a
               href={
                 links.find((link) => link.label === "&raquo;")?.url ||
@@ -61,8 +86,10 @@ const Pagination = ({ links }) => {
           </li>
         </ul>
       </nav>
-    </div>
+    </div> */}
+    </>
+
   );
 };
 
-export default Pagination;
+export default PaginationComponent;
