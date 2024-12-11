@@ -26,7 +26,7 @@ class MealController extends Controller
         }
 
         $meals = $query->orderBy($sortField, $sortDirection)
-            ->paginate(10);
+            ->paginate(12);
 
         // dd($meals);
 

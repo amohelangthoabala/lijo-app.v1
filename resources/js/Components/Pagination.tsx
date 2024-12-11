@@ -6,7 +6,7 @@ const PaginationComponent = ({ links }) => {
 
   return (
     <>
-        <Pagination>
+        <Pagination className="mt-4">
             <PaginationContent>
                 <PaginationItem>
                     <PaginationPrevious href={links[0].url} />

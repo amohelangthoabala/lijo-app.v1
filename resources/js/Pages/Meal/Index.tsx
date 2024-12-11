@@ -3,19 +3,29 @@ import MealCard from '@/Components/MealCard';
 import PaginationComponent from '@/Components/Pagination';
 import Pagination from '@/Components/Pagination'
 import SelectInput from '@/Components/SelectInput';
+import { Input } from '@/Components/ui/input';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/Components/ui/select';
+import { Slider } from '@/Components/ui/slider';
 import AppLayout from '@/Layouts/AppLayout';
 import { Head, router } from '@inertiajs/react'
-import React from 'react'
+import { Settings, Settings2, X } from 'lucide-react';
+import React, { useState } from 'react'
 
 function Index({ meals, queryParams = null}) {
 
+    const [ open, setOpen ] = useState(true);
+
+    const [searchQuery, setSearchQuery] = useState("");
+    const [priceRange, setPriceRange] = useState([0, 900]);
+
+
     queryParams = queryParams || {};
-    const searchFieldChanged = (name, value) => {
+
+    const searchFieldChanged = (name: string, value: string) => {
         if (value) {
-        queryParams[name] = value;
+            queryParams[name] = value;
         } else {
-        delete queryParams[name];
+            delete queryParams[name];
         }
 
         router.get(route("meal.index"), queryParams);
@@ -62,22 +72,75 @@ function Index({ meals, queryParams = null}) {
     <AppLayout>
         <Head title="Meal" />
 
-        <div className="px-10 py-12 mx-auto mt-1 bg-white max-w-7xl">
+        <div className="px-10 py-12 mx-auto mt-1 bg-white dark:bg-gray-800 max-w-7xl">
             <div className=" w-100">
                 <div className="gap-6 lg:flex">
-                    <div className="fixed top-0 hidden w-full h-full max-w-xs transition-all transform -translate-x-full bg-white hs-overlay hs-overlay-open:translate-x-0 lg:max-w-full lg:w-1/4 start-0 z-60 lg:z-auto lg:translate-x-0 lg:block lg:static lg:start-auto dark:bg-default-50">
-                        <div className="flex items-center justify-between px-4 py-3 border-b border-default-200 lg:hidden">
-                            <h3 className="font-medium text-default-800">
+                    <div className={`fixed top-0 w-full h-full max-w-xs transition-all transform ${open ? 'translate-x-0' : '-translate-x-full'} bg-white hs-overlay lg:max-w-full lg:w-1/4 start-0 z-60 lg:z-auto lg:translate-x-0 lg:block lg:static lg:start-auto dark:bg-gray-900`}>
+                        <div className="flex items-center justify-between px-4 py-3 text-gray-900 border-b border-default-200 lg:hidden dark:text-white">
+                            <h3 className="font-medium">
                                 Filter Options
                             </h3>
 
-                            <button className="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-sm rounded-md text-default-500 hover:text-default-700" data-hs-overlay="#filter_Offcanvas" type="button">
+                            <button onClick={() => setOpen(!open)} className="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-sm rounded-md text-default-500 hover:text-default-700" data-hs-overlay="#filter_Offcanvas" type="button">
                                 <span className="sr-only">Close modal</span>
-                                <i className="w-5 h-5" data-lucide="x"></i>
+                                <X className="w-5 h-5"  />
                             </button>
                         </div>
 
-                        <FilterSidebar filters={filters} onChange={handleFilterChange} />
+                        {/* <FilterSidebar filters={filters} onChange={handleFilterChange} /> */}
+
+                        {/* Filter Content */}
+                        <div className="h-[calc(100vh-128px)] overflow-y-auto lg:h-auto">
+                            <div className="p-6 divide-y divide-default-200">
+                            {/* Search Input */}
+                            <div className="mb-6">
+                                <Input
+                                    placeholder="Search Meals"
+                                    value={searchQuery}
+                                    // onChange={(e) => setSearchQuery(e.target.value)}
+                                    className="mb-4"
+                                />
+
+                                {/* Category Filter */}
+                                <Select
+                                // onValueChange={(value) => handleFilterChange(value)}
+                                    defaultValue=""
+                                >
+                                    <SelectTrigger className="w-full">
+                                        <SelectValue placeholder="Select Category" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectGroup>
+                                        <SelectLabel>Categories</SelectLabel>
+                                        {filters.map((filter) => (
+                                            <SelectItem key={filter.id} value={filter.id}>
+                                            {filter.label}
+                                            </SelectItem>
+                                        ))}
+                                        </SelectGroup>
+                                    </SelectContent>
+                                </Select>
+                            </div>
+
+                            {/* Price Range Filter */}
+                            <div className="pt-4">
+                                <h4 className="mb-2 text-sm font-medium text-gray-700 dark:text-gray-200">Price Range</h4>
+                                <div className="mb-4">
+                                <Slider
+                                    defaultValue={priceRange}
+                                    max={1000}
+                                    step={1}
+                                    // onValueChange={(value) => handleSliderChange(value)}
+                                    className="w-full"
+                                />
+                                </div>
+                                <div className="flex justify-between text-sm text-gray-500 dark:text-300">
+                                <span>${priceRange[0]}</span>
+                                <span>${priceRange[1]}</span>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
 
                         <div className="block px-4 py-4 border-t border-gray-200 lg:hidden">
                             <a className="w-full inline-flex items-center justify-center rounded border border-primary bg-primary px-6 py-2.5 text-center text-sm font-medium text-white shadow-sm transition-all hover:border-primary-700 hover:bg-primary focus:ring focus:ring-primary/50" href="">Reset</a>
@@ -86,13 +149,13 @@ function Index({ meals, queryParams = null}) {
                     </div>
 
                     <div className="lg:w-3/4">
-                        <div className="flex flex-wrap items-center justify-between gap-4 mb-10 md:flex-nowrap">
+                        <div className="flex flex-wrap items-center justify-between gap-4 mb-10 text-gray-900 md:flex-nowrap dark:text-white">
                             <div className="flex flex-wrap items-center gap-4 md:flex-nowrap">
-                                <button type="button" className="inline-flex lg:hidden items-center gap-4 text-sm py-2.5 px-4 xl:px-5 rounded-full text-default-950 border border-default-200 transition-all" data-hs-overlay="#filter_Offcanvas">
-                                    Filter <i data-lucide="settings-2" className="w-4 h-4"></i>
+                                <button onClick={() => setOpen(!open)} type="button" className="inline-flex lg:hidden items-center gap-4 text-sm py-2.5 px-4 xl:px-5 rounded-full text-default-950 border border-default-200 transition-all" data-hs-overlay="#filter_Offcanvas">
+                                    Filter <Settings2 className="w-4 h-4" />
                                 </button>
 
-                                <h6 className="hidden text-base lg:flex text-default-950">Showing {meals.meta.from} – {meals.meta.to} of {meals.meta.total} results</h6>
+                                <h6 className="hidden text-base lg:flex">Showing {meals.meta.from} – {meals.meta.to} of {meals.meta.total} results</h6>
                             </div>
                             <div className="flex items-center">
                                 <span className="text-base text-default-950 me-3">Sort By :</span>
@@ -117,7 +180,7 @@ function Index({ meals, queryParams = null}) {
                                         </SelectTrigger>
                                         <SelectContent>
                                             <SelectGroup>
-                                                <SelectLabel>Sort By</SelectLabel>
+                                                <SelectLabel className=''>Sort By</SelectLabel>
                                                 <SelectItem value="created_at">Latest</SelectItem>
                                                 <SelectItem value="price">Price</SelectItem>
                                                 <SelectItem value="name">Name</SelectItem>
@@ -145,13 +208,13 @@ function Index({ meals, queryParams = null}) {
                         </div>
 
                         <div className="grid gap-5 xl:grid-cols-3 sm:grid-cols-2">
-
+                            {/*
                             <div className="order-2 sm:col-span-2 xl:order-1">
                                 <div className="relative rounded-lg overflow-hidden bg-cover bg-[url('https://img.freepik.com/free-photo/dark-surface-with-blank-space-fast-food-menu_23-2147684608.jpg?t=st=1732596757~exp=1732600357~hmac=78f546c55ddbb272900e3b13e4d6254d5176bbd325109f36403fe46060dc7c94&w=900')] h-full">
-                                    {/* Overlay */}
+
                                     <div className="absolute inset-0 bg-black/10"></div>
 
-                                    {/* Content */}
+
                                     <div className="relative p-8 md:p-12">
                                     <h4 className="mb-6 text-5xl font-semibold text-yellow-500">
                                         52% Discount
@@ -168,9 +231,7 @@ function Index({ meals, queryParams = null}) {
                                     </a>
                                     </div>
                                 </div>
-                            </div>
-
-
+                            </div> */}
 
                             {meals.data.map((meal, index) => (
                                 <div
@@ -188,13 +249,13 @@ function Index({ meals, queryParams = null}) {
                     </div>
                 </div>
             </div>
-            <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
+            {/* <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                     <div className="p-6 text-gray-900">
                         <pre>{JSON.stringify(meals, undefined, 2)}</pre>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
 
     </AppLayout>

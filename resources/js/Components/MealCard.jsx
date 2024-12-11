@@ -89,7 +89,7 @@ const MealCard = ({ meal }) => {
 
                 <div className="flex items-center justify-between">
                     {/* Meal Price */}
-                    <p className="mt-2 font-bold text-gray-800">${meal.price}</p>
+                    <p className="mt-2 font-bold text-gray-800 dark:text-gray-200">${meal.price}</p>
 
                     {/* Add to Cart or Quantity Selector - Only visible if the meal is available */}
                     {meal.is_available && (
@@ -119,7 +119,7 @@ const MealCard = ({ meal }) => {
                         ) : (
                             <button
                                 onClick={handleAddToCart}
-                                className="px-4 py-2 text-white bg-orange-500 rounded-lg hover:bg-orange-600 text-sm"
+                                className="px-4 py-2 text-sm text-white bg-orange-500 rounded-lg hover:bg-orange-600"
                             >
                                 Add to Cart
                             </button>
