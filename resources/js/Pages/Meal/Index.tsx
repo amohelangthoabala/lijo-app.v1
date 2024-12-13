@@ -10,10 +10,81 @@ import AppLayout from '@/Layouts/AppLayout';
 import { Head, router } from '@inertiajs/react'
 import { Settings, Settings2, X } from 'lucide-react';
 import React, { useState } from 'react'
+import debounce from "just-debounce-it";
+import MultiRangeSlider from '@/Components/slider/Slider';
 
-function Index({ meals, queryParams = null}) {
+interface Category {
+    id: number;
+    menu_id: number;
+    name: string;
+    description: string;
+    created_at: string;
+    updated_at: string;
+  }
 
-    const [ open, setOpen ] = useState(true);
+  interface ContactInformation {
+    phone: string;
+    email: string;
+  }
+
+  interface OpeningHours {
+    [day: string]: {
+      open: string;
+      close: string;
+    };
+  }
+
+  interface Restaurant {
+    id: number;
+    name: string;
+    description: string;
+    logo: string;
+    image: string;
+    contact_information: ContactInformation;
+    rating: string;
+    opening_hours: OpeningHours;
+    status: string;
+    review_count: number;
+    order_count: number;
+    visit_count: number;
+    last_activity_at: string;
+    is_featured: boolean;
+    sales_volume: number;
+    user_id: number;
+    created_at: string;
+    updated_at: string;
+  }
+
+  interface Meal {
+    id: number;
+    name: string;
+    description: string;
+    price: string;
+    image: string;
+    is_available: boolean;
+    preparation_time: number;
+    category: Category;
+    restaurant: Restaurant;
+    reviews: any[]; // Adjust as needed for your review structure
+  }
+
+  interface Meals {
+    data: Meal[];
+    meta: any;
+  }
+
+  interface QueryParams {
+    [key: string]: string | number | undefined;
+  }
+
+  interface IndexProps {
+    meals: Meals;
+    queryParams?: QueryParams;
+  }
+
+  const Index: React.FC<IndexProps> = ({ meals, queryParams = {} }) => {
+
+    const [ open, setOpen ] = useState(false);
 
     const [searchQuery, setSearchQuery] = useState("");
     const [priceRange, setPriceRange] = useState([0, 900]);
@@ -21,52 +92,47 @@ function Index({ meals, queryParams = null}) {
 
     queryParams = queryParams || {};
 
-    const searchFieldChanged = (name: string, value: string) => {
+    const updateQueryParams = (key: string, value: string | number | undefined) => {
+        const updatedParams: QueryParams = { ...queryParams };
         if (value) {
-            queryParams[name] = value;
+          updatedParams[key] = value;
         } else {
-            delete queryParams[name];
+          delete updatedParams[key];
         }
-
-        router.get(route("meal.index"), queryParams);
-    };
-
-    const onKeyPress = (name, e) => {
-        if (e.key !== "Enter") return;
-
-        searchFieldChanged(name, e.target.value);
+        router.get(route("meal.index"), updatedParams, { preserveScroll: true });
       };
 
-      const sortChanged = (name) => {
-        if (name === queryParams.sort_field) {
-          if (queryParams.sort_direction === "asc") {
-            queryParams.sort_direction = "desc";
-          } else {
-            queryParams.sort_direction = "asc";
-          }
+      const searchFieldChanged = debounce((name: string, value: string) => {
+        updateQueryParams(name, value);
+      }, 300);
+
+      const sortChanged = (name: string) => {
+        const updatedParams: QueryParams = { ...queryParams };
+        if (name === updatedParams.sort_field) {
+          updatedParams.sort_direction = updatedParams.sort_direction === "asc" ? "desc" : "asc";
         } else {
-          queryParams.sort_field = name;
-          queryParams.sort_direction = "asc";
+          updatedParams.sort_field = name;
+          updatedParams.sort_direction = "asc";
         }
-        router.get(route("meal.index"), queryParams);
+        router.get(route("meal.index"), updatedParams, { preserveScroll: true });
       };
 
-    const filters = [
-        { id: "all", label: "All", checked: true },
-        { id: "wraps_roll", label: "Wraps", checked: false },
-        { id: "noodles_bowl", label: "Noodles", checked: false },
-        { id: "burrito_bowls", label: "Burrito Bowls", checked: false },
-        { id: "thalis", label: "Thalis", checked: false },
-        { id: "smart_meals", label: "Smart Meals", checked: false },
-        { id: "salads", label: "Salads", checked: false },
-        { id: "beverages_desserts", label: "Beverages & Desserts", checked: false },
-        { id: "appetizers", label: "Appetizers", checked: false },
-        { id: "burger_more", label: "Burger & More", checked: false },
-      ];
+      const categories = Array.from(
+        new Set(meals.data.map((meal) => meal.category))
+      ).map((category) => ({
+        id: category.name.toLowerCase().replace(/\s+/g, "_"), // ID generation
+        label: category.name,
+      }));
 
-      const handleFilterChange = (updatedFilters) => {
-        console.log("Updated Filters:", updatedFilters);
+      console.log(categories)
+
+      const resetFilters = () => {
+        setSearchQuery("");
+        setPriceRange([0, 900]);
+        router.get(route("meal.index"), {}, { preserveScroll: true });
       };
+
+
 
   return (
     <AppLayout>
@@ -112,9 +178,9 @@ function Index({ meals, queryParams = null}) {
                                     <SelectContent>
                                         <SelectGroup>
                                         <SelectLabel>Categories</SelectLabel>
-                                        {filters.map((filter) => (
-                                            <SelectItem key={filter.id} value={filter.id}>
-                                            {filter.label}
+                                        {categories.map((category) => (
+                                            <SelectItem key={category.id} value={category.id}>
+                                            {category.label}
                                             </SelectItem>
                                         ))}
                                         </SelectGroup>
@@ -126,17 +192,18 @@ function Index({ meals, queryParams = null}) {
                             <div className="pt-4">
                                 <h4 className="mb-2 text-sm font-medium text-gray-700 dark:text-gray-200">Price Range</h4>
                                 <div className="mb-4">
-                                <Slider
+                                    <MultiRangeSlider min={0} max={100} onChange={() => {}} />
+                                {/* <Slider
                                     defaultValue={priceRange}
                                     max={1000}
                                     step={1}
                                     // onValueChange={(value) => handleSliderChange(value)}
                                     className="w-full"
-                                />
+                                /> */}
                                 </div>
                                 <div className="flex justify-between text-sm text-gray-500 dark:text-300">
-                                <span>${priceRange[0]}</span>
-                                <span>${priceRange[1]}</span>
+                                {/* <span>${priceRange[0]}</span>
+                                <span>${priceRange[1]}</span> */}
                                 </div>
                             </div>
                             </div>
