@@ -79,10 +79,11 @@ interface Category {
 
   interface IndexProps {
     meals: Meals;
+    categories: any;
     queryParams?: QueryParams;
   }
 
-  const Index: React.FC<IndexProps> = ({ meals, queryParams = {} }) => {
+  const Index: React.FC<IndexProps> = ({ meals, categories, queryParams = {} }) => {
 
     const [ open, setOpen ] = useState(false);
 
@@ -117,14 +118,14 @@ interface Category {
         router.get(route("meal.index"), updatedParams, { preserveScroll: true });
       };
 
-      const categories = Array.from(
-        new Set(meals.data.map((meal) => meal.category))
-      ).map((category) => ({
-        id: category.name.toLowerCase().replace(/\s+/g, "_"), // ID generation
-        label: category.name,
-      }));
+    //   const categories = Array.from(
+    //     new Set(meals.data.map((meal) => meal.category))
+    //   ).map((category) => ({
+    //     id: category.name.toLowerCase().replace(/\s+/g, "_"), // ID generation
+    //     label: category.name,
+    //   }));
 
-      console.log(categories)
+    //   console.log(categories)
 
       const resetFilters = () => {
         setSearchQuery("");
@@ -179,7 +180,7 @@ interface Category {
                                         <SelectGroup>
                                         <SelectLabel>Categories</SelectLabel>
                                         {categories.map((category) => (
-                                            <SelectItem key={category.id} value={category.id}>
+                                            <SelectItem key={category.name} value={category.name}>
                                             {category.label}
                                             </SelectItem>
                                         ))}
@@ -316,13 +317,13 @@ interface Category {
                     </div>
                 </div>
             </div>
-            {/* <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                     <div className="p-6 text-gray-900">
-                        <pre>{JSON.stringify(meals, undefined, 2)}</pre>
+                        <pre>{JSON.stringify(categories, undefined, 2)}</pre>
                     </div>
                 </div>
-            </div> */}
+            </div>
         </div>
 
     </AppLayout>

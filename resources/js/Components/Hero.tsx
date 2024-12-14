@@ -5,7 +5,7 @@ import { FaClock, FaPlay, FaStar } from "react-icons/fa";
 
 const HeroSection = () => {
   return (
-    <section className="relative py-6 lg:py-16">
+    <section className="relative py-6 lg:py-16 px-2">
       <div className="absolute inset-0 blur-[60px] bg-gradient-to-l from-orange-600/20 via-orange-600/5 to-orange-600/0"></div>
       <div className="container relative">
         <div className="grid items-center lg:grid-cols-2">
