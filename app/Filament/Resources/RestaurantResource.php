@@ -3,30 +3,25 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\RestaurantResource\Pages;
-use App\Filament\Resources\RestaurantResource\RelationManagers;
 use App\Models\Restaurant;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Auth;
 use Filament\Forms\Components\Card;
-use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\Section;
-use Filament\Forms\Components\SpatieTagsInput;
+use Filament\Forms\Components\Hidden;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\BooleanColumn;
 use Filament\Tables\Columns\ViewColumn;
-use Filament\Tables\Filters\SelectFilter;
 
 class RestaurantResource extends Resource
 {
@@ -57,6 +52,7 @@ class RestaurantResource extends Resource
                         ->step(0.1)
                         ->minValue(0)
                         ->maxValue(5)
+                        ->default(0.0) // Set the default value for the rating
                         ->label('Rating'),
                     KeyValue::make('opening_hours')
                         ->label('Opening Hours')
@@ -70,6 +66,11 @@ class RestaurantResource extends Resource
                         ])
                         ->default('open')
                         ->label('Status'),
+
+                    // Hidden input for user_id
+                    Hidden::make('user_id')
+                        ->default(Auth::id()) // Automatically set to the logged-in user's ID
+                        ->label(false), // Hide label
                 ]),
             ]);
     }
@@ -95,6 +96,24 @@ class RestaurantResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
+    }
+
+    /**
+     * Automatically set the user_id to the logged-in user.
+     */
+    public static function mutateFormDataBeforeCreate(array $data): array
+    {
+        $data['user_id'] = Auth::id(); // Set the logged-in user's ID
+        return $data;
+    }
+
+    /**
+     * Ensure user_id remains updated when editing.
+     */
+    public static function mutateFormDataBeforeSave(array $data): array
+    {
+        $data['user_id'] = Auth::id(); // Update to the logged-in user's ID
+        return $data;
     }
 
     public static function getRelations(): array
