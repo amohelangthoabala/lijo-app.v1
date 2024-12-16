@@ -2,8 +2,10 @@ import { Link } from "@inertiajs/react";
 import { Star } from "lucide-react";
 import React from "react";
 import { FaClock, FaPlay, FaStar } from "react-icons/fa";
+import { usePage } from '@inertiajs/react';
 
 const HeroSection = () => {
+    const { auth } = usePage().props;
   return (
     <section className="relative py-6 lg:py-16 px-2">
       <div className="absolute inset-0 blur-[60px] bg-gradient-to-l from-orange-600/20 via-orange-600/5 to-orange-600/0"></div>
@@ -17,14 +19,14 @@ const HeroSection = () => {
                   #Special Food 🍇
                 </span>
                 <h1 className="mb-5 text-3xl font-bold capitalize lg:text-6xl/normal md:text-5xl/snug text-gray-950 dark:text-white">
-                  Your {" "}
+                  Authentic {" "}
                   <span className="relative inline-flex">
-                    <span> Favourite</span>
+                    <span> Taste</span>
                   </span>
-                  <span className="text-orange-500"> Food</span> Freshly Delivered
+                  <span className="text-orange-500"> Reimagined</span> For You
                 </h1>
                 <p className="mx-auto mb-8 text-lg font-medium text-gray-700 dark:text-gray-200 md:max-w-md lg:mx-0">
-                  Explore your favorite dishes from top-rated restaurants, delivered fresh to your doorstep with Lijo
+                    Discover meals from top-rated spots and unknown gems, delivered fresh with Lijo
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-5 mt-10 lg:justify-normal">
                   <Link

@@ -9,7 +9,7 @@ const AboutUs = () => {
                 <div className="grid items-start gap-10 lg:grid-cols-2">
                     <div className="flex items-center justify-center w-full h-full rounded-lg bg-blue-500/5">
                         <img
-                            src="https://img.freepik.com/free-photo/chicken-skewers-with-onions-top-salad_1220-567.jpg?t=st=1732716719~exp=1732720319~hmac=230e6a074025e4cf84759fbac556f15fc25fcff36592e9999154bb1c4e7a5a74&w=1380"
+                            src="/lijo.jpg"
                             className="w-full h-full"
                             alt="About Us"
                         />
