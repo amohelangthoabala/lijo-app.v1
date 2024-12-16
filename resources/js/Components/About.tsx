@@ -4,7 +4,7 @@ import React from 'react';
 
 const AboutUs = () => {
     return (
-        <section className="py-6 lg:py-16 px-4">
+        <section className="px-4 py-6 lg:py-16">
             <div className="container">
                 <div className="grid items-start gap-10 lg:grid-cols-2">
                     <div className="flex items-center justify-center w-full h-full rounded-lg bg-blue-500/5">
@@ -15,13 +15,13 @@ const AboutUs = () => {
                         />
                     </div>
                     <div>
-                        <span className="inline-flex px-4 py-2 mb-6 text-sm rounded-full text-primary bg-primary/20">
+                        <span className="inline-flex px-4 py-2 mb-6 text-sm text-orange-500 rounded-full bg-orange-500/20">
                             About Lijo
                         </span>
-                        <h2 className="max-w-xl mb-6 text-3xl font-semibold text-default-900">
+                        <h2 className="max-w-xl mb-6 text-3xl font-semibold text-gray-900 dark:text-gray-200">
                             Where Hunger Meets Happiness.
                         </h2>
-                        <p className="max-w-2xl mb-16 font-medium text-default-500 xl:mb-20">
+                        <p className="max-w-2xl mb-16 font-medium text-gray-500 dark:text-gray-200 xl:mb-20">
                             It’s the perfect dining experience where every dish is crafted with fresh, high-quality ingredients and served by friendly staff who go the extra mile to make your meal special.
                         </p>
 
@@ -34,8 +34,8 @@ const AboutUs = () => {
                                             alt="Easy-to-Use App"
                                         />
                                     </div>
-                                    <h3 className="mb-6 text-xl font-medium text-default-900">Easy-to-Use App</h3>
-                                    <p className="text-base text-default-500">
+                                    <h3 className="mb-6 text-xl font-medium text-gray-900 dark:text-gray-200">Easy-to-Use App</h3>
+                                    <p className="text-base text-gray-500 dark:text-gray-200">
                                         Browse, order, and track. Finding your next meal has never been easier.
                                     </p>
                                 </div>
@@ -48,8 +48,8 @@ const AboutUs = () => {
                                             alt="Diverse Choices"
                                         />
                                     </div>
-                                    <h3 className="mb-6 text-xl font-medium text-default-900">Diverse Choices</h3>
-                                    <p className="text-base text-default-500">
+                                    <h3 className="mb-6 text-xl font-medium text-gray-900 dark:text-gray-200">Diverse Choices</h3>
+                                    <p className="text-base text-gray-500 dark:text-gray-200">
                                         From local gems to international cuisine, there’s something for everyone.
                                     </p>
                                 </div>
@@ -62,8 +62,8 @@ const AboutUs = () => {
                                             alt="Quality Ingredients"
                                         />
                                     </div>
-                                    <h3 className="mb-6 text-xl font-medium text-default-900">Quality Ingredients</h3>
-                                    <p className="text-base text-default-500">
+                                    <h3 className="mb-6 text-xl font-medium text-gray-900 dark:text-gray-200">Quality Ingredients</h3>
+                                    <p className="text-base text-gray-500 dark:text-gray-200">
                                         Only the finest ingredients are used to ensure the best dining experience.
                                     </p>
                                 </div>
@@ -84,8 +84,8 @@ const AboutUs = () => {
                                     alt="Founder"
                                 />
                                 <div>
-                                    <h6 className="text-base font-medium text-default-900">Amohelang Thoabala</h6>
-                                    <p className="text-sm font-medium text-default-500">Founder CEO</p>
+                                    <h6 className="text-base font-medium text-gray-900 dark:text-gray-200">Amohelang Thoabala</h6>
+                                    <p className="text-sm font-medium text-gray-500 dark:text-gray-200">Founder CEO</p>
                                 </div>
                             </div>
                         </div>

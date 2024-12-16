@@ -1,7 +1,7 @@
 import CustomerRating from '@/Components/CustomerRating';
 import CustomerReviews from '@/Components/CustomerReviews';
 import RatingsSummary from '@/Components/RatingSummary';
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
+import AppLayout from '@/Layouts/AppLayout';
 import { Head, Link } from '@inertiajs/react'
 import React, { useState } from 'react'
 
@@ -18,25 +18,11 @@ function Show({ auth, success, meal, reviews, queryParams }) {
   const decreaseQuantity = () => setQuantity((prev) => Math.max(prev - 1, 1));
 
   return (
-    <AuthenticatedLayout
-      user={auth.user}
-      header={
-        <div className="flex items-center justify-between">
-          <h2 className="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-            {`Meal ${meal.data.name}`}
-          </h2>
-          {/* <Link
-            href={route("meal.edit", meal.id)}
-            className="px-3 py-1 text-white transition-all rounded shadow bg-emerald-500 hover:bg-emerald-600"
-          >
-            Edit
-          </Link> */}
-        </div>
-      }
-    >
+
+    <AppLayout>
         <Head title={`Meal ${meal.data.name}`} />
 
-        <section className="px-4 py-6 mx-auto bg-white lg:py-10 max-w-7xl mt-1">
+        <section className="px-4 py-6 mx-auto mt-1 bg-white lg:py-10 max-w-7xl">
             <div className="container">
                 <div className="grid gap-6 lg:grid-cols-2">
                 {/* Image Carousel */}
@@ -225,7 +211,7 @@ function Show({ auth, success, meal, reviews, queryParams }) {
                 </div>
             </div>
         </div> */}
-    </AuthenticatedLayout>
+    </AppLayout>
   )
 }
 

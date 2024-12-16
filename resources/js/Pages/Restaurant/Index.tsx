@@ -1,5 +1,5 @@
 import Pagination from '@/Components/Pagination';
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
+import AppLayout from '@/Layouts/AppLayout';
 import { Head, Link } from '@inertiajs/react'
 import React from 'react'
 import { AiFillStar, AiOutlineMail, AiOutlinePhone } from 'react-icons/ai'
@@ -20,24 +20,7 @@ function Index({ auth, restaurants}) {
     };
 
   return (
-    <AuthenticatedLayout
-        user={auth.user}
-        header={
-            <div className='flex items-center justify-between'>
-                <div>
-                    <h2 className="text-xl font-semibold leading-tight text-gray-800">
-                        Restaurants
-                    </h2>
-
-                </div>
-
-
-                <div>
-                    <button className='p-2 px-4 ml-4 text-white bg-orange-500 rounded-lg border-1'>Go to Cart</button>
-                </div>
-            </div>
-        }
-    >
+    <AppLayout>
         <Head title="Restaurant" />
 
         <div className="container p-4 mx-auto max-w-7xl">
@@ -106,7 +89,7 @@ function Index({ auth, restaurants}) {
                 </div>
             </div> */}
 
-    </AuthenticatedLayout>
+    </AppLayout>
   )
 }
 

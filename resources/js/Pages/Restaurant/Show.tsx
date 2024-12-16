@@ -2,7 +2,7 @@ import CustomerRating from '@/Components/CustomerRating';
 import CustomerReviews from '@/Components/CustomerReviews';
 import MealCard from '@/Components/MealCard';
 import RatingsSummary from '@/Components/RatingSummary';
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
+import AppLayout from '@/Layouts/AppLayout';
 import { Head } from '@inertiajs/react'
 import React, { useState } from 'react'
 import { AiOutlineCheckCircle, AiOutlineCloseCircle, AiOutlineMail, AiOutlineMinus, AiOutlinePhone, AiOutlinePlus } from 'react-icons/ai';
@@ -23,49 +23,50 @@ function Show({ auth, restaurant}) {
              : restaurant.data.meals.filter((meal) => meal.category?.name === selectedCategory);
 
   return (
-    <AuthenticatedLayout
-        user={auth.user}
-        header={
-            // <h2 className="text-xl font-semibold leading-tight text-gray-800">
-            //     Restaurant {restaurant.data.name}
-            // </h2>
+    <AppLayout
+        // header={
+        //     // <h2 className="text-xl font-semibold leading-tight text-gray-800">
+        //     //     Restaurant {restaurant.data.name}
+        //     // </h2>
 
-            <div className="flex items-center gap-3 md:items-end">
-                {/* Profile Image */}
-                <img
-                src={restaurant.data.logo}
-                alt={`Logo`}
-                className="rounded-full shadow-md w-14 h-14 bg-gray-50"
-                />
 
-                {/* Details */}
-                <div>
-                {/* Restaurant Name */}
-                <h4 className="mb-1 text-lg font-semibold text-gray-800">{restaurant.data.name}</h4>
-
-                {/* Since */}
-                <p className="flex items-center gap-1 text-sm text-gray-600">
-                    <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    className="w-4 h-4 text-gray-500"
-                    >
-                    <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M8 7v10l8-5-8-5z"
-                    />
-                    </svg>
-                    Since {1969}
-                </p>
-                </div>
-            </div>
-        }
+        // }
     >
         <Head title="Restaurant" />
+
+        <div className="flex items-center gap-3 px-4 py-6 mx-auto md:items-end max-w-7xl">
+            {/* Profile Image */}
+            <img
+            src={restaurant.data.logo}
+            alt={`Logo`}
+            className="rounded-full shadow-md w-14 h-14 bg-gray-50"
+            />
+
+            {/* Details */}
+            <div>
+            {/* Restaurant Name */}
+            <h4 className="mb-1 text-lg font-semibold text-gray-800">{restaurant.data.name}</h4>
+
+            {/* Since */}
+            <p className="flex items-center gap-1 text-sm text-gray-600">
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                className="w-4 h-4 text-gray-500"
+                >
+                <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M8 7v10l8-5-8-5z"
+                />
+                </svg>
+                Since {1969}
+            </p>
+            </div>
+        </div>
 
         <section className="px-4 py-6 mx-auto mt-1 bg-white lg:py-10 max-w-7xl">
             <div className="container">
@@ -185,14 +186,14 @@ function Show({ auth, restaurant}) {
             </div>
         </section>
 
-        <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
+        {/* <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                     <div className="p-6 text-gray-900">
                         <pre>{JSON.stringify(restaurant, undefined, 2)}</pre>
                     </div>
                 </div>
-            </div>
-    </AuthenticatedLayout>
+            </div> */}
+    </AppLayout>
   )
 }
 

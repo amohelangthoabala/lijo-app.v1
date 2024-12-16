@@ -7,6 +7,7 @@ use App\Models\Meal;
 use App\Http\Requests\StoreMealRequest;
 use App\Http\Requests\UpdateMealRequest;
 use App\Http\Resources\MealResource;
+use App\Models\MenuCategory;
 use App\Models\Restaurant;
 
 class MealController extends Controller
@@ -26,12 +27,18 @@ class MealController extends Controller
         }
 
         $meals = $query->orderBy($sortField, $sortDirection)
-            ->paginate(10);
+            ->paginate(12);
 
         // dd($meals);
 
+        // Retrieve unique categories and restaurants
+        $categories = MenuCategory::select('name')->distinct()->get(); // Assuming 'category' is a column
+        $restaurants = Restaurant::select('name', 'id')->get(); // Assuming `Restaurant` has `id` and `name`
+
         return inertia("Meal/Index", [
             "meals" => MealResource::collection($meals),
+            'categories' => $categories,
+            'restaurants' => $restaurants,
             'queryParams' => request()->query() ?: null,
         ]);
     }
