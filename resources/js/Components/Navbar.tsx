@@ -1,8 +1,9 @@
 import { Link } from "@inertiajs/react";
 import { Button } from "./ui/button";
 import { Bell, ShoppingCart, Home, Utensils, Store, List } from "lucide-react";
+import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
+import { Tooltip, TooltipProvider, TooltipTrigger, TooltipContent } from "./ui/tooltip";
 
-// Sidebar navigation links
 const navigation = [
   { name: "Home", href: route("home"), icon: <Home className="w-5 h-5" /> },
   { name: "Meal", href: route("meal.index"), icon: <Utensils className="w-5 h-5" /> },
@@ -10,15 +11,32 @@ const navigation = [
   { name: "Orders", href: route("order.index"), icon: <List className="w-5 h-5" /> },
 ];
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
-}
-
 export default function Navbar({ auth }) {
   return (
-    <div className="flex">
-      {/* Fixed Sidebar */}
-      <div className="fixed top-0 left-0 h-full w-16 bg-gray-800 text-white flex flex-col items-center py-4 space-y-4 shadow-lg">
+    <>
+      {/* Desktop Sidebar */}
+      <div className="hidden md:flex absolute top-0 left-0 h-full w-16 bg-gray-800 text-white flex-col items-center py-4 space-y-4 shadow-lg z-50">
+        <TooltipProvider>
+          {navigation.map((item) => (
+            <Tooltip key={item.name}>
+              <TooltipTrigger>
+                <Link
+                  href={item.href}
+                  className="flex flex-col items-center text-sm hover:bg-gray-700 hover:text-white w-full py-2 rounded-lg"
+                >
+                  {item.icon}
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent>
+                <span>{item.name}</span>
+              </TooltipContent>
+            </Tooltip>
+          ))}
+        </TooltipProvider>
+      </div>
+
+      {/* Mobile Bottom Navigation */}
+      <div className="fixed md:hidden bottom-0 left-0 w-full bg-gray-800 text-white flex justify-between py-4 px-6 shadow-lg z-50">
         {navigation.map((item) => (
           <Link
             key={item.name}
@@ -32,9 +50,9 @@ export default function Navbar({ auth }) {
       </div>
 
       {/* Main Content Area */}
-      <div className="ml-16 flex-1">
+      <div className="ml-16 md:ml-0 pt-16 md:pt-0 flex-1">
         {/* Navbar */}
-        <nav className="dark:bg-transparent">
+        <nav className="absolute top-0 left-0 w-full dark:bg-transparent z-40">
           <div className="flex items-center justify-between h-16 px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
             {/* Logo */}
             <div className="flex items-center">
@@ -63,11 +81,13 @@ export default function Navbar({ auth }) {
               {/* Profile or Login */}
               {auth?.user ? (
                 <Button variant="ghost" className="relative flex items-center">
-                  <img
-                    src={`https://ui-avatars.com/api/?name=${auth.user?.name || "User"}&background=random&color=fff&size=256`}
-                    alt="User Profile"
-                    className="w-8 h-8 rounded-full"
-                  />
+                  <Avatar>
+                    <AvatarImage
+                      src={`https://ui-avatars.com/api/?name=${auth.user?.name || "User"}&background=random&color=fff&size=256`}
+                      alt="User Profile"
+                    />
+                    <AvatarFallback>U</AvatarFallback>
+                  </Avatar>
                 </Button>
               ) : (
                 <Link href="/login">
@@ -80,6 +100,6 @@ export default function Navbar({ auth }) {
           </div>
         </nav>
       </div>
-    </div>
+    </>
   );
 }
