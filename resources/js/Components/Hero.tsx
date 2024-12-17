@@ -42,7 +42,7 @@ const HeroSection = () => {
                     <span className="font-semibold text-orange-400">How to Order</span>
                   </Link>
                 </div>
-                <div className="mt-14">
+                {/* <div className="mt-14">
                   <div className="flex flex-wrap items-center justify-center gap-4 lg:justify-start">
                     <div className="flex items-center -space-x-1">
                       <div className="w-12 h-12">
@@ -77,7 +77,7 @@ const HeroSection = () => {
                       </p>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -102,12 +102,12 @@ const HeroSection = () => {
                 alt="Customer Avatar"
                 />
                 <div className="flex items-center gap-2 p-2 pr-6 rounded-full shadow-lg bg-default-50">
-                <img
+                {/* <img
                     src="https://malukelereko.github.io/img/my_photo.jpeg"
                     alt="Customer"
                     className="w-16 h-16 rounded-full"
-                />
-                <div>
+                /> */}
+                {/* <div>
                     <h6 className="text-sm font-medium text-gray-900 dark:text-gray-200">
                     Lereko Maluke
                     </h6>
@@ -120,7 +120,7 @@ const HeroSection = () => {
                     ))}
                     <FaStar className="w-3 h-3 text-gray-200" />
                     </span>
-                </div>
+                </div> */}
                 </div>
             </div>
 
@@ -131,14 +131,14 @@ const HeroSection = () => {
             {/* Product Card */}
             <div className="absolute bottom-0 left-0">
                 <div className="flex items-center gap-2 p-2 pr-6 rounded-full shadow-lg bg-default-50">
-                <span className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/20">
+                {/* <span className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/20">
                     <img
                     src="https://coderthemes.com/yum/assets/burger-1-0c3ba5a6.svg"
                     alt="Burger"
                     className="w-10 h-10"
                     />
-                </span>
-                <div>
+                </span> */}
+                {/* <div>
                     <h6 className="text-sm font-medium text-gray-900 dark:text-gray-200">
                     MCD Veg Burger
                     </h6>
@@ -151,7 +151,7 @@ const HeroSection = () => {
                     <h6 className="text-sm font-medium text-gray-900 dark:text-gray-200">
                     <span className="text-sm text-orange-500">$</span> 8.14
                     </h6>
-                </div>
+                </div> */}
                 </div>
             </div>
 
