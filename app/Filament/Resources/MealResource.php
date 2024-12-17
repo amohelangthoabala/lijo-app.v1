@@ -45,6 +45,12 @@ class MealResource extends Resource
         return $form
             ->schema([
                 Section::make([
+                    Select::make('restaurant_id')
+                    ->relationship('restaurant', 'name') // Relationship defined in Meal model
+                    ->required()
+                    ->label('Restaurant')
+                    ->placeholder('Select a restaurant'), // Optional placeholder
+
                     // Category Relationship
                     Select::make('category_id')
                         ->relationship('category', 'name') // Relationship defined in Meal model
