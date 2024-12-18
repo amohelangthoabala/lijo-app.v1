@@ -16,6 +16,7 @@ import MultiRangeSlider from '@/Components/slider/Slider';
 interface Category {
     id: number;
     menu_id: number;
+    label: string,
     name: string;
     description: string;
     created_at: string;
@@ -74,12 +75,12 @@ interface Category {
   }
 
   interface QueryParams {
-    [key: string]: string | number | undefined;
+    [key: string]: string | undefined;
   }
 
   interface IndexProps {
     meals: Meals;
-    categories: any;
+    categories: Category[];
     queryParams?: QueryParams;
   }
 
@@ -93,7 +94,7 @@ interface Category {
 
     queryParams = queryParams || {};
 
-    const updateQueryParams = (key: string, value: string | number | undefined) => {
+    const updateQueryParams = (key: string, value: string | undefined) => {
         const updatedParams: QueryParams = { ...queryParams };
         if (value) {
           updatedParams[key] = value;

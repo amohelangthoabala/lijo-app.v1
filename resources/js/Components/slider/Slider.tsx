@@ -1,24 +1,23 @@
 import React, { useCallback, useEffect, useState, useRef } from "react";
 import classnames from "classnames";
-import PropTypes from "prop-types";
 import "./Slider.css";
 
 interface MultiRangeSliderProps {
-    min: number;
-    max: number;
-    onChange: (values: { min: number; max: number }) => void;
+  min: number;
+  max: number;
+  onChange: (values: { min: number; max: number }) => void;
 }
 
 const MultiRangeSlider: React.FC<MultiRangeSliderProps> = ({ min, max, onChange }) => {
-  const [minVal, setMinVal] = useState(min);
-  const [maxVal, setMaxVal] = useState(max);
-  const minValRef = useRef(null);
-  const maxValRef = useRef(null);
-  const range = useRef(null);
+  const [minVal, setMinVal] = useState<number>(min);
+  const [maxVal, setMaxVal] = useState<number>(max);
+  const minValRef = useRef<HTMLInputElement | null>(null);
+  const maxValRef = useRef<HTMLInputElement | null>(null);
+  const range = useRef<HTMLDivElement | null>(null);
 
   // Convert to percentage
   const getPercent = useCallback(
-    (value) => Math.round(((value - min) / (max - min)) * 100),
+    (value: number) => Math.round(((value - min) / (max - min)) * 100),
     [min, max]
   );
 
@@ -26,7 +25,7 @@ const MultiRangeSlider: React.FC<MultiRangeSliderProps> = ({ min, max, onChange 
   useEffect(() => {
     if (maxValRef.current) {
       const minPercent = getPercent(minVal);
-      const maxPercent = getPercent(+maxValRef.current.value); // Preceding with '+' converts the value from type string to type number
+      const maxPercent = getPercent(+maxValRef.current.value); // '+' converts the string value to a number
 
       if (range.current) {
         range.current.style.left = `${minPercent}%`;
@@ -66,7 +65,7 @@ const MultiRangeSlider: React.FC<MultiRangeSliderProps> = ({ min, max, onChange 
           event.target.value = value.toString();
         }}
         className={classnames("thumb w-full thumb--zindex-3", {
-          "thumb--zindex-5": minVal > max - 100
+          "thumb--zindex-5": minVal > max - 100,
         })}
       />
       <input
@@ -92,6 +91,5 @@ const MultiRangeSlider: React.FC<MultiRangeSliderProps> = ({ min, max, onChange 
     </div>
   );
 };
-
 
 export default MultiRangeSlider;

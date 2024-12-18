@@ -1,17 +1,37 @@
+import React from "react";
 import { Link } from "@inertiajs/react";
 import { Button } from "./ui/button";
 import { Bell, ShoppingCart, Home, Utensils, Store, List } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
 import { Tooltip, TooltipProvider, TooltipTrigger, TooltipContent } from "./ui/tooltip";
 
-const navigation = [
+// Define type for navigation items
+interface NavigationItem {
+  name: string;
+  href: string;
+  icon: JSX.Element;
+}
+
+// Define type for `auth` prop
+interface AuthProps {
+  user?: {
+    name: string;
+  };
+}
+
+interface NavbarProps {
+  auth: AuthProps | null;
+}
+
+// Navigation items array
+const navigation: NavigationItem[] = [
   { name: "Home", href: route("home"), icon: <Home className="w-5 h-5" /> },
   { name: "Meal", href: route("meal.index"), icon: <Utensils className="w-5 h-5" /> },
   { name: "Restaurant", href: route("restaurant.index"), icon: <Store className="w-5 h-5" /> },
   { name: "Orders", href: route("order.index"), icon: <List className="w-5 h-5" /> },
 ];
 
-export default function Navbar({ auth }) {
+const Navbar: React.FC<NavbarProps> = ({ auth }) => {
   return (
     <>
       {/* Desktop Sidebar */}
@@ -83,10 +103,10 @@ export default function Navbar({ auth }) {
                 <Button variant="ghost" className="relative flex items-center">
                   <Avatar>
                     <AvatarImage
-                      src={`https://ui-avatars.com/api/?name=${auth.user?.name || "User"}&background=random&color=fff&size=256`}
+                      src={`https://ui-avatars.com/api/?name=${auth.user.name}&background=random&color=fff&size=256`}
                       alt="User Profile"
                     />
-                    <AvatarFallback>U</AvatarFallback>
+                    <AvatarFallback>{auth.user.name.charAt(0)}</AvatarFallback>
                   </Avatar>
                 </Button>
               ) : (
@@ -102,4 +122,6 @@ export default function Navbar({ auth }) {
       </div>
     </>
   );
-}
+};
+
+export default Navbar;

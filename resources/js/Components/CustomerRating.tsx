@@ -1,16 +1,32 @@
 import React from "react";
-import { FaStar, FaRegStar, FaStarHalfAlt } from "react-icons/fa"; // Import half star icon
-import ProgressBar from "@ramonak/react-progress-bar"; // Import ProgressBar
+import { FaStar, FaRegStar, FaStarHalfAlt } from "react-icons/fa";
+import ProgressBar from "@ramonak/react-progress-bar";
 
-const CustomerRating = ({ reviews }) => {
+// Define the Review interface
+interface Review {
+  rating: number; // Rating should be an integer from 1 to 5
+}
+
+// Define the props interface
+interface CustomerRatingProps {
+  reviews: Review[];
+}
+
+const CustomerRating: React.FC<CustomerRatingProps> = (props: CustomerRatingProps) => {
+  const { reviews } = props;
+
   // Aggregate ratings data dynamically
-  const ratingsData = [1, 2, 3, 4, 5].map((stars) => {
-    const count = reviews.filter((review) => review.rating === stars).length;
-    const percentage = reviews.length
-      ? (count / reviews.length) * 100
-      : 0; // Handle zero data gracefully
-    return { stars, count, percentage: percentage.toFixed(1) };
-  });
+  const ratingsData = React.useMemo(
+    () =>
+      [1, 2, 3, 4, 5].map((stars) => {
+        const count = reviews.filter((review) => review.rating === stars).length;
+        const percentage = reviews.length
+          ? (count / reviews.length) * 100
+          : 0; // Handle zero data gracefully
+        return { stars, count, percentage: parseFloat(percentage.toFixed(1)) };
+      }),
+    [reviews]
+  );
 
   // Calculate total reviews and average rating
   const totalReviews = reviews.length;
@@ -21,7 +37,9 @@ const CustomerRating = ({ reviews }) => {
 
   return (
     <div>
-      <h4 className="mb-4 text-xl font-semibold text-default-800">Customer Rating</h4>
+      <h4 className="mb-4 text-xl font-semibold text-default-800">
+        Customer Rating
+      </h4>
       <div className="grid items-center gap-5 lg:grid-cols-4">
         {/* Average Rating Card */}
         <div className="flex flex-col items-center justify-center py-8 rounded-lg bg-orange-600/10">
@@ -62,18 +80,20 @@ const CustomerRating = ({ reviews }) => {
         {/* Star Ratings */}
         <div className="xl:col-span-2 md:col-span-3">
           {ratingsData.reverse().map((rating, index) => (
-            <div key={index} className="grid items-center gap-2 mb-3 md:grid-cols-12">
+            <div
+              key={index}
+              className="grid items-center gap-2 mb-3 md:grid-cols-12"
+            >
               {/* Star Icons */}
               <div className="md:col-span-3 flex gap-1.5 lg:justify-center">
                 {[...Array(rating.stars)].map((_, i) => (
                   <FaStar key={i} className="text-lg text-yellow-400" />
                 ))}
-                {/* Handle Half Star for Partial Ratings */}
-                {/* {rating.stars % 1 !== 0 && (
-                  <FaStarHalfAlt className="text-lg text-yellow-400" />
-                )} */}
                 {[...Array(5 - rating.stars)].map((_, i) => (
-                  <FaRegStar key={i + rating.stars} className="text-lg text-yellow-500" />
+                  <FaRegStar
+                    key={i + rating.stars}
+                    className="text-lg text-yellow-500"
+                  />
                 ))}
               </div>
 
