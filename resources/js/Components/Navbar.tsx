@@ -140,7 +140,7 @@ export default function Navbar({ auth }: NavbarProps) {
                   </a>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <a href={route("logout")} method="post" className="text-sm text-gray-700">
+                  <a href={route("logout")} className="text-sm text-gray-700">
                     Sign Out
                   </a>
                 </DropdownMenuItem>
