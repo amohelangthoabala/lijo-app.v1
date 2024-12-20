@@ -65,7 +65,7 @@ const Show: React.FC<ShowProps> = ({ auth, success, meal, reviews, queryParams }
               <img
                 src={meal.data.image}
                 alt={`image meal`}
-                className="h-full max-w-full mx-auto"
+                className="object-cover w-full mx-auto h-[450px]"
               />
             </div>
 
@@ -83,7 +83,7 @@ const Show: React.FC<ShowProps> = ({ auth, success, meal, reviews, queryParams }
               <p className="mb-4 text-sm text-default-500">{meal.data.description}</p>
 
               {/* Tags */}
-              <div className="flex gap-2 mb-5">
+              {/* <div className="flex gap-2 mb-5">
                 {meal.data.tags.map((tag, index) => (
                   <div
                     key={index}
@@ -92,7 +92,7 @@ const Show: React.FC<ShowProps> = ({ auth, success, meal, reviews, queryParams }
                     <span className="text-xs">{tag}</span>
                   </div>
                 ))}
-              </div>
+              </div> */}
 
               {/* Size Selector */}
               <div className="flex items-center gap-3 mb-8">

@@ -5,6 +5,7 @@ import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import useCartStore from "@/Store/useCart";
 import RatingsSummary from "./RatingSummary";
 import { toast } from "react-toastify";
+import { Link } from "@inertiajs/react";
 
 const MealCard = ({ meal }) => {
     const { cart, addToCart, updateQuantity } = useCartStore();
@@ -67,8 +68,9 @@ const MealCard = ({ meal }) => {
                 />
 
                 {/* Meal Name */}
-                <h4 className="font-medium text-gray-800 text-md">{meal.name}</h4>
-
+                <Link href={`/meal/${meal.id}`}>
+                    <h4 className="font-medium text-gray-800 text-md">{meal.name}</h4>
+                </Link>
                 <RatingsSummary reviews={meal.reviews} />
 
                 {/* Meal Description */}

@@ -1,127 +1,121 @@
-import React from "react";
 import { Link } from "@inertiajs/react";
 import { Button } from "./ui/button";
-import { Bell, ShoppingCart, Home, Utensils, Store, List } from "lucide-react";
-import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
-import { Tooltip, TooltipProvider, TooltipTrigger, TooltipContent } from "./ui/tooltip";
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "./ui/dropdown-menu";
+import { Sheet, SheetTrigger, SheetContent } from "./ui/sheet";
+import { Bell, Menu, ShoppingBag, X } from "lucide-react";
 
-// Define type for navigation items
-interface NavigationItem {
-  name: string;
-  href: string;
-  icon: JSX.Element;
-}
-
-// Define type for `auth` prop
-interface AuthProps {
-  user?: {
-    name: string;
-  };
-}
-
-interface NavbarProps {
-  auth: AuthProps | null;
-}
-
-// Navigation items array
-const navigation: NavigationItem[] = [
-  { name: "Home", href: route("home"), icon: <Home className="w-5 h-5" /> },
-  { name: "Meal", href: route("meal.index"), icon: <Utensils className="w-5 h-5" /> },
-  { name: "Restaurant", href: route("restaurant.index"), icon: <Store className="w-5 h-5" /> },
-  { name: "Orders", href: route("order.index"), icon: <List className="w-5 h-5" /> },
+const navigation = [
+  { name: "Home", href: route('home'), current: route().current('home') },
+  { name: "Meal", href: route('meal.index'), current: route().current('meal.index') },
+  { name: "Restaurant", href: route('restaurant.index'), current: route().current('restaurant.index') },
+//   { name: "Calendar", href: "#", current: false },
 ];
 
-const Navbar: React.FC<NavbarProps> = ({ auth }) => {
+function classNames(...classes: string[]) {
+  return classes.filter(Boolean).join(" ");
+}
+
+export default function Navbar() {
   return (
-    <>
-      {/* Desktop Sidebar */}
-      <div className="hidden md:flex absolute top-0 left-0 h-full w-16 bg-gray-800 text-white flex-col items-center py-4 space-y-4 shadow-lg z-50">
-        <TooltipProvider>
-          {navigation.map((item) => (
-            <Tooltip key={item.name}>
-              <TooltipTrigger>
+    <nav className="dark:bg-gray-800">
+      <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          {/* Mobile Menu */}
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="ghost" className="dark:text-gray-400 sm:hidden hover:text-white focus:outline-none">
+                <Menu className="w-6 h-6" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left" className="dark:text-white dark:bg-gray-800">
+              <div className="space-y-1">
+                {navigation.map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className={classNames(
+                      item.current ? "bg-gray-900 text-white" : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                      "block rounded-md px-3 py-2 text-base font-medium"
+                    )}
+                  >
+                    {item.name}
+                  </a>
+                ))}
+              </div>
+            </SheetContent>
+          </Sheet>
+
+          {/* Logo */}
+          <div className="flex items-center">
+            <img
+              src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
+              alt="Logo"
+              className="w-auto h-8"
+            />
+          </div>
+
+          {/* Desktop Navigation */}
+          <div className="hidden sm:block">
+            <div className="flex space-x-4">
+              {navigation.map((item) => (
                 <Link
+                  key={item.name}
                   href={item.href}
-                  className="flex flex-col items-center text-sm hover:bg-gray-700 hover:text-white w-full py-2 rounded-lg"
+                  className={classNames(
+                    item.current ? "bg-gray-900 text-white" : "text-gray-900 dark:text-gray-400 hover:bg-gray-700 hover:text-white",
+                    "rounded-md px-3 py-2 text-sm font-medium"
+                  )}
                 >
-                  {item.icon}
+                  {item.name}
                 </Link>
-              </TooltipTrigger>
-              <TooltipContent>
-                <span>{item.name}</span>
-              </TooltipContent>
-            </Tooltip>
-          ))}
-        </TooltipProvider>
-      </div>
-
-      {/* Mobile Bottom Navigation */}
-      <div className="fixed md:hidden bottom-0 left-0 w-full bg-gray-800 text-white flex justify-between py-4 px-6 shadow-lg z-50">
-        {navigation.map((item) => (
-          <Link
-            key={item.name}
-            href={item.href}
-            className="flex flex-col items-center text-sm hover:bg-gray-700 hover:text-white w-full py-2 rounded-lg"
-          >
-            {item.icon}
-            <span className="text-xs">{item.name}</span>
-          </Link>
-        ))}
-      </div>
-
-      {/* Main Content Area */}
-      <div className="ml-16 md:ml-0 pt-16 md:pt-0 flex-1">
-        {/* Navbar */}
-        <nav className="absolute top-0 left-0 w-full dark:bg-transparent z-40">
-          <div className="flex items-center justify-between h-16 px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-            {/* Logo */}
-            <div className="flex items-center">
-              <img src="/logo lijo.png" alt="Logo" className="w-auto h-8" />
-            </div>
-
-            {/* Cart and Notifications */}
-            <div className="flex items-center space-x-4">
-              {/* Shopping Cart */}
-              <Button
-                variant="ghost"
-                className="relative flex items-center rounded-full bg-gray-100 text-gray-900 dark:text-gray-400 hover:text-white px-4 py-2"
-              >
-                <ShoppingCart className="w-6 h-6" />
-                <div className="ml-2 flex flex-col items-end text-sm">
-                  <span className="font-semibold">R0.00</span>
-                  <span className="text-xs text-gray-500">0 items</span>
-                </div>
-              </Button>
-
-              {/* Notifications */}
-              <Button variant="ghost" className="relative text-gray-900 dark:text-gray-400 hover:text-white">
-                <Bell className="w-6 h-6" />
-              </Button>
-
-              {/* Profile or Login */}
-              {auth?.user ? (
-                <Button variant="ghost" className="relative flex items-center">
-                  <Avatar>
-                    <AvatarImage
-                      src={`https://ui-avatars.com/api/?name=${auth.user.name}&background=random&color=fff&size=256`}
-                      alt="User Profile"
-                    />
-                    <AvatarFallback>{auth.user.name.charAt(0)}</AvatarFallback>
-                  </Avatar>
-                </Button>
-              ) : (
-                <Link href="/login">
-                  <Button variant="ghost" className="text-gray-900 dark:text-gray-400 hover:text-white">
-                    Login
-                  </Button>
-                </Link>
-              )}
+              ))}
             </div>
           </div>
-        </nav>
-      </div>
-    </>
-  );
-};
 
-export default Navbar;
+          {/* Notifications and Profile */}
+          <div className="flex items-center space-x-4">
+            {/* Notifications */}
+            <Button variant="ghost" className="relative text-gray-900 dark:text-gray-400 hover:text-white">
+              <Bell className="w-6 h-6" />
+            </Button>
+
+            {/* Notifications */}
+            <Button variant="ghost" className="relative text-gray-900 dark:text-gray-400 hover:text-white">
+              <ShoppingBag className="w-6 h-6" />
+            </Button>
+
+            {/* Profile Dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="relative flex items-center">
+                  <img
+                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                    alt="User Profile"
+                    className="w-8 h-8 rounded-full"
+                  />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="bg-white">
+                <DropdownMenuItem>
+                  <a href="#" className="text-sm text-gray-700">
+                    Your Profile
+                  </a>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <a href="#" className="text-sm text-gray-700">
+                    Settings
+                  </a>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <a href="#" className="text-sm text-gray-700">
+                    Sign Out
+                  </a>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+}
