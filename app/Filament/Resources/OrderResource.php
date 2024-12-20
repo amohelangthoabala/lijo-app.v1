@@ -18,6 +18,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\BadgeColumn;
+use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -28,6 +29,8 @@ class OrderResource extends Resource
     protected static ?string $model = Order::class;
     protected static ?string $navigationIcon = 'heroicon-o-clipboard';
     protected static ?string $navigationGroup = 'Orders Management';
+
+    protected static ?int $navigationSort = 100;
 
     public static function form(Form $form): Form
     {
@@ -44,7 +47,11 @@ class OrderResource extends Resource
                             ->maxLength(32)
                             ->unique(Order::class, 'number', ignoreRecord: true),
                         Select::make('user_id')
-                            ->relationship('customer', 'name')
+                            ->label('Customer')
+                            ->options(
+                                User::role('Customer') // Fetch users with the "Customer" role
+                                    ->pluck('name', 'id')
+                            )
                             ->required(),
                         // Select::make('client_location_id')
                         //     ->relationship('clientLocation', 'name')
@@ -82,7 +89,11 @@ class OrderResource extends Resource
                         Forms\Components\Select::make('driver_id')
                             ->label('Driver')
                             // ->relationship('delivery.driver', 'name')
-                            ->options(User::where('email', 'admin@lijo.co.ls')->pluck('name', 'id'))
+                            // ->options(User::where('email', 'admin@lijo.co.ls')->pluck('name', 'id'))
+                            ->options(
+                                User::role('Driver') // Fetch users with the "Customer" role
+                                    ->pluck('name', 'id')
+                            )
                             ->required(),
 
                         Forms\Components\Select::make('address_id')
@@ -145,13 +156,43 @@ class OrderResource extends Resource
                             ->relationship('items')
                             ->schema([
                                 Select::make('restaurant_id')
-                                    ->relationship('restaurant', 'name')
-                                    ->required(),
+                                    ->relationship('restaurant', 'name') // Assuming the OrderItem model has a `restaurant` relationship
+                                    ->searchable() // Makes the field searchable
+                                    ->required()
+                                    ->preload()
+                                    ->reactive(), // Ensures updates propagate dynamically
+
                                 Select::make('meal_id')
-                                    ->relationship('meal', 'name')
-                                    ->required(),
+                                    ->label('Meal')
+                                    ->options(function (callable $get) {
+                                        $restaurantId = $get('restaurant_id'); // Get the selected restaurant ID
+                                        return $restaurantId
+                                            ? \App\Models\Meal::where('restaurant_id', $restaurantId)->pluck('name', 'id') // Filter meals by restaurant
+                                            : \App\Models\Meal::pluck('name', 'id'); // Show all meals if no restaurant is selected
+                                    })
+                                    ->searchable() // Makes the field searchable
+                                    ->required()
+                                    ->reactive() // Ensures it updates other fields dynamically
+                                    ->afterStateUpdated(function (callable $set, callable $get, $state) {
+                                        if ($state) {
+                                            // Find the restaurant_id for the selected meal
+                                            $meal = \App\Models\Meal::find($state);
+                                            $currentRestaurantId = $get('restaurant_id');
+
+                                            // Set restaurant_id only if it's not already manually set
+                                            if ($meal && (!$currentRestaurantId || $currentRestaurantId !== $meal->restaurant_id)) {
+                                                $set('restaurant_id', $meal->restaurant_id);
+                                            }
+
+                                            if ($meal) {
+                                                $set('price', $meal->price); // Auto-fill price
+                                            }
+                                        }
+                                    }),
                                 TextInput::make('quantity')
                                     ->numeric()
+                                    ->default(1)
+                                    ->minValue(1)
                                     ->required(),
                                 TextInput::make('price')
                                     ->numeric()
@@ -170,17 +211,23 @@ class OrderResource extends Resource
                 TextColumn::make('type'),
                 // ->enum(['pick' => 'Pick', 'delivery' => 'Delivery']),
                 TextColumn::make('date')->dateTime(),
-                TextColumn::make('status')
-                    ->badge()
+                SelectColumn::make('status')
+                    // ->badge()
+                    // ->editable()
                     // ->enum([
                     //     'pending' => 'Pending',
                     //     'completed' => 'Completed',
                     //     'cancelled' => 'Cancelled',
                     // ])
-                    ->colors([
-                        'secondary',
-                        'success' => 'completed',
-                        'danger' => 'cancelled',
+                    // ->colors([
+                    //     'secondary',
+                    //     'success' => 'completed',
+                    //     'danger' => 'cancelled',
+                    // ])
+                    ->options([
+                        'pending' => 'Pending',
+                        'completed' => 'Completed',
+                        'cancelled' => 'Cancelled',
                     ]),
             ])
             ->filters([

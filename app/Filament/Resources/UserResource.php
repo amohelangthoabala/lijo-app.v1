@@ -111,4 +111,10 @@ class UserResource extends Resource
             'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
     }
+
+    public static function canAccess(): bool
+    {
+        // Only allow users with the 'admin' role to view this resource
+        return auth()->user()->hasRole('Admin');
+    }
 }

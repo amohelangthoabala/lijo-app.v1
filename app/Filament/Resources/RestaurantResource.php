@@ -27,6 +27,7 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\BooleanColumn;
 use Filament\Tables\Columns\ViewColumn;
 use Filament\Tables\Filters\SelectFilter;
+use Illuminate\Database\Eloquent\Model;
 
 class RestaurantResource extends Resource
 {
@@ -111,5 +112,11 @@ class RestaurantResource extends Resource
             'create' => Pages\CreateRestaurant::route('/create'),
             'edit' => Pages\EditRestaurant::route('/{record}/edit'),
         ];
+    }
+
+    public static function canAccess(): bool
+    {
+        // Only allow users with the 'admin' role to view this resource
+        return auth()->user()->hasRole('Admin');
     }
 }

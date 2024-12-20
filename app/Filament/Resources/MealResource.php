@@ -6,6 +6,7 @@ use App\Filament\Resources\MealResource\Pages;
 use App\Models\Meal;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
+use Filament\Tables\Grouping\Group;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -16,6 +17,11 @@ use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\QueryBuilder;
+use Filament\Tables\Filters\QueryBuilder\Constraints\BooleanConstraint;
+use Filament\Tables\Filters\QueryBuilder\Constraints\DateConstraint;
+use Filament\Tables\Filters\QueryBuilder\Constraints\NumberConstraint;
+use Filament\Tables\Filters\QueryBuilder\Constraints\TextConstraint;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Storage;
 use Spatie\ImageOptimizer\OptimizerChainFactory;
@@ -28,7 +34,9 @@ class MealResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-shopping-bag';
 
-    protected static ?string $navigationGroup = 'Menu';
+    protected static ?string $navigationGroup = 'Shop';
+
+    protected static ?int $navigationSort = 2;
 
     public static function getLabel(): string
     {
@@ -63,7 +71,8 @@ class MealResource extends Resource
                     // Name
                     TextInput::make('name')
                         ->required()
-                        ->label('Meal Name'),
+                        ->label('Meal Name')
+                        ->searchable(),
 
                     // Description
                     Textarea::make('description')
@@ -149,10 +158,42 @@ class MealResource extends Resource
                 TextColumn::make('created_at')->label('Created At')->dateTime()->sortable(),
             ])
             ->filters([
-                // Add filters here
+                QueryBuilder::make()
+                ->constraints([
+                    TextConstraint::make('name'),
+                    // TextConstraint::make('slug'),
+                    // TextConstraint::make('sku')
+                    //     ->label('SKU (Stock Keeping Unit)'),
+                    // TextConstraint::make('barcode')
+                    //     ->label('Barcode (ISBN, UPC, GTIN, etc.)'),
+                    TextConstraint::make('description'),
+                    // NumberConstraint::make('price')
+                    //     ->label('Compare at price')
+                    //     ->icon('heroicon-m-currency-dollar'),
+                    NumberConstraint::make('price')
+                        ->icon('heroicon-m-currency-dollar'),
+                    // NumberConstraint::make('cost')
+                    //     ->label('Cost per item')
+                    //     ->icon('heroicon-m-currency-dollar'),
+                    // NumberConstraint::make('qty')
+                    //     ->label('Quantity'),
+                    // NumberConstraint::make('security_stock'),
+                    BooleanConstraint::make('is_available')
+                        ->label('Visibility'),
+                    // BooleanConstraint::make('featured'),
+                    // BooleanConstraint::make('backorder'),
+                    // BooleanConstraint::make('requires_shipping')
+                    //     ->icon('heroicon-m-truck'),
+                    DateConstraint::make('created_at'),
+                ])
+                ->constraintPickerColumns(2),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+            ])
+            ->groups([
+                Group::make('category.name')
+                    ->collapsible(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
