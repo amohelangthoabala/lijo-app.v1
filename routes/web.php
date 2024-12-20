@@ -8,6 +8,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+// Home page
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -17,14 +18,17 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
+// Redirect /dashboard to home
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    return redirect('/');
+});
 
+// Resources
 Route::resource('meal', MealController::class);
 Route::resource('order', OrderController::class);
 Route::resource('restaurant', RestaurantController::class);
 
+// Authenticated routes
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
