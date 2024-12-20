@@ -19,7 +19,9 @@ class DeliveryResource extends Resource
     protected static ?string $model = Delivery::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-shopping-cart';
-    protected static ?string $navigationGroup = 'Orders Management';
+    // protected static ?string $navigationGroup = 'Shop';
+
+    protected static ?int $navigationSort = 6;
 
     public static function form(Form $form): Form
     {

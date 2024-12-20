@@ -23,9 +23,9 @@ class MenuCategoryResource extends Resource
 {
     protected static ?string $model = MenuCategory::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-check';
+    // protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-check';
 
-    protected static ?string $navigationGroup = 'Menu';
+    protected static ?string $navigationGroup = 'Settings';
 
     public static function getLabel(): string
     {

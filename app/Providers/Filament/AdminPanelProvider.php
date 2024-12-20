@@ -5,6 +5,7 @@ namespace App\Providers\Filament;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\NavigationGroup;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -53,6 +54,19 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+            ])
+            ->navigationGroups([
+                \Filament\Navigation\NavigationGroup::make()
+                    ->label('CRM')
+                    ->icon('heroicon-o-user'),
+                // \Filament\Navigation\NavigationGroup::make()
+                //     ->label('Order Management')
+                //     ->sort(2), // Group for orders
+                    // ->icon('heroicon-o-clipboard'),
+                \Filament\Navigation\NavigationGroup::make()
+                    ->label('Settings')
+                    ->icon('heroicon-o-cog')
+                    ->collapsed(),
             ]);
     }
 }

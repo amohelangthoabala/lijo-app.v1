@@ -34,9 +34,9 @@ class MealResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-shopping-bag';
 
-    protected static ?string $navigationGroup = 'Shop';
+    // protected static ?string $navigationGroup = 'Shop';
 
-    protected static ?int $navigationSort = 2;
+    protected static ?int $navigationSort = 5;
 
     public static function getLabel(): string
     {

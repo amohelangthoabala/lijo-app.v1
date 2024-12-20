@@ -21,7 +21,9 @@ class PaymentResource extends Resource
     protected static ?string $model = Payment::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-banknotes';
-    protected static ?string $navigationGroup = 'Orders Management';
+
+    protected static ?int $navigationSort = 3;
+    // protected static ?string $navigationGroup = 'Shop';
 
     public static function form(Form $form): Form
     {
@@ -33,7 +35,7 @@ class PaymentResource extends Resource
                     ->required(),
                 Select::make('user_id')
                     ->relationship('user', 'name') // Assuming `name` is the display field for users
-                    ->label('User')
+                    ->label('Customer')
                     ->required(),
                 TextInput::make('amount')
                     ->numeric()
