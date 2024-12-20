@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\PaymentResource\Pages;
 use App\Filament\Resources\PaymentResource\RelationManagers;
 use App\Models\Payment;
+use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -32,17 +33,45 @@ class PaymentResource extends Resource
                 Select::make('order_id')
                     ->relationship('order', 'number') // Assuming the `number` field is in the orders table
                     ->label('Order')
-                    ->required(),
+                    ->required()
+                    ->reactive() // Make this field reactive
+                    ->afterStateUpdated(function (callable $set, $state) {
+                        if ($state) {
+                            // Fetch the associated order details
+                            $order = \App\Models\Order::with('items')->find($state);
+
+                            // Calculate the total amount based on order items
+                            $totalAmount = $order?->items->sum('price') ?? 0;
+
+                            // Set the related customer ID and total amount
+                            $set('user_id', $order?->user_id);
+                            $set('amount', $totalAmount);
+                        } else {
+                            // Clear fields if no order is selected
+                            $set('user_id', null);
+                            $set('amount', null);
+                        }
+                    }),
                 Select::make('user_id')
-                    ->relationship('user', 'name') // Assuming `name` is the display field for users
+                    ->options(
+                        User::role('Customer') // Fetch users with the "Customer" role
+                            ->pluck('name', 'id')
+                    ) // Assuming `name` is the display field for users
                     ->label('Customer')
                     ->required(),
                 TextInput::make('amount')
                     ->numeric()
                     ->label('Amount')
                     ->required(),
-                TextInput::make('provider')
+                Select::make('provider')
+                    ->options([
+                        'cash' => 'Cash',
+                        'bank' => 'Bank',
+                        'mpesa' => 'Mpesa',
+                        'ecocash' => 'Ecocash',
+                    ])
                     ->label('Payment Provider')
+                    ->default('cash')
                     ->required(),
                 Select::make('status')
                     ->options([
@@ -51,6 +80,7 @@ class PaymentResource extends Resource
                         'failed' => 'Failed',
                     ])
                     ->label('Status')
+                    ->default('pending')
                     ->required(),
             ]);
     }
