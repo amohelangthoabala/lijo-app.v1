@@ -157,7 +157,7 @@ const HeroSection = () => {
 
             {/* Hero Image */}
             <img
-                src="https://coderthemes.com/yum/assets/hero-f578fbc8.png"
+                src="/hero.png"
                 alt="Hero"
                 className="mx-auto"
             />
