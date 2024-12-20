@@ -93,35 +93,22 @@ export default function Navbar({auth}: NavbarProps) {
               <ShoppingBag className="w-6 h-6" />
             </Button>
 
-            {/* Profile Dropdown */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
+            {/* Profile or Login */}
+            {auth?.user ? (
                 <Button variant="ghost" className="relative flex items-center">
                   <img
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                    src={`https://ui-avatars.com/api/?name=${auth.user?.name || "User"}&background=random&color=fff&size=256`}
                     alt="User Profile"
                     className="w-8 h-8 rounded-full"
                   />
                 </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="bg-white">
-                <DropdownMenuItem>
-                  <a href="#" className="text-sm text-gray-700">
-                    Your Profile
-                  </a>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <a href="#" className="text-sm text-gray-700">
-                    Settings
-                  </a>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <a href="#" className="text-sm text-gray-700">
-                    Sign Out
-                  </a>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+              ) : (
+                <Link href="/login">
+                  <Button variant="ghost" className="text-gray-900 dark:text-gray-400 hover:text-white">
+                    Login
+                  </Button>
+                </Link>
+              )}
           </div>
         </div>
       </div>
