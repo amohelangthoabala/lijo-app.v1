@@ -1,21 +1,38 @@
 import { Link } from "@inertiajs/react";
 import { Button } from "./ui/button";
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "./ui/dropdown-menu";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "./ui/dropdown-menu";
 import { Sheet, SheetTrigger, SheetContent } from "./ui/sheet";
 import { Bell, Menu, ShoppingBag, X } from "lucide-react";
 
+// Define the navigation links
 const navigation = [
-  { name: "Home", href: route('home'), current: route().current('home') },
-  { name: "Meal", href: route('meal.index'), current: route().current('meal.index') },
-  { name: "Restaurant", href: route('restaurant.index'), current: route().current('restaurant.index') },
-//   { name: "Calendar", href: "#", current: false },
+  { name: "Home", href: route("home"), current: route().current("home") },
+  { name: "Meal", href: route("meal.index"), current: route().current("meal.index") },
+  { name: "Restaurant", href: route("restaurant.index"), current: route().current("restaurant.index") },
 ];
 
+// Utility function to merge class names
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Navbar() {
+// Define props for Navbar
+interface NavbarProps {
+  auth: {
+    user: {
+      id: number;
+      name: string;
+      email: string;
+    };
+  };
+}
+
+export default function Navbar({ auth }: NavbarProps) {
   return (
     <nav className="dark:bg-gray-800">
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -23,7 +40,10 @@ export default function Navbar() {
           {/* Mobile Menu */}
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" className="dark:text-gray-400 sm:hidden hover:text-white focus:outline-none">
+              <Button
+                variant="ghost"
+                className="dark:text-gray-400 sm:hidden hover:text-white focus:outline-none"
+              >
                 <Menu className="w-6 h-6" />
               </Button>
             </SheetTrigger>
@@ -34,7 +54,9 @@ export default function Navbar() {
                     key={item.name}
                     href={item.href}
                     className={classNames(
-                      item.current ? "bg-gray-900 text-white" : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                      item.current
+                        ? "bg-gray-900 text-white"
+                        : "text-gray-300 hover:bg-gray-700 hover:text-white",
                       "block rounded-md px-3 py-2 text-base font-medium"
                     )}
                   >
@@ -62,7 +84,9 @@ export default function Navbar() {
                   key={item.name}
                   href={item.href}
                   className={classNames(
-                    item.current ? "bg-gray-900 text-white" : "text-gray-900 dark:text-gray-400 hover:bg-gray-700 hover:text-white",
+                    item.current
+                      ? "bg-gray-900 text-white"
+                      : "text-gray-900 dark:text-gray-400 hover:bg-gray-700 hover:text-white",
                     "rounded-md px-3 py-2 text-sm font-medium"
                   )}
                 >
@@ -75,12 +99,17 @@ export default function Navbar() {
           {/* Notifications and Profile */}
           <div className="flex items-center space-x-4">
             {/* Notifications */}
-            <Button variant="ghost" className="relative text-gray-900 dark:text-gray-400 hover:text-white">
+            <Button
+              variant="ghost"
+              className="relative text-gray-900 dark:text-gray-400 hover:text-white"
+            >
               <Bell className="w-6 h-6" />
             </Button>
 
-            {/* Notifications */}
-            <Button variant="ghost" className="relative text-gray-900 dark:text-gray-400 hover:text-white">
+            <Button
+              variant="ghost"
+              className="relative text-gray-900 dark:text-gray-400 hover:text-white"
+            >
               <ShoppingBag className="w-6 h-6" />
             </Button>
 
@@ -97,6 +126,10 @@ export default function Navbar() {
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="bg-white">
                 <DropdownMenuItem>
+                  <span className="text-sm text-gray-700">Signed in as</span>
+                  <p className="text-sm font-bold text-gray-900">{auth.user.name}</p>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
                   <a href="#" className="text-sm text-gray-700">
                     Your Profile
                   </a>
@@ -107,7 +140,7 @@ export default function Navbar() {
                   </a>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <a href="#" className="text-sm text-gray-700">
+                  <a href={route("logout")} method="post" className="text-sm text-gray-700">
                     Sign Out
                   </a>
                 </DropdownMenuItem>
