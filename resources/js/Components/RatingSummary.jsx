@@ -31,9 +31,9 @@ const RatingsSummary = ({ reviews }) => {
         ))}
       </div>
       {/* Divider */}
-      <div className="w-px h-4 bg-default-400"></div>
+      <div className="w-px h-4 bg-gray-400"></div>
       {/* Review Count */}
-      <h5 className="text-sm text-default-500">{totalReviews} Reviews</h5>
+      <h5 className="text-sm text-gray-500">{totalReviews} Reviews</h5>
     </div>
   );
 };
