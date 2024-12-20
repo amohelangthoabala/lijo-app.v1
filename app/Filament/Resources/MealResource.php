@@ -77,8 +77,7 @@ class MealResource extends Resource
                     // Name
                     TextInput::make('name')
                         ->required()
-                        ->label('Meal Name')
-                        ->searchable(),
+                        ->label('Meal Name'),
 
                     // Description
                     Textarea::make('description')
