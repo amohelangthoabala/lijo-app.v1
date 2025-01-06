@@ -8,6 +8,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SMSController;
 
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
@@ -83,3 +84,4 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
 
+Route::post('/send-sms', [SMSController::class, 'send']);

@@ -21,6 +21,7 @@
         "spatie/laravel-permission": "^6.10",
         "symfony/yaml": "^6.0",
         "tightenco/ziggy": "^2.0",
+        "twilio/sdk": "^8.3",
         "tymon/jwt-auth": "^2.1",
         "wotz/laravel-swagger-ui": "^1.0",
         "zircote/swagger-php": "^4.11"

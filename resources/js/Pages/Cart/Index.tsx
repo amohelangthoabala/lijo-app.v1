@@ -1,11 +1,12 @@
+import AppLayout from '@/Layouts/AppLayout';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
 import useCartStore from '@/Store/useCart';
-import { Head } from '@inertiajs/react'
+import { Head, Link } from '@inertiajs/react'
 import React, { useState } from 'react'
 import { MdOutlineCancel } from "react-icons/md";
 import { toast } from 'react-toastify';
 
-function Cart({ auth }) {
+function Cart() {
     // Access cart store state and actions
     const { cart, coupon, subtotal, total, updateQuantity, removeFromCart, applyCoupon, calculateTotal } = useCartStore();
 
@@ -55,13 +56,7 @@ function Cart({ auth }) {
     };
 
   return (
-    <AuthenticatedLayout
-        user={auth.user}
-        header={
-            <h2 className="text-xl font-semibold leading-tight text-gray-800">
-                Cart Details
-            </h2>
-        }
+    <AppLayout
     >
         <Head title="Cart" />
 
@@ -205,12 +200,12 @@ function Cart({ auth }) {
                                 </div>
                             </div>
 
-                            <a
-                                href="checkout.html"
+                            <Link
+                                href={route('checkout')}
                                 className="inline-flex items-center justify-center w-full px-10 py-3 text-sm font-medium text-center text-white transition-all duration-500 bg-orange-500 border border-orange-500 rounded-full shadow-sm hover:bg-orange-500-500"
                             >
                                 Proceed to Checkout
-                            </a>
+                            </Link>
                         </div>
 
                         <div className="border rounded-lg border-default-200">
@@ -241,7 +236,7 @@ function Cart({ auth }) {
                 </div>
             </div>
         </section>
-    </AuthenticatedLayout>
+    </AppLayout>
   )
 }
 
