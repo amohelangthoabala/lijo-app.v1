@@ -89,9 +89,12 @@ export default function Navbar({auth}: NavbarProps) {
             </Button>
 
             {/* Notifications */}
-            <Button variant="ghost" className="relative text-gray-900 dark:text-gray-400 hover:text-white">
+            <Link className="relative text-gray-900 dark:text-gray-400 hover:text-white" href={route('cart')}>
+                <ShoppingBag className="w-6 h-6" />
+            </Link>
+            {/* <Button variant="ghost" className="relative text-gray-900 dark:text-gray-400 hover:text-white">
               <ShoppingBag className="w-6 h-6" />
-            </Button>
+            </Button> */}
 
             {/* Profile or Login */}
             {auth?.user ? (

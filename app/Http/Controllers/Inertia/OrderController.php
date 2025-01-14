@@ -7,6 +7,8 @@ use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Http\Resources\OrderResource;
+use App\Models\Address;
+use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
@@ -30,15 +32,37 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return inertia("Order/Checkout");
+        $addresses = Address::query()->get();
+
+        // dd($query);
+
+        return inertia("Order/Checkout",[
+            'addresses'=> $addresses
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreOrderRequest $request)
+    public function store(Request $request)
     {
-        //
+
+        dd($request);
+
+        // Validate the request data
+        $validated = $request->validate([
+            'address' => 'required|string|max:255',
+            'phone' => 'required|string|max:15',
+            'payment_method' => 'required|in:card,wallet,cash',
+            'cart' => 'required|array|min:1', // Ensure cart items are provided
+            'cart.*.id' => 'required|exists:meals,id', // Validate meal IDs
+            'cart.*.quantity' => 'required|integer|min:1', // Ensure quantity is valid
+            'cart.*.price' => 'required|numeric|min:0', // Ensure price is valid
+        ]);
+
+        dd($validated);
+
+        return ;
     }
 
     /**

@@ -11,7 +11,7 @@ import useCartStore from '@/Store/useCart';
 import { Head, useForm } from '@inertiajs/react'
 import React, { useState } from 'react'
 
-function Checkout() {
+function Checkout({ addresses }) {
 
 
     const {
@@ -29,13 +29,15 @@ function Checkout() {
         date: "",
         status: "pending",
         delivery: {
-            driver_id: "",
+            // driver_id: "",
             address_id: "",
             status: "pending",
-            time: "",
+            // time: "",
         },
         items: [], // Initialize items
     });
+
+
 
     // useState(() => {
     //     setData("items", cart);
@@ -157,23 +159,30 @@ function Checkout() {
                                                 {/* Delivery Address */}
                                                 <div>
                                                     <Label htmlFor="address_id">Delivery Address</Label>
-                                                    <Select
-                                                        id="address_id"
-                                                        onValueChange={(value) => setData("delivery.address_id", value)}
-                                                        placeholder="Select a delivery address"
-                                                        value={data.delivery.address_id}
-                                                        className="mt-1"
-                                                    >
-                                                        {/* {Object.entries(addresses).map(([id, name]) => (
-                                                            <Select.Item key={id} value={id}>
-                                                                {name}
-                                                            </Select.Item>
-                                                        ))} */}
+
+                                                    <Select>
+                                                        <SelectTrigger className="">
+                                                            <SelectValue placeholder="Select an address" />
+                                                        </SelectTrigger>
+                                                        <SelectContent>
+                                                            <SelectGroup>
+                                                                <SelectLabel>Addresses</SelectLabel>
+
+                                                                {addresses.map((address) => (
+                                                                    <SelectItem value="address.id">{address.name}</SelectItem>
+                                                                ))}
+
+                                                                {/* <SelectItem value="banana">Banana</SelectItem>
+                                                                <SelectItem value="blueberry">Blueberry</SelectItem>
+                                                                <SelectItem value="grapes">Grapes</SelectItem>
+                                                                <SelectItem value="pineapple">Pineapple</SelectItem> */}
+                                                            </SelectGroup>
+                                                        </SelectContent>
                                                     </Select>
                                                 </div>
 
                                                 {/* Delivery Status */}
-                                                <div>
+                                                {/* <div>
                                                     <Label htmlFor="delivery_status">Delivery Status</Label>
                                                     <Select
                                                         id="delivery_status"
@@ -183,15 +192,13 @@ function Checkout() {
                                                         className="mt-1"
                                                     >
 
-                                                            {/* <Select.Item key={value} value={value}>
-                                                                {label}
-                                                            </Select.Item> */}
+
 
                                                     </Select>
-                                                </div>
+                                                </div> */}
 
                                                 {/* Scheduled Delivery Time */}
-                                                <div>
+                                                {/* <div>
                                                     <Label htmlFor="time">Scheduled Delivery Time</Label>
                                                     <Input
                                                         id="time"
@@ -200,7 +207,7 @@ function Checkout() {
                                                         onChange={(e) => setData("delivery.time", e.target.value)}
                                                         className="mt-1"
                                                     />
-                                                </div>
+                                                </div> */}
                                             </div>
                                         </div>
                                     )}
@@ -248,6 +255,15 @@ function Checkout() {
                     <OrderSummary />
                 </div>
             </div>
+
+            <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
+                <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
+                    <div className="p-6 text-gray-900">
+                        <pre>{JSON.stringify(addresses, undefined, 2)}</pre>
+                    </div>
+                </div>
+            </div>
+
         </AppLayout>
     )
 }
