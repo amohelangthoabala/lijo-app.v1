@@ -9,7 +9,7 @@ import AppLayout from '@/Layouts/AppLayout';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
 import useCartStore from '@/Store/useCart';
 import { Head, useForm } from '@inertiajs/react'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 function Checkout({ addresses }) {
 
@@ -38,6 +38,9 @@ function Checkout({ addresses }) {
     });
 
 
+    useEffect(() => {
+        setData("items", cart);
+    }, [cart]);
 
     // useState(() => {
     //     setData("items", cart);
@@ -45,7 +48,18 @@ function Checkout({ addresses }) {
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
-        post("/order"); // Submit form to backend
+        post("/order", {
+            onSuccess: (response) => {
+                // Clear cart after successful order
+                // setData("items", []);
+
+                console.log(response);
+            },
+
+            onError: (errors) => {
+                // Handle validation errors
+            }
+        }); // Submit form to backend
     };
 
     return (
@@ -160,7 +174,7 @@ function Checkout({ addresses }) {
                                                 <div>
                                                     <Label htmlFor="address_id">Delivery Address</Label>
 
-                                                    <Select>
+                                                    <Select onValueChange={(value) => setData('delivery', { ...data.delivery, address_id: value })}>
                                                         <SelectTrigger className="">
                                                             <SelectValue placeholder="Select an address" />
                                                         </SelectTrigger>
@@ -169,13 +183,9 @@ function Checkout({ addresses }) {
                                                                 <SelectLabel>Addresses</SelectLabel>
 
                                                                 {addresses.map((address) => (
-                                                                    <SelectItem value="address.id">{address.name}</SelectItem>
+                                                                    <SelectItem key={address.id} value={address.id}>{address.name}</SelectItem>
                                                                 ))}
 
-                                                                {/* <SelectItem value="banana">Banana</SelectItem>
-                                                                <SelectItem value="blueberry">Blueberry</SelectItem>
-                                                                <SelectItem value="grapes">Grapes</SelectItem>
-                                                                <SelectItem value="pineapple">Pineapple</SelectItem> */}
                                                             </SelectGroup>
                                                         </SelectContent>
                                                     </Select>

@@ -43,9 +43,9 @@ class OrderService
             // Handle delivery-specific details
             if ($data['type'] === 'delivery') {
                 $order->delivery()->create([
-                    'driver_id' => $data['driver_id'],
-                    'address_id' => $data['address_id'],
-                    'status' => $data['delivery_status'] ?? 'pending',
+                    'driver_id' => $data['driver_id'] ?? 1,
+                    'status' => $data['delivery_status'] ?? $data['delivery']['status'],
+                    'address_id' => $data['address_id'] ?? $data['delivery']['address_id'],
                     'time' => $data['delivery_time'] ?? null,
                 ]);
             }
@@ -54,8 +54,8 @@ class OrderService
             if (!empty($data['items'])) {
                 foreach ($data['items'] as $item) {
                     $order->items()->create([
-                        'restaurant_id' => $item['restaurant_id'],
-                        'meal_id' => $item['meal_id'],
+                        'restaurant_id' => $item['restaurant_id'] ?? $item['restaurant']['id'],
+                        'meal_id' => $item['meal_id'] ?? $item['id'],
                         'quantity' => $item['quantity'],
                         'price' => $item['price'],
                     ]);

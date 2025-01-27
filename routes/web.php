@@ -37,7 +37,7 @@ Route::get('/cart', function () {
 // Redirect /dashboard to home
 Route::get('/dashboard', function () {
     return redirect('/');
-});
+})->name('dashboard');
 
 // Resources
 Route::resource('meal', MealController::class);

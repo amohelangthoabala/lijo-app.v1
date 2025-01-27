@@ -1,12 +1,27 @@
 import OrderSteps from '@/Components/OrderSteps'
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
-import { Head } from '@inertiajs/react'
-import React from 'react'
+import AppLayout from '@/Layouts/AppLayout'
+import { Head, router } from '@inertiajs/react'
+import React, { useEffect } from 'react'
 import { MdLocationOn } from "react-icons/md";
 import { RiEBike2Fill } from "react-icons/ri";
 import { BsDot } from "react-icons/bs";
+import useCartStore from '@/Store/useCart';
 
-function Show({auth, order}) {
+function Show({auth, order, success}) {
+
+    const {clearCart} = useCartStore(); // Access cart store state and actions
+
+    if(success) {
+        clearCart();
+    }
+
+    useEffect(() => {
+        setInterval(() => {
+            router.reload({ only: ['order'] });
+        }, 3000);
+    }, []);
+
+
     const formatDateTime = (timestamp) => {
         const date = new Date(timestamp);
 
@@ -23,31 +38,8 @@ function Show({auth, order}) {
     };
 
   return (
-    <AuthenticatedLayout
-        user={auth.user}
-        header={
-            <div className='flex items-center justify-between'>
-                <div>
-                    <h2 className="text-xl font-semibold leading-tight text-gray-800">
-                        Order #{order.data.number}
-                    </h2>
-
-                    <span className="flex items-center text-sm text-default-600">
-                        {formatDateTime(order.data.date)} <BsDot className='mx-2' /> {order.data.items.length} {' '} Meals
-                    </span>
-
-                </div>
-
-
-                <div>
-                    <button className='p-2 px-4 text-red-500 border border-red-500 rounded-lg border-1'>Cancel Order</button>
-                    <button className='p-2 px-4 ml-4 text-white bg-gray-800 rounded-lg border-1'>Edit Order</button>
-                </div>
-            </div>
-
-        }
-    >
-        <Head title="Order" />
+    <AppLayout>
+        {/* <Head title="Order" /> */}
 
         <div className="py-6 mx-auto lg:py-10 max-w-7xl">
             <div className="p-6">
@@ -229,7 +221,7 @@ function Show({auth, order}) {
                 </div>
             </div> */}
 
-    </AuthenticatedLayout>
+    </AppLayout>
   )
 }
 
